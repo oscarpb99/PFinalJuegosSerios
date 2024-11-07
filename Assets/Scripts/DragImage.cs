@@ -24,7 +24,7 @@ public class DragImage : MonoBehaviour,IPointerDownHandler,IDragHandler
         //Actualiza la pos del objeto según el mov del ratón
         if (RectTransformUtility.ScreenPointToLocalPointInRectangle(rectTransform.parent as RectTransform, eventData.position, eventData.pressEventCamera, out localPoint))
         {
-            rectTransform.localPosition = localPoint - offset;
+            rectTransform.localPosition = new Vector2(localPoint.x - offset.x,-69);
         }
     }
 
