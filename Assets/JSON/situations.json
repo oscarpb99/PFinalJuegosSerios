@@ -1,0 +1,13 @@
+{
+			"situation": "Situacion",
+			"elec1": "eleccion1",
+			"elec2": "eleccion2",
+			"stat1Left": 10,
+			"stat2Left": 10,
+			"stat3Left": -10,
+			"stat4Left": -10,
+			"stat1Right": 20,
+			"stat2Right": -20,
+			"stat3Right": 0,
+			"stat4Right": 10
+}

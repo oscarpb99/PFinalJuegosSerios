@@ -9,6 +9,7 @@ public class ChangeText : MonoBehaviour
     private TextMeshProUGUI text;
     public GameManager gameManager;
     public int index;
+    public bool isStat = false;
     private void Awake()
     {
 
@@ -16,12 +17,16 @@ public class ChangeText : MonoBehaviour
     }
     void Start()
     {
-        text.text=gameManager.getStat(index).ToString();
+        if(isStat)
+            text.text=gameManager.getStat(index).ToString();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        text.text = gameManager.getStat(index).ToString();
+        if(isStat)
+            text.text = gameManager.getStat(index).ToString();
+       
     }
 }
