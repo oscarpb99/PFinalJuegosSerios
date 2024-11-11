@@ -1,13 +1,43 @@
 {
-			"situation": "Situacion",
-			"elec1": "eleccion1",
-			"elec2": "eleccion2",
-			"stat1Left": 10,
-			"stat2Left": 10,
+	"situations": [
+		{
+			"situation": "Te han comentado para salir de fiesta, probablemente hasta bastante tarde. ¿Te apuntas al plan?",
+			"elec1": "SI",
+			"elec2": "NO",
+			"stat1Left": 20,
+			"stat2Left": -10,
 			"stat3Left": -10,
-			"stat4Left": -10,
-			"stat1Right": 20,
-			"stat2Right": -20,
+			"stat4Left": 0,
+			"stat1Right": -20,
+			"stat2Right": 10,
 			"stat3Right": 0,
-			"stat4Right": 10
+			"stat4Right": 0
+		},
+		{
+			"situation": "El fin de semana, un amigo que llevabas sin ver mucho tiempo va a visitar la ciudad donde vives, pero solo esta disponible justo cuando tienes clases",
+			"elec1": "SALTARSE CLASES Y VER AL AMIGO",
+			"elec2": "IR A CLASE",
+			"stat1Left": 10,
+			"stat2Left": 0,
+			"stat3Left": -10,
+			"stat4Left": 0,
+			"stat1Right": -10,
+			"stat2Right": 0,
+			"stat3Right": 10,
+			"stat4Right": 0
+		},
+		{
+			"situation": "Se aproximan los examenes, decides adelantar lo que puedas y estudiar toda la noche",
+			"elec1": "SI",
+			"elec2": "NO",
+			"stat1Left": 0,
+			"stat2Left": -20,
+			"stat3Left": 20,
+			"stat4Left": 0,
+			"stat1Right": 0,
+			"stat2Right": 0,
+			"stat3Right": 20,
+			"stat4Right": 0
+		}
+	]
 }

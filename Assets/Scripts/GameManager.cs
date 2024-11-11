@@ -8,6 +8,9 @@ public class GameManager : MonoBehaviour
     
     public int []valuesIni = new int [4];
 
+    private int[]valuesTextLeft = new int[4];
+    private int[]valuesTextRight=new int[4];
+
    // public TextMeshProUGUI[] texts = new TextMeshProUGUI[4]; 
 
     private void Start()
@@ -17,6 +20,7 @@ public class GameManager : MonoBehaviour
             stats[i]=valuesIni[i];
             //texts[i].text=stats[i].ToString();
         }
+        
     }
     public void addorloseStats(int s1,int s2, int s3, int s4)
     {
@@ -30,6 +34,35 @@ public class GameManager : MonoBehaviour
     {
          return stats[index]; 
     }
-    
+
+    public int[] getStatsText(bool isLeft) {
+        if(isLeft)
+        {
+            return valuesTextLeft;
+        }
+        else
+        {
+            return valuesTextRight;
+        }
+    }
+
+    public void setStatsText(bool isLeft,int s1,int s2,int s3,int s4)
+    {
+        if (isLeft)
+        {
+            valuesTextLeft[0] = s1;
+            valuesTextLeft[1] = s2;
+            valuesTextLeft[2] = s3;
+            valuesTextLeft[3] = s4;
+        }
+        else
+        {
+            valuesTextRight[0] = s1;
+            valuesTextRight[1] = s2;
+            valuesTextRight[2] = s3;
+            valuesTextRight[3] = s4;
+        }
+    }
+
 
 }
