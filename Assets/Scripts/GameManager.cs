@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-
+    public static GameManager Instance { get; private set; }
     public GameObject imagenPrefab;
     private int[] stats= new int[4];
     
@@ -13,14 +13,27 @@ public class GameManager : MonoBehaviour
     private int[]valuesTextLeft = new int[4];
     private int[]valuesTextRight=new int[4];
 
-   // public TextMeshProUGUI[] texts = new TextMeshProUGUI[4]; 
+    
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+
+    }
 
     private void Start()
     {
         for (int i=0; i<stats.Length; i++)
         {
             stats[i]=valuesIni[i];
-            //texts[i].text=stats[i].ToString();
+           
         }
         
     }

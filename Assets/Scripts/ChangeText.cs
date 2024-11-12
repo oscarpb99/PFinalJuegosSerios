@@ -7,7 +7,6 @@ public class ChangeText : MonoBehaviour
 {
     // Start is called before the first frame update
     private TextMeshProUGUI text;
-    public GameManager gameManager;
     public int index;
     //public bool isStat = false;
     private void Awake()
@@ -18,7 +17,7 @@ public class ChangeText : MonoBehaviour
     void Start()
     {
         //if(isStat)
-            text.text=gameManager.getStat(index).ToString();
+            text.text=GameManager.Instance.getStat(index).ToString();
         
     }
 
@@ -26,7 +25,7 @@ public class ChangeText : MonoBehaviour
     void Update()
     {
         //if(isStat)
-            text.text = gameManager.getStat(index).ToString();
+            text.text = GameManager.Instance.getStat(index).ToString();
        
     }
 }

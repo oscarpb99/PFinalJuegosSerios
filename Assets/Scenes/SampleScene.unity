@@ -269,7 +269,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8aa4387d9a3366b419975ce7046a9eb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 766151728}
   index: 2
 --- !u!1 &315819968
 GameObject:
@@ -420,7 +419,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8aa4387d9a3366b419975ce7046a9eb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 766151728}
   index: 3
 --- !u!1 &519420028
 GameObject:
@@ -795,7 +793,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8aa4387d9a3366b419975ce7046a9eb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 766151728}
   index: 0
 --- !u!1 &766151727
 GameObject:
@@ -1007,7 +1004,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   situations: []
-  gameManager: {fileID: 766151728}
   textSituation: {fileID: 1480286487}
   textElec1: {fileID: 803455158}
   textElec2: {fileID: 666152257}
@@ -1417,7 +1413,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8aa4387d9a3366b419975ce7046a9eb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 766151728}
   index: 1
 --- !u!224 &1609095044 stripped
 RectTransform:
@@ -1607,6 +1602,10 @@ PrefabInstance:
     - target: {fileID: 2378151855516108183, guid: a1a6078c19482a046b0969c4ab6c4513, type: 3}
       propertyPath: m_Name
       value: Image
+      objectReference: {fileID: 0}
+    - target: {fileID: 5103324224763333902, guid: a1a6078c19482a046b0969c4ab6c4513, type: 3}
+      propertyPath: m_Sprite
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

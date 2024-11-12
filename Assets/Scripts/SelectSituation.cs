@@ -7,12 +7,9 @@ public class SelectSituation : MonoBehaviour
 {
     public RectTransform text1Rect, text2Rect;
     private RectTransform imageRect;
-    public GameManager gameManager;
     private Vector2 posIni;
-
-
     public Canvas canvas;
-    public Situations situations;
+   
 
     private void Awake()
     {
@@ -21,46 +18,27 @@ public class SelectSituation : MonoBehaviour
     private void Start()
     {
         posIni = transform.position;
+        GetComponent<UnityEngine.UI.Image>().sprite = Situations.Instance.imagenSituation.sprite; 
     }
 
     private void FixedUpdate()
     {
         if (isOverlapping(imageRect, text1Rect) )
         {
-           
-            gameManager.addorloseStats(gameManager.getStatsText(true)[0], gameManager.getStatsText(true)[1], gameManager.getStatsText(true)[2], gameManager.getStatsText(true)[3]);
+
+            GameManager.Instance.addorloseStats(GameManager.Instance.getStatsText(true)[0], GameManager.Instance.getStatsText(true)[1], GameManager.Instance.getStatsText(true)[2], GameManager.Instance.getStatsText(true)[3]);
             Destroy(gameObject);
-            GameObject image=Instantiate(gameManager.imagenPrefab);
-            image.GetComponent<SelectSituation>().text1Rect = text1Rect;
-            image.GetComponent<SelectSituation>().text2Rect = text2Rect;
-            image.GetComponent<SelectSituation>().imageRect = image.GetComponent<RectTransform>();
-            image.GetComponent<SelectSituation>().gameManager = gameManager;
-            image.GetComponent<SelectSituation>().gameManager.imagenPrefab = gameManager.imagenPrefab;
-            image.GetComponent<SelectSituation>().canvas = canvas;
-            image.GetComponent<SelectSituation>().situations = situations;
-            image.GetComponent<UnityEngine.UI.Image>().sprite = situations.imagenSituation.sprite;
-            image.transform.SetParent(canvas.transform, false);
-            image.transform.position = posIni;
-            situations.setAll();
+            createNewImageInstance();
 
 
         }
         
         if (isOverlapping(imageRect, text2Rect))
         {
-            gameManager.addorloseStats(gameManager.getStatsText(false)[0], gameManager.getStatsText(false)[1], gameManager.getStatsText(false)[2], gameManager.getStatsText(false)[3]);
+            GameManager.Instance.addorloseStats(GameManager.Instance.getStatsText(false)[0], GameManager.Instance.getStatsText(false)[1], GameManager.Instance.getStatsText(false)[2], GameManager.Instance.getStatsText(false)[3]);
             Destroy(gameObject);
-            GameObject image=Instantiate(gameManager.imagenPrefab);
-            image.GetComponent<SelectSituation>().text1Rect = text1Rect;
-            image.GetComponent<SelectSituation>().text2Rect = text2Rect;
-            image.GetComponent<SelectSituation>().imageRect = image.GetComponent<RectTransform>(); 
-            image.GetComponent<SelectSituation>().gameManager = gameManager;
-            image.GetComponent <SelectSituation>().gameManager.imagenPrefab = gameManager.imagenPrefab;
-            image.GetComponent<SelectSituation>().canvas = canvas;
-            image.GetComponent<SelectSituation>().situations = situations;
-            image.transform.SetParent(canvas.transform, false);
-            image.transform.position = posIni;
-            situations.setAll();
+            createNewImageInstance();
+           
 
         }
      
@@ -70,5 +48,19 @@ public class SelectSituation : MonoBehaviour
         return (RectTransformUtility.RectangleContainsScreenPoint(rect1, rect2.position) ||
                 RectTransformUtility.RectangleContainsScreenPoint(rect2, rect1.position));
             
+    }
+
+    private void createNewImageInstance()
+    {
+        GameObject image = Instantiate(GameManager.Instance.imagenPrefab);
+        SelectSituation selectSituation=image.GetComponent<SelectSituation>();
+        selectSituation.text1Rect = text1Rect;
+        selectSituation.text2Rect = text2Rect;
+        selectSituation.imageRect = image.GetComponent<RectTransform>();
+        selectSituation.canvas = canvas;
+        image.GetComponent<UnityEngine.UI.Image>().sprite = Situations.Instance.imagenSituation.sprite;
+        image.transform.SetParent(canvas.transform, false);
+        image.transform.position = posIni;
+        Situations.Instance.setAll();
     }
 }

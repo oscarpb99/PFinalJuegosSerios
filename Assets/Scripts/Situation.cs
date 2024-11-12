@@ -18,21 +18,5 @@ public class Situation
     public int stat3Right;
     public int stat4Right;
     public string image;    
-
-    //public Situation()
-    //{
-    //    situation = string.Empty;   
-    //    elec1 = string.Empty;
-    //    elec2 = string.Empty;
-    //    stat1Left = 0;
-    //    stat2Left = 0;
-    //    stat3Left = 0;
-    //    stat4Left = 0;
-    //    stat1Right = 0;
-    //    stat2Right = 0;
-    //    stat3Right = 0;
-    //    stat4Right = 0;
-
-    //}
 			
 }
