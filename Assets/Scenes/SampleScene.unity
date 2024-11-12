@@ -826,6 +826,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 190ef535914bb1a4690ba9315c754dd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  imagenPrefab: {fileID: 2378151855516108183, guid: a1a6078c19482a046b0969c4ab6c4513, type: 3}
   valuesIni: 32000000320000003200000032000000
 --- !u!4 &766151729
 Transform:
@@ -1010,6 +1011,7 @@ MonoBehaviour:
   textSituation: {fileID: 1480286487}
   textElec1: {fileID: 803455158}
   textElec2: {fileID: 666152257}
+  imagenSituation: {fileID: 5103324224763333902, guid: a1a6078c19482a046b0969c4ab6c4513, type: 3}
 --- !u!4 &819968487
 Transform:
   m_ObjectHideFlags: 0

@@ -17,6 +17,8 @@ public class Situations : MonoBehaviour
     public TextMeshProUGUI textSituation;
     public TextMeshProUGUI textElec1;
     public TextMeshProUGUI textElec2;
+    public UnityEngine.UI.Image imagenSituation;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,7 +42,7 @@ public class Situations : MonoBehaviour
         textElec2.text = situations[i].elec2;
         gameManager.setStatsText(true, situations[i].stat1Left, situations[i].stat2Left, situations[i].stat3Left, situations[i].stat4Left);
         gameManager.setStatsText(false, situations[i].stat1Right, situations[i].stat2Right, situations[i].stat3Right, situations[i].stat4Right);
-
+        imagenSituation.sprite = Resources.Load<Sprite>(situations[i].image);
     }
 
 

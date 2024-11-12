@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+
+    public GameObject imagenPrefab;
     private int[] stats= new int[4];
     
     public int []valuesIni = new int [4];

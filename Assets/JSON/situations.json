@@ -11,7 +11,8 @@
 			"stat1Right": -20,
 			"stat2Right": 10,
 			"stat3Right": 0,
-			"stat4Right": 0
+			"stat4Right": 0,
+			"image": "Persona1"
 		},
 		{
 			"situation": "El fin de semana, un amigo que llevabas sin ver mucho tiempo va a visitar la ciudad donde vives, pero solo esta disponible justo cuando tienes clases",
@@ -24,7 +25,8 @@
 			"stat1Right": -10,
 			"stat2Right": 0,
 			"stat3Right": 10,
-			"stat4Right": 0
+			"stat4Right": 0,
+			"image": "Persona3"
 		},
 		{
 			"situation": "Se aproximan los examenes, decides adelantar lo que puedas y estudiar toda la noche",
@@ -37,7 +39,8 @@
 			"stat1Right": 0,
 			"stat2Right": 0,
 			"stat3Right": 20,
-			"stat4Right": 0
+			"stat4Right": 0,
+			"image": "Persona2"
 		}
 	]
 }

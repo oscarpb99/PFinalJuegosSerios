@@ -17,7 +17,7 @@ public class Situation
     public int stat2Right;
     public int stat3Right;
     public int stat4Right;
-    
+    public string image;    
 
     //public Situation()
     //{
