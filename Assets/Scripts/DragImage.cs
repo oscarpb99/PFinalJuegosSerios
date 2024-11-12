@@ -20,7 +20,7 @@ public class DragImage : MonoBehaviour,IDragHandler
         //Actualiza la pos del objeto según el mov del ratón
         if (RectTransformUtility.ScreenPointToLocalPointInRectangle(rectTransform.parent as RectTransform, eventData.position, eventData.pressEventCamera, out localPoint))
         {
-            float newY = Mathf.Min(localPoint.y - offset.y,-69);
+            float newY = Mathf.Min(localPoint.y - offset.y,-20);
             rectTransform.localPosition = new Vector2(localPoint.x - offset.x,newY);
         }
     }
