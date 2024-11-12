@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class DragImage : MonoBehaviour,IPointerDownHandler,IDragHandler
+public class DragImage : MonoBehaviour,IDragHandler
 {
     private RectTransform rectTransform;
     private Vector2 offset;
@@ -13,18 +13,15 @@ public class DragImage : MonoBehaviour,IPointerDownHandler,IDragHandler
     {
         rectTransform = GetComponent<RectTransform>();
     }
-    public void OnPointerDown(PointerEventData eventData)
-    {
-        //Calcula la diferencia entre la pos del ratón y la del objeto
-        RectTransformUtility.ScreenPointToLocalPointInRectangle(rectTransform, eventData.position, eventData.pressEventCamera, out offset);
-    }
+  
     public void OnDrag(PointerEventData eventData)
     {
         Vector2 localPoint;
         //Actualiza la pos del objeto según el mov del ratón
         if (RectTransformUtility.ScreenPointToLocalPointInRectangle(rectTransform.parent as RectTransform, eventData.position, eventData.pressEventCamera, out localPoint))
         {
-            rectTransform.localPosition = new Vector2(localPoint.x - offset.x,-69);
+            float newY = Mathf.Min(localPoint.y - offset.y,-69);
+            rectTransform.localPosition = new Vector2(localPoint.x - offset.x,newY);
         }
     }
 
