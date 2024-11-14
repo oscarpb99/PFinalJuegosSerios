@@ -33,7 +33,7 @@ public class Situations : MonoBehaviour
         {
             Instance = this;
         }
-        readJSON(Application.dataPath + "/JSON/situations.json");
+        readJSON(Application.streamingAssetsPath + "/JSON/situations.json");
         setAll();
     }
     
