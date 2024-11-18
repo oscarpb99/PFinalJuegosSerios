@@ -1,7 +1,7 @@
 {
 	"situations": [
 		{
-			"situation": "Te han comentado para salir de fiesta, probablemente hasta bastante tarde. ¿Te apuntas al plan?",
+			"situation": "Te han comentado para salir de fiesta, probablemente hasta bastante tarde. Te apuntas al plan?",
 			"elec1": "SI",
 			"elec2": "NO",
 			"stat1Left": 20,
@@ -40,7 +40,35 @@
 			"stat2Right": 0,
 			"stat3Right": 20,
 			"stat4Right": 0,
-			"image": "Persona2"
+			"image": "Estudiar"
+		},
+		{
+			"situation": "Te va muy mal en los estudios, habra que pedir tutoria al profesor que te cae mal. Que haces?",
+			"elec1": "PUES HABRÁ QUE PEDIR TUTORIA",
+			"elec2": "PARA QUE ME PINTEN LA CARA, ME QUEDO EN CASA",
+			"stat1Left": 0,
+			"stat2Left": -20,
+			"stat3Left": 10,
+			"stat4Left": 0,
+			"stat1Right": 0,
+			"stat2Right": -10,
+			"stat3Right": -10,
+			"stat4Right": 0,
+			"image": "Persona4"
+		},
+		{
+			"situation": "La ultima temporada de examenes te ha dejado bastante agotado y estas algo deprimido, que haces?",
+			"elec1": "LO HABLO CON MIS AMIGOS Y FAMILIARES",
+			"elec2": "LO HABLO CON UN PROFESIONAL",
+			"stat1Left": 10,
+			"stat2Left": 10,
+			"stat3Left": 0,
+			"stat4Left": 0,
+			"stat1Right": 0,
+			"stat2Right": 20,
+			"stat3Right": 0,
+			"stat4Right": 0,
+			"image": "Psicall"
 		}
 	]
 }

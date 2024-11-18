@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
     public GameObject imagenPrefab;
+    [SerializeField] UIFill[] imagesStats;
     private int[] stats= new int[4];
     
     public int []valuesIni = new int [4];
@@ -43,6 +44,26 @@ public class GameManager : MonoBehaviour
         stats[1] += s2;
         stats[2] += s3;
         stats[3] += s4;
+
+        for (int i = 0; i < stats.Length; i++)
+        {
+            if (stats[i] < 0)
+            {
+                stats[i] = 0;
+            }
+            else if (stats[i] > 100)
+            {
+                stats[i] = 100;
+            }
+
+        }
+
+
+
+        for (int i = 0; i < imagesStats.Length; i++)
+        {
+            imagesStats[i].addOrDeduct(stats[i]);
+        }
     }
 
     public int getStat(int index)
