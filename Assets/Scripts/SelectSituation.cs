@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class SelectSituation : MonoBehaviour
 {
-    public RectTransform text1Rect, text2Rect;
+    public RectTransform text1Rect, text2Rect, text3Rect;
     private RectTransform imageRect;
     private Vector2 posIni;
     public Canvas canvas;
@@ -18,30 +18,34 @@ public class SelectSituation : MonoBehaviour
     private void Start()
     {
         posIni = transform.position;
-        GetComponent<UnityEngine.UI.Image>().sprite = Situations.Instance.imagenSituation.sprite; 
+        GetComponent<UnityEngine.UI.Image>().sprite = GameManager.Instance.situationManager.imagenSituation.sprite; 
     }
 
     private void FixedUpdate()
     {
-        if (isOverlapping(imageRect, text1Rect) )
+        if (isOverlapping(imageRect, text1Rect))
         {
 
-            GameManager.Instance.addorloseStats(GameManager.Instance.getStatsText(true)[0], GameManager.Instance.getStatsText(true)[1], GameManager.Instance.getStatsText(true)[2], GameManager.Instance.getStatsText(true)[3]);
+            GameManager.Instance.addorloseStats(GameManager.Instance.getStatsText(1)[0], GameManager.Instance.getStatsText(1)[1], GameManager.Instance.getStatsText(1)[2], GameManager.Instance.getStatsText(1)[3]);
             Destroy(gameObject);
             createNewImageInstance();
 
 
         }
-        
-        if (isOverlapping(imageRect, text2Rect))
+        else if (isOverlapping(imageRect, text2Rect))
         {
-            GameManager.Instance.addorloseStats(GameManager.Instance.getStatsText(false)[0], GameManager.Instance.getStatsText(false)[1], GameManager.Instance.getStatsText(false)[2], GameManager.Instance.getStatsText(false)[3]);
+            GameManager.Instance.addorloseStats(GameManager.Instance.getStatsText(0)[0], GameManager.Instance.getStatsText(0)[1], GameManager.Instance.getStatsText(0)[2], GameManager.Instance.getStatsText(0)[3]);
             Destroy(gameObject);
             createNewImageInstance();
-           
-
         }
-     
+        else if (isOverlapping(imageRect, text3Rect))
+        {
+            GameManager.Instance.addorloseStats(GameManager.Instance.getStatsText(2)[0], GameManager.Instance.getStatsText(2)[1], GameManager.Instance.getStatsText(2)[2], GameManager.Instance.getStatsText(2)[3]);
+            Destroy(gameObject);
+            createNewImageInstance();
+        }
+
+
     }
     private bool isOverlapping(RectTransform rect1,RectTransform rect2)
     {
@@ -56,11 +60,14 @@ public class SelectSituation : MonoBehaviour
         SelectSituation selectSituation=image.GetComponent<SelectSituation>();
         selectSituation.text1Rect = text1Rect;
         selectSituation.text2Rect = text2Rect;
+        selectSituation.text3Rect = text3Rect;
         selectSituation.imageRect = image.GetComponent<RectTransform>();
         selectSituation.canvas = canvas;
-        image.GetComponent<UnityEngine.UI.Image>().sprite = Situations.Instance.imagenSituation.sprite;
+        image.GetComponent<UnityEngine.UI.Image>().sprite = GameManager.Instance.situationManager.imagenSituation.sprite;
         image.transform.SetParent(canvas.transform, false);
         image.transform.position = posIni;
-        Situations.Instance.setAll();
+        GameManager.Instance.situationManager.manageSituations();
+
+        //Situations.Instance.setAll();
     }
 }

@@ -16,16 +16,12 @@ public class ChangeText : MonoBehaviour
     }
     void Start()
     {
-        //if(isStat)
-            text.text=GameManager.Instance.getStat(index).ToString();
-        
+       text.text=GameManager.Instance.getStat(index).ToString();        
     }
 
     // Update is called once per frame
     void Update()
     {
-        //if(isStat)
-            text.text = GameManager.Instance.getStat(index).ToString();
-       
+       text.text = GameManager.Instance.getStat(index).ToString();       
     }
 }
