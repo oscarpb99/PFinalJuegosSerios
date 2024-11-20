@@ -38,7 +38,7 @@ public class SelectSituation : MonoBehaviour
             Destroy(gameObject);
             createNewImageInstance();
         }
-        else if (isOverlapping(imageRect, text3Rect))
+        else if (text3Rect.gameObject.activeSelf && isOverlapping(imageRect, text3Rect))
         {
             GameManager.Instance.addorloseStats(GameManager.Instance.getStatsText(2)[0], GameManager.Instance.getStatsText(2)[1], GameManager.Instance.getStatsText(2)[2], GameManager.Instance.getStatsText(2)[3]);
             Destroy(gameObject);
