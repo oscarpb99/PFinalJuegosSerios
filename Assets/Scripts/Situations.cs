@@ -11,7 +11,7 @@ public class SituationList
 }
 public class Situations : MonoBehaviour
 {
-    SituationManager situationManager;
+    [SerializeField] SituationManager situationManager;
     private Dictionary<string, Sprite> mapSprite = new Dictionary<string, Sprite>();
 
     public static Situations Instance { get; private set; }

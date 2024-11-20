@@ -10,6 +10,7 @@ public class SituationManager : MonoBehaviour
     int currentSituation;
     public TextMeshProUGUI textSituation;
     public TextMeshProUGUI textElec1, textElec2, textElec3;
+    [SerializeField] GameObject backgroundElec3;
     public UnityEngine.UI.Image imagenSituation;
 
     // Start is called before the first frame update
@@ -25,10 +26,14 @@ public class SituationManager : MonoBehaviour
         textSituation.text = situations[currentSituation].situation;
         textElec1.text = situations[currentSituation].elec1;
         textElec2.text = situations[currentSituation].elec2;
-        if (textElec3.text == "" || textElec3.text == "NULL")
+        if (situations[currentSituation].elec3 == "" || situations[currentSituation].elec3 == "NULL")
+        {
+            backgroundElec3.SetActive(false);
             textElec3.gameObject.SetActive(false);
+        }
         else
         {
+            backgroundElec3.SetActive(true);
             textElec3.gameObject.SetActive(true);
             textElec3.text = situations[currentSituation].elec3;
         }

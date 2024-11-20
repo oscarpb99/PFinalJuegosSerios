@@ -18,8 +18,6 @@ public class UIFill : MonoBehaviour
     public void addOrDeduct(int i)
     { 
         currentValue = i;
-        Debug.Log(currentValue / maxValue);
-
         fill.fillAmount = currentValue / maxValue;
     }
 

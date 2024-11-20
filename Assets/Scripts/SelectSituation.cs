@@ -66,6 +66,7 @@ public class SelectSituation : MonoBehaviour
         image.GetComponent<UnityEngine.UI.Image>().sprite = GameManager.Instance.situationManager.imagenSituation.sprite;
         image.transform.SetParent(canvas.transform, false);
         image.transform.position = posIni;
+        GameManager.Instance.situationManager.imagenSituation = image.GetComponent<UnityEngine.UI.Image>();
         GameManager.Instance.situationManager.manageSituations();
 
         //Situations.Instance.setAll();
