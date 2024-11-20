@@ -1287,7 +1287,7 @@ MonoBehaviour:
   - {fileID: 16728622}
   - {fileID: 1097373811}
   valuesIni: 32000000320000003200000032000000
-  winCondition: 0
+  numMaxSituations: 30
 --- !u!4 &766151729
 Transform:
   m_ObjectHideFlags: 0
@@ -3046,7 +3046,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 519420032}
+  - {fileID: 1759814791}
   - {fileID: 1221887903}
   - {fileID: 1909127710}
   - {fileID: 766151729}
-  - {fileID: 1759814791}

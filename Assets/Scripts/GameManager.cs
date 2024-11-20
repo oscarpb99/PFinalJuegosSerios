@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -16,8 +17,11 @@ public class GameManager : MonoBehaviour
     private int[]valuesTextRight=new int[4];
     private int[]valuesTextDown = new int[4];
 
-    // WinCondition sera 0 si podemos seguir jugando, 1 si hemos perdido y 2 si ya se ha ganado
-    public int winCondition;
+    public int numMaxSituations = 30;
+    int nSituation = 0;
+
+    
+    private bool winCondition;
 
     private void Awake()
     {
@@ -35,16 +39,17 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        winCondition = 0;
-
-        for (int i=0; i<stats.Length; i++)
+        nSituation = 0;
+        winCondition = false;
+        for (int i = 0; i < stats.Length; i++)
         {
-            stats[i]=valuesIni[i];
+            stats[i] = valuesIni[i];
         }
-        
+
     }
     public void addorloseStats(int s1,int s2, int s3, int s4)
     {
+        nSituation++;
         stats[0] += s1;
         stats[1] += s2;
         stats[2] += s3;
@@ -52,12 +57,11 @@ public class GameManager : MonoBehaviour
 
         for (int i = 0; i < stats.Length; i++)
         {
-            if (stats[i] < 0)
+            if (stats[i] <= 0)
             {
                 stats[i] = 0;
-                
-                // Puede sustituirse por un simple cambio de escena a la escena de fin de partida
-                winCondition = 1;
+                winCondition = false;
+                SceneManager.LoadScene("EndScene");
             }
             else if (stats[i] > 100)
             {
@@ -69,6 +73,11 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < imagesStats.Length; i++)
         {
             imagesStats[i].addOrDeduct(stats[i]);
+        }
+        if(nSituation>=numMaxSituations)
+        {
+            winCondition = true;
+            SceneManager.LoadScene("EndScene");
         }
     }
 
@@ -108,6 +117,38 @@ public class GameManager : MonoBehaviour
             valuesTextDown[1] = s2;
             valuesTextDown[2] = s3;
             valuesTextDown[3] = s4;
+        }
+    }
+
+    public bool getWinCondition()
+    {
+        return winCondition;
+    }
+
+    public void resetGame()
+    {
+        StartCoroutine(resetGameRoutine());
+       
+    }
+    private IEnumerator resetGameRoutine()
+    {
+        // Cargar la escena de manera asincrónica
+        SceneManager.LoadScene("GameScene");
+
+        // Esperar un frame para asegurarte de que los objetos de la escena se inicialicen
+        yield return null;
+
+        // Reconfigurar el juego
+        situationManager = GameObject.Find("SituationManager").GetComponent<SituationManager>();
+        imagesStats[0] = GameObject.Find("Social").GetComponent<UIFill>();
+        imagesStats[1] = GameObject.Find("Corazon").GetComponent<UIFill>();
+        imagesStats[2] = GameObject.Find("Academic").GetComponent<UIFill>();
+        imagesStats[3] = GameObject.Find("Money").GetComponent<UIFill>();
+        nSituation = 0;
+        winCondition = false;
+        for (int i = 0; i < stats.Length; i++)
+        {
+            stats[i] = valuesIni[i];
         }
     }
 

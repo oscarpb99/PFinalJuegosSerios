@@ -9,6 +9,8 @@ public class SelectSituation : MonoBehaviour
     private RectTransform imageRect;
     private Vector2 posIni;
     public Canvas canvas;
+
+    private UnityEngine.UI.Image imageComponent;
    
 
     private void Awake()
@@ -18,7 +20,8 @@ public class SelectSituation : MonoBehaviour
     private void Start()
     {
         posIni = transform.position;
-        GetComponent<UnityEngine.UI.Image>().sprite = GameManager.Instance.situationManager.imagenSituation.sprite; 
+        imageComponent = GetComponent<UnityEngine.UI.Image>();
+        //GetComponent<UnityEngine.UI.Image>().sprite = GameManager.Instance.situationManager.imagenSituation.sprite; 
     }
 
     private void FixedUpdate()
@@ -46,6 +49,17 @@ public class SelectSituation : MonoBehaviour
         }
 
 
+    }
+    private IEnumerator WaitAndSetSprite()
+    {
+        // Esperar hasta que GameManager.Instance y situationManager estén inicializados
+        yield return new WaitUntil(() => GameManager.Instance != null && GameManager.Instance.situationManager != null);
+
+        // Esperar hasta que la imagen esté lista, si es necesario
+        yield return new WaitUntil(() => GameManager.Instance.situationManager.imagenSituation != null);
+
+        // Asignar el sprite
+        imageComponent.sprite = GameManager.Instance.situationManager.imagenSituation.sprite;
     }
     private bool isOverlapping(RectTransform rect1,RectTransform rect2)
     {

@@ -26,6 +26,7 @@ public class Situations : MonoBehaviour
         else
         {
             Instance = this;
+           // DontDestroyOnLoad(gameObject);
         }
         readJSON(Application.streamingAssetsPath + "/JSON/situations.json");
     }

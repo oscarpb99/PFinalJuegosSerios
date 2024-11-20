@@ -13,6 +13,7 @@ public class SituationManager : MonoBehaviour
     [SerializeField] GameObject backgroundElec3;
     public UnityEngine.UI.Image imagenSituation;
 
+
     // Start is called before the first frame update
     void Start()
     {
