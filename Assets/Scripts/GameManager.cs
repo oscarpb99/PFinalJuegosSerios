@@ -9,9 +9,9 @@ public class GameManager : MonoBehaviour
     public GameObject imagenPrefab;
     public SituationManager situationManager;
     [SerializeField] UIFill[] imagesStats;
-    private int[] stats= new int[4];
+    private float[] stats= new float[4];
     
-    public int []valuesIni = new int [4];
+    public float []valuesIni = new float [4];
 
     private int[]valuesTextLeft = new int[4];
     private int[]valuesTextRight=new int[4];
@@ -20,7 +20,11 @@ public class GameManager : MonoBehaviour
     public int numMaxSituations = 30;
     int nSituation = 0;
 
-    
+    public float multVidaSocial=1;
+    public float multBienestar = 1;
+    public float multAcademic = 1;
+    public float multMoney = 1;
+
     private bool winCondition;
 
     private void Awake()
@@ -45,15 +49,20 @@ public class GameManager : MonoBehaviour
         {
             stats[i] = valuesIni[i];
         }
+        multVidaSocial = 1;
+        multBienestar = 1;
+        multAcademic = 1;
+        multMoney = 1;
 
-    }
+}
     public void addorloseStats(int s1,int s2, int s3, int s4)
     {
         nSituation++;
-        stats[0] += s1;
-        stats[1] += s2;
-        stats[2] += s3;
-        stats[3] += s4;
+        changeMultiplicates(s1,s2,s3,s4);
+        stats[0] += s1*multVidaSocial;
+        stats[1] += s2 *multBienestar;
+        stats[2] += s3*multAcademic;
+        stats[3] += s4*multMoney;
 
         for (int i = 0; i < stats.Length; i++)
         {
@@ -81,7 +90,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public int getStat(int index)
+    public float getStat(int index)
     {
          return stats[index]; 
     }
@@ -150,6 +159,33 @@ public class GameManager : MonoBehaviour
         {
             stats[i] = valuesIni[i];
         }
+        multVidaSocial = 1;
+        multBienestar = 1;
+        multAcademic = 1;
+        multMoney = 1;
+    }
+
+    private void changeMultiplicates(int s1, int s2, int s3, int s4)
+    {
+        if (s1 < 0)
+            multVidaSocial += 0.5f;
+        else if (s2 > 0)
+            multVidaSocial = 1;
+
+        if (s2 < 0)
+            multBienestar += 0.5f;
+        else if (s2 > 0)
+            multBienestar = 1;
+
+        if (s3 < 0)
+            multAcademic += 0.5f;
+        else if (s3 > 0)
+            multAcademic = 1;
+
+        if (s4 < 0)
+            multMoney += 0.5f;
+        else if (s4 > 0)
+            multMoney = 1;
     }
 
 

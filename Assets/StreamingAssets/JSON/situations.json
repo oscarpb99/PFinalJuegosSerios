@@ -17,7 +17,8 @@
 			"stat2Down": 0,
 			"stat3Down": 0,
 			"stat4Down": 0,
-			"image": "Persona1"
+			"image": "Persona1",
+			"tag":  "Multiplicador"
 		},
 		{
 			"situation": "Esta semana, un amigo que llevabas sin ver mucho tiempo va a visitar la ciudad donde vives, pero solo esta disponible justo cuando tienes clases",
@@ -36,7 +37,8 @@
 			"stat2Down": 0,
 			"stat3Down": 0,
 			"stat4Down": 0,
-			"image": "Persona3"
+			"image": "Persona3",
+			"tag": "Probabilidad"
 		},
 		{
 			"situation": "Se aproximan los examenes, decides adelantar lo que puedas y estudiar toda la noche",
@@ -55,7 +57,8 @@
 			"stat2Down": 0,
 			"stat3Down": 0,
 			"stat4Down": 0,
-			"image": "Estudiar"
+			"image": "Estudiar",
+			"tag": "Desactivar"
 		},
 		{
 			"situation": "Esta asignatura es muy difícil, y el profesor te cae bastante mal ¿Qué haces?",
@@ -74,7 +77,8 @@
 			"stat2Down": 0,
 			"stat3Down": 0,
 			"stat4Down": 0,
-			"image": "Persona4"
+			"image": "Persona4",
+			"tag": "Multiplicador"
 		},
 		{
 			"situation": "La última temporada de exámenes te ha dejado bastante agotado y estás algo deprimido, ¿Qué haces?",
@@ -93,7 +97,8 @@
 			"stat2Down": -20,
 			"stat3Down": 0,
 			"stat4Down": 0,
-			"image": "Psicall"
+			"image": "Psicall",
+			"tag": "Probabilidad"
 		},
 		{
 			"situation": "Te han invitado a participar en el club de fútbol, quieres unirte?",
@@ -112,7 +117,8 @@
 			"stat2Down": -20,
 			"stat3Down": 0,
 			"stat4Down": 0,
-			"image": "Futbol"
+			"image": "Futbol",
+			"tag": "Desactivar"
 		},
 		{
 			"situation": "Has terminado el proyecto grupal de milagro, pero tus compañeros no han ayudado casi nada, que haces",
@@ -131,7 +137,8 @@
 			"stat2Down": 10,
 			"stat3Down": 0,
 			"stat4Down": 0,
-			"image": "NotTeamwork"
+			"image": "NotTeamwork",
+			"tag": "Desactivar"
 		},
 		{
 			"situation": "Para la semana que viene tienes muchas tareas por hacer. Como vas a organizarte?",
@@ -150,7 +157,8 @@
 			"stat2Down": 0,
 			"stat3Down": 0,
 			"stat4Down": 0,
-			"image": "Estudiar"
+			"image": "Estudiar",
+			"tag": "Multiplicador"
 		},
 		{
 			"situation": "Tus padres vienen a visitarte a Madrid. Tienes el piso desordenado, sucio e inmundo… Que haces?",
@@ -169,7 +177,8 @@
 			"stat2Down": 0,
 			"stat3Down": 0,
 			"stat4Down": 0,
-			"image": "Padres"
+			"image": "Padres",
+			"tag": "Desactivar"
 		},
 		{
 			"situation": "Por llevar mucho tiempo durmiendo poco, no has podido rendir en el examen todo lo que habrIas debido y te ha salido mal.",
@@ -188,7 +197,8 @@
 			"stat2Down": 0,
 			"stat3Down": 0,
 			"stat4Down": 0,
-			"image": "Psicall"
+			"image": "Psicall",
+			"tag": "Multiplicador"
 		},
 		{
 			"situation": "Has encontrado un trabajo a media jornada, puede ayudarte con tus ahorros pero te consumirá tiempo",
@@ -207,7 +217,8 @@
 			"stat2Down": 0,
 			"stat3Down": 0,
 			"stat4Down": 0,
-			"image": "Trabajo"
+			"image": "Trabajo",
+			"tag": "Desactivar"
 		}
 	]
 }

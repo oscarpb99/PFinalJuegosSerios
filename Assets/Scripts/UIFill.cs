@@ -15,7 +15,7 @@ public class UIFill : MonoBehaviour
         fill.fillAmount = 0.5f;
     }
 
-    public void addOrDeduct(int i)
+    public void addOrDeduct(float i)
     { 
         currentValue = i;
         fill.fillAmount = currentValue / maxValue;
