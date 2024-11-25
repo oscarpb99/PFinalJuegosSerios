@@ -42,12 +42,12 @@ public class SituationManager : MonoBehaviour
     private void setSituation()
     {
 
-        currentSituation = 7;
-        ////currentSituation = Random.Range(0, situations.Length);
-        //while (currentSituation != lastSituation)
-        //{
-        //    currentSituation = Random.Range(0, situations.Length);
-        //}
+
+        currentSituation = Random.Range(0, situations.Length);
+        while (currentSituation != lastSituation)
+        {
+            currentSituation = Random.Range(0, situations.Length);
+        }
         textSituation.text = situations[currentSituation].situation;
         textElec1.text = situations[currentSituation].elec1;
         textElec2.text = situations[currentSituation].elec2;
