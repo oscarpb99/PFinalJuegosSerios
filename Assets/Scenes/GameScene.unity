@@ -1287,10 +1287,10 @@ MonoBehaviour:
   - {fileID: 16728622}
   - {fileID: 1097373811}
   valuesIni:
-  - 100
-  - 100
-  - 100
-  - 100
+  - 50
+  - 50
+  - 50
+  - 50
   numMaxSituations: 30
 --- !u!4 &766151729
 Transform:

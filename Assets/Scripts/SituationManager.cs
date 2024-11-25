@@ -41,12 +41,35 @@ public class SituationManager : MonoBehaviour
 
     private void setSituation()
     {
-
-
-        currentSituation = Random.Range(0, situations.Length);
-        while (currentSituation != lastSituation)
+        int specialCardProbability;
+        bool nextIsSpecial = false;
+        //Comprueba que una stat es baja para tener la posibilidad de que salga una carta especial
+        if(GameManager.Instance.getStat(0)<=20|| GameManager.Instance.getStat(1) <= 20|| GameManager.Instance.getStat(2) <= 20|| GameManager.Instance.getStat(3) <= 20)
         {
-            currentSituation = Random.Range(0, situations.Length);
+            specialCardProbability = Random.Range(1, 11);
+            if (specialCardProbability == 1)
+            {
+                nextIsSpecial = true;
+            }
+        }
+        if (!nextIsSpecial)
+        {
+            currentSituation = Random.Range(0, situations.Length-4);
+            while (currentSituation == lastSituation)
+            {
+                currentSituation = Random.Range(0, situations.Length-4);
+            }
+        }
+        //Por diseño, metemos las cartas especiales al final
+        else
+        {
+            int index = Random.Range(0, 4);
+            while (GameManager.Instance.getStat(index) > 20)
+            {
+                index= Random.Range(0, 4);
+            }
+            currentSituation = situations.Length - 4 + index;
+            type = Type.Probabilidad;
         }
         textSituation.text = situations[currentSituation].situation;
         textElec1.text = situations[currentSituation].elec1;
@@ -66,10 +89,7 @@ public class SituationManager : MonoBehaviour
             {
                 type= Type.Acumulador;
             }
-            else if(situations[currentSituation].tag == "Probabilidad")
-            {
-                type= Type.Probabilidad;
-            }
+            
         }
         
 
