@@ -20,12 +20,8 @@ public class GameManager : MonoBehaviour
     public int numMaxSituations = 30;
     int nSituation = 0;
 
-    public float multVidaSocial=1;
-    public float multBienestar = 1;
-    public float multAcademic = 1;
-    public float multMoney = 1;
-
     private bool winCondition;
+    
 
     private void Awake()
     {
@@ -49,20 +45,44 @@ public class GameManager : MonoBehaviour
         {
             stats[i] = valuesIni[i];
         }
-        multVidaSocial = 1;
-        multBienestar = 1;
-        multAcademic = 1;
-        multMoney = 1;
+       
 
 }
-    public void addorloseStats(int s1,int s2, int s3, int s4)
+    //id-> 0=izq, 1=der, 2=abajo
+    public void addorloseStats(int id,int s1,int s2, int s3, int s4)
     {
         nSituation++;
-        changeMultiplicates(s1,s2,s3,s4);
-        stats[0] += s1*multVidaSocial;
-        stats[1] += s2 *multBienestar;
-        stats[2] += s3*multAcademic;
-        stats[3] += s4*multMoney;
+        if (situationManager.getType() == SituationManager.Type.Acumulador)
+        {
+            if (id == 0)
+            {
+                stats[0] += s1 + (situationManager.numRepeteatSelections[situationManager.getCurrentSituation()].nRepeatSelectLeft * situationManager.situations[situationManager.getCurrentSituation()].acumulativeStat1);
+                stats[1] += s2 + (situationManager.numRepeteatSelections[situationManager.getCurrentSituation()].nRepeatSelectLeft * situationManager.situations[situationManager.getCurrentSituation()].acumulativeStat2);
+                stats[2] += s3 + (situationManager.numRepeteatSelections[situationManager.getCurrentSituation()].nRepeatSelectLeft * situationManager.situations[situationManager.getCurrentSituation()].acumulativeStat3);
+                stats[3] += s4 + (situationManager.numRepeteatSelections[situationManager.getCurrentSituation()].nRepeatSelectLeft * situationManager.situations[situationManager.getCurrentSituation()].acumulativeStat4);
+            }
+            else if (id == 1)
+            {
+                stats[0] += s1 + (situationManager.numRepeteatSelections[situationManager.getCurrentSituation()].nRepeatSelectRight * situationManager.situations[situationManager.getCurrentSituation()].acumulativeStat1);
+                stats[1] += s2 + (situationManager.numRepeteatSelections[situationManager.getCurrentSituation()].nRepeatSelectRight * situationManager.situations[situationManager.getCurrentSituation()].acumulativeStat2);
+                stats[2] += s3 + (situationManager.numRepeteatSelections[situationManager.getCurrentSituation()].nRepeatSelectRight * situationManager.situations[situationManager.getCurrentSituation()].acumulativeStat3);
+                stats[3] += s4 + (situationManager.numRepeteatSelections[situationManager.getCurrentSituation()].nRepeatSelectRight * situationManager.situations[situationManager.getCurrentSituation()].acumulativeStat4);
+            }
+            else if (id == 2)
+            {
+                stats[0] += s1 + (situationManager.numRepeteatSelections[situationManager.getCurrentSituation()].nRepeatSelectDown * situationManager.situations[situationManager.getCurrentSituation()].acumulativeStat1);
+                stats[1] += s2 + (situationManager.numRepeteatSelections[situationManager.getCurrentSituation()].nRepeatSelectDown * situationManager.situations[situationManager.getCurrentSituation()].acumulativeStat2);
+                stats[2] += s3 + (situationManager.numRepeteatSelections[situationManager.getCurrentSituation()].nRepeatSelectDown * situationManager.situations[situationManager.getCurrentSituation()].acumulativeStat3);
+                stats[3] += s4 + (situationManager.numRepeteatSelections[situationManager.getCurrentSituation()].nRepeatSelectDown * situationManager.situations[situationManager.getCurrentSituation()].acumulativeStat4);
+            }
+        }
+        else
+        {
+            stats[0] += s1;
+            stats[1] += s2;
+            stats[2] += s3;
+            stats[3] += s4;
+        }
 
         for (int i = 0; i < stats.Length; i++)
         {
@@ -159,34 +179,10 @@ public class GameManager : MonoBehaviour
         {
             stats[i] = valuesIni[i];
         }
-        multVidaSocial = 1;
-        multBienestar = 1;
-        multAcademic = 1;
-        multMoney = 1;
+        
     }
 
-    private void changeMultiplicates(int s1, int s2, int s3, int s4)
-    {
-        if (s1 < 0)
-            multVidaSocial += 0.5f;
-        else if (s2 > 0)
-            multVidaSocial = 1;
-
-        if (s2 < 0)
-            multBienestar += 0.5f;
-        else if (s2 > 0)
-            multBienestar = 1;
-
-        if (s3 < 0)
-            multAcademic += 0.5f;
-        else if (s3 > 0)
-            multAcademic = 1;
-
-        if (s4 < 0)
-            multMoney += 0.5f;
-        else if (s4 > 0)
-            multMoney = 1;
-    }
+    
 
 
 }

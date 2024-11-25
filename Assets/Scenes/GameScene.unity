@@ -1287,15 +1287,11 @@ MonoBehaviour:
   - {fileID: 16728622}
   - {fileID: 1097373811}
   valuesIni:
-  - 50
-  - 50
-  - 50
-  - 50
+  - 100
+  - 100
+  - 100
+  - 100
   numMaxSituations: 30
-  multVidaSocial: 1
-  multBienestar: 1
-  multAcademic: 1
-  multMoney: 1
 --- !u!4 &766151729
 Transform:
   m_ObjectHideFlags: 0
@@ -2501,6 +2497,7 @@ MonoBehaviour:
   textElec3: {fileID: 1525544369}
   backgroundElec3: {fileID: 1098079594}
   imagenSituation: {fileID: 1609095047}
+  type: 0
 --- !u!4 &1759814791
 Transform:
   m_ObjectHideFlags: 0

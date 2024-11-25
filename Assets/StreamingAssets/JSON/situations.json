@@ -18,7 +18,12 @@
 			"stat3Down": 0,
 			"stat4Down": 0,
 			"image": "Persona1",
-			"tag":  "Multiplicador"
+			"tag": "Acumulador",
+			"acumulativeStat1": 10,
+			"acumulativeStat2": -10,
+			"acumulativeStat3": 0,
+			"acumulativeStat4": -10
+
 		},
 		{
 			"situation": "Esta semana, un amigo que llevabas sin ver mucho tiempo va a visitar la ciudad donde vives, pero solo esta disponible justo cuando tienes clases",
@@ -38,7 +43,11 @@
 			"stat3Down": 0,
 			"stat4Down": 0,
 			"image": "Persona3",
-			"tag": "Probabilidad"
+			"tag": "Probabilidad",
+			"acumulativeStat1": 0,
+			"acumulativeStat2": 0,
+			"acumulativeStat3": 0,
+			"acumulativeStat4": 0
 		},
 		{
 			"situation": "Se aproximan los examenes, decides adelantar lo que puedas y estudiar toda la noche",
@@ -58,7 +67,11 @@
 			"stat3Down": 0,
 			"stat4Down": 0,
 			"image": "Estudiar",
-			"tag": "Desactivar"
+			"tag": "Desactivar",
+			"acumulativeStat1": 0,
+			"acumulativeStat2": 0,
+			"acumulativeStat3": 0,
+			"acumulativeStat4": 0
 		},
 		{
 			"situation": "Esta asignatura es muy dificil, y el profesor te cae bastante mal. Que haces?",
@@ -78,7 +91,11 @@
 			"stat3Down": 0,
 			"stat4Down": 0,
 			"image": "Persona4",
-			"tag": "Multiplicador"
+			"tag": "Acumulador",
+			"acumulativeStat1": 0,
+			"acumulativeStat2": -10,
+			"acumulativeStat3": 0,
+			"acumulativeStat4": 0
 		},
 		{
 			"situation": "La última temporada de exámenes te ha dejado bastante agotado y estas algo deprimido, Que haces?",
@@ -98,7 +115,11 @@
 			"stat3Down": 0,
 			"stat4Down": 0,
 			"image": "Psicall",
-			"tag": "Probabilidad"
+			"tag": "Probabilidad",
+			"acumulativeStat1": 0,
+			"acumulativeStat2": 0,
+			"acumulativeStat3": 0,
+			"acumulativeStat4": 0
 		},
 		{
 			"situation": "Te han invitado a participar en el club de futbol, quieres unirte?",
@@ -118,7 +139,11 @@
 			"stat3Down": 0,
 			"stat4Down": 0,
 			"image": "Futbol",
-			"tag": "Desactivar"
+			"tag": "Desactivar",
+			"acumulativeStat1": 0,
+			"acumulativeStat2": 0,
+			"acumulativeStat3": 0,
+			"acumulativeStat4": 0
 		},
 		{
 			"situation": "Has terminado el proyecto grupal de milagro, pero tus compañeros no han ayudado casi nada, que haces",
@@ -138,7 +163,11 @@
 			"stat3Down": 0,
 			"stat4Down": 0,
 			"image": "NotTeamwork",
-			"tag": "Desactivar"
+			"tag": "Desactivar",
+			"acumulativeStat1": 0,
+			"acumulativeStat2": 0,
+			"acumulativeStat3": 0,
+			"acumulativeStat4": 0
 		},
 		{
 			"situation": "Para la semana que viene tienes muchas tareas por hacer. Como vas a organizarte?",
@@ -158,7 +187,11 @@
 			"stat3Down": 0,
 			"stat4Down": 0,
 			"image": "Estudiar",
-			"tag": "Multiplicador"
+			"tag": "Acumulador",
+			"acumulativeStat1": 0,
+			"acumulativeStat2": -10,
+			"acumulativeStat3": -10,
+			"acumulativeStat4": 0
 		},
 		{
 			"situation": "Tus padres vienen a visitarte a Madrid. Tienes el piso desordenado, sucio e inmundo… Que haces?",
@@ -178,7 +211,11 @@
 			"stat3Down": 0,
 			"stat4Down": 0,
 			"image": "Padres",
-			"tag": "Desactivar"
+			"tag": "Desactivar",
+			"acumulativeStat1": 0,
+			"acumulativeStat2": 0,
+			"acumulativeStat3": 0,
+			"acumulativeStat4": 0
 		},
 		{
 			"situation": "Por llevar mucho tiempo durmiendo poco, no has podido rendir en el examen todo lo que habrIas debido y te ha salido mal.",
@@ -198,7 +235,11 @@
 			"stat3Down": 0,
 			"stat4Down": 0,
 			"image": "Psicall",
-			"tag": "Multiplicador"
+			"tag": "Acumulador",
+			"acumulativeStat1": 0,
+			"acumulativeStat2": -10,
+			"acumulativeStat3": -10,
+			"acumulativeStat4": 0
 		},
 		{
 			"situation": "Has encontrado un trabajo a media jornada, puede ayudarte con tus ahorros pero te consumira tiempo",
@@ -218,7 +259,11 @@
 			"stat3Down": 0,
 			"stat4Down": 0,
 			"image": "Trabajo",
-			"tag": "Desactivar"
+			"tag": "Desactivar",
+			"acumulativeStat1": 0,
+			"acumulativeStat2": 0,
+			"acumulativeStat3": 0,
+			"acumulativeStat4": 0
 		}
 	]
 }
