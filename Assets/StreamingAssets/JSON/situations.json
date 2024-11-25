@@ -50,8 +50,8 @@
 			"stat3Left": 20,
 			"stat4Left": 0,
 			"stat1Right": 0,
-			"stat2Right": 0,
-			"stat3Right": 20,
+			"stat2Right": 10,
+			"stat3Right": 0,
 			"stat4Right": 0,
 			"stat1Down": 0,
 			"stat2Down": 0,
@@ -61,9 +61,9 @@
 			"tag": "Desactivar"
 		},
 		{
-			"situation": "Esta asignatura es muy difícil, y el profesor te cae bastante mal ¿Qué haces?",
+			"situation": "Esta asignatura es muy dificil, y el profesor te cae bastante mal. Que haces?",
 			"elec1": "HABRA QUE PEDIR TUTORIA",
-			"elec2": "PREFIERO QUE NO, YA LO SACARÉ SOLO",
+			"elec2": "PREFIERO QUE NO, YA LO SACARE SOLO",
 			"elec3": "NULL",
 			"stat1Left": 0,
 			"stat2Left": -10,
@@ -81,7 +81,7 @@
 			"tag": "Multiplicador"
 		},
 		{
-			"situation": "La última temporada de exámenes te ha dejado bastante agotado y estás algo deprimido, ¿Qué haces?",
+			"situation": "La última temporada de exámenes te ha dejado bastante agotado y estas algo deprimido, Que haces?",
 			"elec1": "LO HABLO CON MIS AMIGOS Y FAMILIARES",
 			"elec2": "LO HABLO CON UN PROFESIONAL",
 			"elec3": "SOLO HA SIDO UNA MALA RACHA, YA SE PASARA",
@@ -101,7 +101,7 @@
 			"tag": "Probabilidad"
 		},
 		{
-			"situation": "Te han invitado a participar en el club de fútbol, quieres unirte?",
+			"situation": "Te han invitado a participar en el club de futbol, quieres unirte?",
 			"elec1": "SI",
 			"elec2": "NO",
 			"elec3": "NULL",
@@ -201,7 +201,7 @@
 			"tag": "Multiplicador"
 		},
 		{
-			"situation": "Has encontrado un trabajo a media jornada, puede ayudarte con tus ahorros pero te consumirá tiempo",
+			"situation": "Has encontrado un trabajo a media jornada, puede ayudarte con tus ahorros pero te consumira tiempo",
 			"elec1": "LO COGEMOS",
 			"elec2": "YA TENGO SUFICIENTE QUE GESTIONAR",
 			"elec3": "NULL",
