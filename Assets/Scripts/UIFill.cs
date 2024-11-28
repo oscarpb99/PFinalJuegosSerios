@@ -7,6 +7,7 @@ public class UIFill : MonoBehaviour
 {
     [SerializeField] int maxValue;
     [SerializeField] Image fill;
+    [SerializeField] GameObject circle;
     float currentValue;
     // Start is called before the first frame update
     void Start()
@@ -19,6 +20,11 @@ public class UIFill : MonoBehaviour
     { 
         currentValue = i;
         fill.fillAmount = currentValue / maxValue;
+    }
+
+    public void showModifiedStat(bool show)
+    {
+        circle.SetActive(show);
     }
 
 }

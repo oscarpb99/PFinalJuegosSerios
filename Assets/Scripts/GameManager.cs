@@ -182,6 +182,30 @@ public class GameManager : MonoBehaviour
         
     }
 
+    //Se le llama para activar los circulos hijos dela UI de cada stat para mostrar que se van a modificar, pero no cómo
+    public void showModifiedStats(int s1, int s2, int s3, int s4)
+    {
+        for (int i = 0; i < imagesStats.Length; i++)
+        {
+            imagesStats[i].showModifiedStat(false);
+        }
+        if (s1 > 0 || s1 < 0)
+        {
+            imagesStats[0].showModifiedStat(true);
+        }
+        if (s2 > 0 || s2 < 0)
+        {
+            imagesStats[1].showModifiedStat(true);
+        }
+        if (s3 > 0 || s3 < 0)
+        {
+            imagesStats[2].showModifiedStat(true);
+        }
+        if (s4 > 0 || s4 < 0)
+        {
+            imagesStats[3].showModifiedStat(true);
+        }
+    }
     
 
 
