@@ -17,11 +17,12 @@ public class GameManager : MonoBehaviour
     private int[]valuesTextRight=new int[4];
     private int[]valuesTextDown = new int[4];
 
-    public int numMaxSituations = 30;
-    int nSituation = 0;
+    public int totalCredits = 240;
+    int credits = 0;
 
     private bool winCondition;
-    
+    private bool isExamWeek;
+
 
     private void Awake()
     {
@@ -39,8 +40,9 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        nSituation = 0;
+        credits = 0;
         winCondition = false;
+        isExamWeek = false;
         for (int i = 0; i < stats.Length; i++)
         {
             stats[i] = valuesIni[i];
@@ -51,7 +53,6 @@ public class GameManager : MonoBehaviour
     //id-> 0=izq, 1=der, 2=abajo
     public void addorloseStats(int id,int s1,int s2, int s3, int s4)
     {
-        nSituation++;
         if (situationManager.getType() == SituationManager.Type.Acumulador)
         {
             if (id == 0)
@@ -84,6 +85,24 @@ public class GameManager : MonoBehaviour
             stats[3] += s4;
         }
 
+        //En la semana de exámenes se suman los créditos dependiendo de la situación
+        if (isExamWeek)
+        {
+            switch (id)
+            {
+                case 0:
+                    credits += 60;
+                    break;
+                case 1:
+                    credits += 42;
+                    break;
+                case 2:
+                    credits += 24;
+                    break;
+            }
+            isExamWeek = false;
+        }
+
         for (int i = 0; i < stats.Length; i++)
         {
             if (stats[i] <= 0)
@@ -103,7 +122,7 @@ public class GameManager : MonoBehaviour
         {
             imagesStats[i].addOrDeduct(stats[i]);
         }
-        if(nSituation>=numMaxSituations)
+        if(credits >= totalCredits)
         {
             winCondition = true;
             SceneManager.LoadScene("EndScene");
@@ -154,6 +173,16 @@ public class GameManager : MonoBehaviour
         return winCondition;
     }
 
+    public int getCredits()
+    {
+        return credits;
+    }
+
+    public void examWeek()
+    {
+        isExamWeek = true;
+    }
+
     public void resetGame()
     {
         StartCoroutine(resetGameRoutine());
@@ -173,7 +202,7 @@ public class GameManager : MonoBehaviour
         imagesStats[1] = GameObject.Find("Corazon").GetComponent<UIFill>();
         imagesStats[2] = GameObject.Find("Academic").GetComponent<UIFill>();
         imagesStats[3] = GameObject.Find("Money").GetComponent<UIFill>();
-        nSituation = 0;
+        credits = 0;
         winCondition = false;
         for (int i = 0; i < stats.Length; i++)
         {

@@ -16,12 +16,26 @@ public class ChangeText : MonoBehaviour
     }
     void Start()
     {
-       text.text=GameManager.Instance.getStat(index).ToString();        
+        if (index < 5) 
+        {
+            text.text = GameManager.Instance.getStat(index).ToString();
+        }
+        else
+        {
+            text.text = GameManager.Instance.getCredits().ToString();
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-       text.text = GameManager.Instance.getStat(index).ToString();       
+        if (index < 5)
+        {
+            text.text = GameManager.Instance.getStat(index).ToString();
+        }
+        else
+        {
+            text.text = GameManager.Instance.getCredits().ToString();
+        }
     }
 }
