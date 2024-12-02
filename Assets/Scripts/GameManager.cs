@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
     public GameObject imagenPrefab;
     public SituationManager situationManager;
-    [SerializeField] UIFill[] imagesStats;
+    public UIFill[] imagesStats;
     private float[] stats= new float[4];
     
     public float []valuesIni = new float [4];

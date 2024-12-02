@@ -176,6 +176,7 @@ MonoBehaviour:
   maxValue: 100
   fill: {fileID: 150970804}
   circle: {fileID: 1341193148}
+  valGameManager: 2
 --- !u!1 &23568893
 GameObject:
   m_ObjectHideFlags: 0
@@ -230,6 +231,7 @@ MonoBehaviour:
   maxValue: 100
   fill: {fileID: 266917629}
   circle: {fileID: 1801581102}
+  valGameManager: 1
 --- !u!1 &73472593
 GameObject:
   m_ObjectHideFlags: 0
@@ -1029,6 +1031,7 @@ MonoBehaviour:
   maxValue: 100
   fill: {fileID: 1723668366}
   circle: {fileID: 345010205}
+  valGameManager: 0
 --- !u!1 &345010205
 GameObject:
   m_ObjectHideFlags: 0
@@ -1856,6 +1859,7 @@ MonoBehaviour:
   maxValue: 100
   fill: {fileID: 1134917069}
   circle: {fileID: 73472593}
+  valGameManager: 3
 --- !u!1 &1098079594
 GameObject:
   m_ObjectHideFlags: 0

@@ -193,7 +193,9 @@ public class SituationManager : MonoBehaviour
 
     public void manageSituations()
     {
-        // Por hacer
+        // Seleccionamos una situacion. Si la situacion es la misma que la anterior, se vuelve a seleccionar otra
+        lastSituation = currentSituation;
+
         setSituation();
     }
 }

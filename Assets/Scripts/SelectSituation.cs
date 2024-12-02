@@ -109,6 +109,7 @@ public class SelectSituation : MonoBehaviour
         selectSituation.text1Rect = text1Rect;
         selectSituation.text2Rect = text2Rect;
         selectSituation.text3Rect = text3Rect;
+        selectSituation.dragImage = image.GetComponent<DragImage>();
         selectSituation.imageRect = image.GetComponent<RectTransform>();
         selectSituation.canvas = canvas;
         image.GetComponent<UnityEngine.UI.Image>().sprite = GameManager.Instance.situationManager.imagenSituation.sprite;
