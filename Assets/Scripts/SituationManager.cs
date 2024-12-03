@@ -14,6 +14,7 @@ public struct NumRepeteatSelection
 public class SituationManager : MonoBehaviour
 {
     public Situation[] situations;
+    public Situation[] specificSituations;
     public NumRepeteatSelection[] numRepeteatSelections ;
     int lastSituation;
     int currentSituation;
@@ -41,7 +42,7 @@ public class SituationManager : MonoBehaviour
             numRepeteatSelections[i].nRepeatSelectRight = 0;
             numRepeteatSelections[i].nRepeatSelectDown = 0;
         }
-        cartasAño = Random.Range(20, 35);
+        cartasAño = Random.Range(2, 3);
         cardCounter = 0;
         yearDifficulty = 0;
         setSituation();
@@ -70,8 +71,8 @@ public class SituationManager : MonoBehaviour
         {
             cardCounter = 0;
             cartasAño = Random.Range(20, 35);
-            currentSituation = situations.Length -1;
-            textSituation.text = situations[currentSituation].situation;
+            currentSituation = 0;
+            textSituation.text = specificSituations[currentSituation].situation;
             int maxDifficulty = 70 + yearDifficulty;
             int midDifficulty = 40 + yearDifficulty;
             if(maxDifficulty > 100)
@@ -84,7 +85,7 @@ public class SituationManager : MonoBehaviour
             }
             if (GameManager.Instance.getStat(2) >= maxDifficulty) 
             {
-                textElec1.text = situations[currentSituation].elec1;
+                textElec1.text = specificSituations[currentSituation].elec1;
                 backgroundElec2.SetActive(false);
                 textElec2.gameObject.SetActive(false);
                 backgroundElec3.SetActive(false);
@@ -94,7 +95,7 @@ public class SituationManager : MonoBehaviour
             {
                 backgroundElec1.SetActive(false);
                 textElec1.gameObject.SetActive(false);
-                textElec2.text = situations[currentSituation].elec2;
+                textElec2.text = specificSituations[currentSituation].elec2;
                 backgroundElec3.SetActive(false);
                 textElec3.gameObject.SetActive(false);
                 yearDifficulty += 10;
@@ -105,10 +106,15 @@ public class SituationManager : MonoBehaviour
                 textElec1.gameObject.SetActive(false);
                 backgroundElec2.SetActive(false);
                 textElec2.gameObject.SetActive(false);
-                textElec3.text = situations[currentSituation].elec3;
+                textElec3.text = specificSituations[currentSituation].elec3;
                 yearDifficulty += 20;
             }
             GameManager.Instance.examWeek();
+            GameManager.Instance.setStatsText(1, specificSituations[currentSituation].stat1Left, specificSituations[currentSituation].stat2Left, specificSituations[currentSituation].stat3Left, specificSituations[currentSituation].stat4Left);
+            GameManager.Instance.setStatsText(0, specificSituations[currentSituation].stat1Right, specificSituations[currentSituation].stat2Right, specificSituations[currentSituation].stat3Right, specificSituations[currentSituation].stat4Right);
+            GameManager.Instance.setStatsText(2, specificSituations[currentSituation].stat1Down, specificSituations[currentSituation].stat2Down, specificSituations[currentSituation].stat3Down, specificSituations[currentSituation].stat4Down);
+
+            imagenSituation.sprite = Situations.Instance.GetSprite(specificSituations[currentSituation].image);
         }
         else
         {
@@ -161,12 +167,13 @@ public class SituationManager : MonoBehaviour
                 }
 
             }
-        }
-        GameManager.Instance.setStatsText(1, situations[currentSituation].stat1Left, situations[currentSituation].stat2Left, situations[currentSituation].stat3Left, situations[currentSituation].stat4Left);
-        GameManager.Instance.setStatsText(0, situations[currentSituation].stat1Right, situations[currentSituation].stat2Right, situations[currentSituation].stat3Right, situations[currentSituation].stat4Right);
-        GameManager.Instance.setStatsText(2, situations[currentSituation].stat1Down, situations[currentSituation].stat2Down, situations[currentSituation].stat3Down, situations[currentSituation].stat4Down);
+            GameManager.Instance.setStatsText(1, situations[currentSituation].stat1Left, situations[currentSituation].stat2Left, situations[currentSituation].stat3Left, situations[currentSituation].stat4Left);
+            GameManager.Instance.setStatsText(0, situations[currentSituation].stat1Right, situations[currentSituation].stat2Right, situations[currentSituation].stat3Right, situations[currentSituation].stat4Right);
+            GameManager.Instance.setStatsText(2, situations[currentSituation].stat1Down, situations[currentSituation].stat2Down, situations[currentSituation].stat3Down, situations[currentSituation].stat4Down);
 
-        imagenSituation.sprite = Situations.Instance.GetSprite(situations[currentSituation].image);
+            imagenSituation.sprite = Situations.Instance.GetSprite(situations[currentSituation].image);
+        }
+
     }
 
     public int getLeftRepeated(int index)

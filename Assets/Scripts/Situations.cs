@@ -29,6 +29,7 @@ public class Situations : MonoBehaviour
            // DontDestroyOnLoad(gameObject);
         }
         readJSON(Application.streamingAssetsPath + "/JSON/situations.json");
+        readJSON(Application.streamingAssetsPath + "/JSON/specificSituations.json");
     }
     
 
@@ -36,7 +37,14 @@ public class Situations : MonoBehaviour
     {
         string jsonData=File.ReadAllText(jsonFile, System.Text.Encoding.UTF8);
         SituationList list=JsonUtility.FromJson<SituationList>(jsonData);
-        situationManager.situations = list.situations;
+        if(situationManager.situations.Length <= 0)
+        {
+            situationManager.situations = list.situations;
+        }
+        else
+        {
+            situationManager.specificSituations = list.situations;
+        }
     }
 
 

@@ -9,7 +9,7 @@ public class Situation
     // Stat1 es Social
     // Stat2 es Bienestar
     // Stat3 es Responsabilidad Academica
-    // Stat4 es [Yoquese]
+    // Stat4 es Dinero
 
 	public string situation;
 	public string elec1;
@@ -33,5 +33,4 @@ public class Situation
     public int acumulativeStat2;
     public int acumulativeStat3;
     public int acumulativeStat4;
-			
 }
