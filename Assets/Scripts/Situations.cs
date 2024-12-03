@@ -9,6 +9,13 @@ public class SituationList
 {
     public Situation[] situations;
 }
+
+[System.Serializable]
+public class TutorialList
+{
+    public TutorialCard[] cards;
+}
+
 public class Situations : MonoBehaviour
 {
     [SerializeField] SituationManager situationManager;
@@ -30,6 +37,8 @@ public class Situations : MonoBehaviour
         }
         readJSON(Application.streamingAssetsPath + "/JSON/situations.json");
         readJSON(Application.streamingAssetsPath + "/JSON/specificSituations.json");
+        readJSONTutorial(Application.streamingAssetsPath + "/JSON/tutorial.json");
+
     }
     
 
@@ -47,6 +56,12 @@ public class Situations : MonoBehaviour
         }
     }
 
+    private void readJSONTutorial(string jsonFile)
+    {
+        string jsonData = File.ReadAllText(jsonFile, System.Text.Encoding.UTF8);
+        TutorialList list = JsonUtility.FromJson<TutorialList>(jsonData);
+        situationManager.tutorialCards = list.cards;
+    }
 
     public Sprite GetSprite(string imageName)
     {

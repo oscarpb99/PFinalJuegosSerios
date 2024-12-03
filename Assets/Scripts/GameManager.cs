@@ -47,9 +47,17 @@ public class GameManager : MonoBehaviour
         {
             stats[i] = valuesIni[i];
         }
-       
+    }
 
-}
+    public void resetStats()
+    {
+        for (int i = 0; i < stats.Length; i++)
+        {
+            stats[i] = valuesIni[i];
+        }
+    }
+
+
     //id-> 0=izq, 1=der, 2=abajo
     public void addorloseStats(int id,int s1,int s2, int s3, int s4)
     {
@@ -198,10 +206,6 @@ public class GameManager : MonoBehaviour
 
         // Reconfigurar el juego
         situationManager = GameObject.Find("SituationManager").GetComponent<SituationManager>();
-        imagesStats[0] = GameObject.Find("Social").GetComponent<UIFill>();
-        imagesStats[1] = GameObject.Find("Corazon").GetComponent<UIFill>();
-        imagesStats[2] = GameObject.Find("Academic").GetComponent<UIFill>();
-        imagesStats[3] = GameObject.Find("Money").GetComponent<UIFill>();
         credits = 0;
         winCondition = false;
         for (int i = 0; i < stats.Length; i++)

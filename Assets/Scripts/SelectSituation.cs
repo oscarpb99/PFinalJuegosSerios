@@ -35,13 +35,22 @@ public class SelectSituation : MonoBehaviour
             GameManager.Instance.showModifiedStats(GameManager.Instance.getStatsText(1)[0], GameManager.Instance.getStatsText(1)[1], GameManager.Instance.getStatsText(1)[2], GameManager.Instance.getStatsText(1)[3]);
             if (isLetGo)
             {
-                GameManager.Instance.addorloseStats(0, GameManager.Instance.getStatsText(1)[0], GameManager.Instance.getStatsText(1)[1], GameManager.Instance.getStatsText(1)[2], GameManager.Instance.getStatsText(1)[3]);
-                GameManager.Instance.situationManager.numRepeteatSelections[GameManager.Instance.situationManager.getCurrentSituation()].nRepeatSelectLeft++;
-                GameManager.Instance.situationManager.numRepeteatSelections[GameManager.Instance.situationManager.getCurrentSituation()].nRepeatSelectRight = 0;
-                GameManager.Instance.situationManager.numRepeteatSelections[GameManager.Instance.situationManager.getCurrentSituation()].nRepeatSelectDown = 0;
-                // Debug.Log(GameManager.Instance.situationManager.numRepeteatSelections[GameManager.Instance.situationManager.getCurrentSituation()].nRepeatSelectLeft);
-                Destroy(gameObject);
-                createNewImageInstance();
+                if (GameManager.Instance.situationManager.tutorialCounter < GameManager.Instance.situationManager.tutorialCards.Length)
+                {
+                    GameManager.Instance.situationManager.applyCardTutorial(1);
+                    Destroy(gameObject);
+                    createNewImageInstance();
+                }
+                else
+                {
+                    GameManager.Instance.addorloseStats(0, GameManager.Instance.getStatsText(1)[0], GameManager.Instance.getStatsText(1)[1], GameManager.Instance.getStatsText(1)[2], GameManager.Instance.getStatsText(1)[3]);
+                    GameManager.Instance.situationManager.numRepeteatSelections[GameManager.Instance.situationManager.getCurrentSituation()].nRepeatSelectLeft++;
+                    GameManager.Instance.situationManager.numRepeteatSelections[GameManager.Instance.situationManager.getCurrentSituation()].nRepeatSelectRight = 0;
+                    GameManager.Instance.situationManager.numRepeteatSelections[GameManager.Instance.situationManager.getCurrentSituation()].nRepeatSelectDown = 0;
+                    // Debug.Log(GameManager.Instance.situationManager.numRepeteatSelections[GameManager.Instance.situationManager.getCurrentSituation()].nRepeatSelectLeft);
+                    Destroy(gameObject);
+                    createNewImageInstance();
+                }
             }
 
         }
@@ -50,12 +59,22 @@ public class SelectSituation : MonoBehaviour
             GameManager.Instance.showModifiedStats(GameManager.Instance.getStatsText(0)[0], GameManager.Instance.getStatsText(0)[1], GameManager.Instance.getStatsText(0)[2], GameManager.Instance.getStatsText(0)[3]);
             if (isLetGo)
             {
-                GameManager.Instance.addorloseStats(1, GameManager.Instance.getStatsText(0)[0], GameManager.Instance.getStatsText(0)[1], GameManager.Instance.getStatsText(0)[2], GameManager.Instance.getStatsText(0)[3]);
-                GameManager.Instance.situationManager.numRepeteatSelections[GameManager.Instance.situationManager.getCurrentSituation()].nRepeatSelectLeft = 0;
-                GameManager.Instance.situationManager.numRepeteatSelections[GameManager.Instance.situationManager.getCurrentSituation()].nRepeatSelectRight++;
-                GameManager.Instance.situationManager.numRepeteatSelections[GameManager.Instance.situationManager.getCurrentSituation()].nRepeatSelectDown = 0;
-                Destroy(gameObject);
-                createNewImageInstance();
+                if (GameManager.Instance.situationManager.tutorialCounter < GameManager.Instance.situationManager.tutorialCards.Length)
+                {
+                    GameManager.Instance.situationManager.applyCardTutorial(2);
+                    Destroy(gameObject);
+                    createNewImageInstance();
+                }
+                else
+                {
+                    GameManager.Instance.addorloseStats(1, GameManager.Instance.getStatsText(0)[0], GameManager.Instance.getStatsText(0)[1], GameManager.Instance.getStatsText(0)[2], GameManager.Instance.getStatsText(0)[3]);
+                    GameManager.Instance.situationManager.numRepeteatSelections[GameManager.Instance.situationManager.getCurrentSituation()].nRepeatSelectLeft = 0;
+                    GameManager.Instance.situationManager.numRepeteatSelections[GameManager.Instance.situationManager.getCurrentSituation()].nRepeatSelectRight++;
+                    GameManager.Instance.situationManager.numRepeteatSelections[GameManager.Instance.situationManager.getCurrentSituation()].nRepeatSelectDown = 0;
+                    Destroy(gameObject);
+                    createNewImageInstance();
+                }
+                
             }
         }
         else if (text3Rect.gameObject.activeSelf && isOverlapping(imageRect, text3Rect))
@@ -64,12 +83,21 @@ public class SelectSituation : MonoBehaviour
 
             if (isLetGo)
             {
-                GameManager.Instance.addorloseStats(2, GameManager.Instance.getStatsText(2)[0], GameManager.Instance.getStatsText(2)[1], GameManager.Instance.getStatsText(2)[2], GameManager.Instance.getStatsText(2)[3]);
-                GameManager.Instance.situationManager.numRepeteatSelections[GameManager.Instance.situationManager.getCurrentSituation()].nRepeatSelectLeft = 0;
-                GameManager.Instance.situationManager.numRepeteatSelections[GameManager.Instance.situationManager.getCurrentSituation()].nRepeatSelectRight = 0;
-                GameManager.Instance.situationManager.numRepeteatSelections[GameManager.Instance.situationManager.getCurrentSituation()].nRepeatSelectDown++;
-                Destroy(gameObject);
-                createNewImageInstance();
+                if (GameManager.Instance.situationManager.tutorialCounter < GameManager.Instance.situationManager.tutorialCards.Length)
+                {
+                    GameManager.Instance.situationManager.applyCardTutorial(3);
+                    Destroy(gameObject);
+                    createNewImageInstance();
+                }
+                else
+                {
+                    GameManager.Instance.addorloseStats(2, GameManager.Instance.getStatsText(2)[0], GameManager.Instance.getStatsText(2)[1], GameManager.Instance.getStatsText(2)[2], GameManager.Instance.getStatsText(2)[3]);
+                    GameManager.Instance.situationManager.numRepeteatSelections[GameManager.Instance.situationManager.getCurrentSituation()].nRepeatSelectLeft = 0;
+                    GameManager.Instance.situationManager.numRepeteatSelections[GameManager.Instance.situationManager.getCurrentSituation()].nRepeatSelectRight = 0;
+                    GameManager.Instance.situationManager.numRepeteatSelections[GameManager.Instance.situationManager.getCurrentSituation()].nRepeatSelectDown++;
+                    Destroy(gameObject);
+                    createNewImageInstance();
+                }
             }
         }
         else

@@ -15,6 +15,9 @@ public class SituationManager : MonoBehaviour
 {
     public Situation[] situations;
     public Situation[] specificSituations;
+    public TutorialCard[] tutorialCards = new TutorialCard[0];
+    public int tutorialCounter;
+
     public NumRepeteatSelection[] numRepeteatSelections ;
     int lastSituation;
     int currentSituation;
@@ -45,7 +48,9 @@ public class SituationManager : MonoBehaviour
         cartasAño = Random.Range(2, 3);
         cardCounter = 0;
         yearDifficulty = 0;
-        setSituation();
+        
+        tutorialCounter = 0;
+        SetTutorial();
     }
 
     private void setSituation()
@@ -176,6 +181,69 @@ public class SituationManager : MonoBehaviour
 
     }
 
+    private void SetTutorial()
+    {
+        // Con las cartas de tutorial ya leidas, se leen de manera ordenada
+        if (tutorialCounter < tutorialCards.Length)
+        {
+            textSituation.text = tutorialCards[tutorialCounter].situation;
+            textElec1.text = tutorialCards[tutorialCounter].elec1;
+            textElec2.text = tutorialCards[tutorialCounter].elec2;
+            textElec3.text = tutorialCards[tutorialCounter].elec3;
+            imagenSituation.sprite = Situations.Instance.GetSprite(tutorialCards[tutorialCounter].image);
+        }
+        else
+        {
+            setSituation();
+        }
+
+    }
+
+    public void applyCardTutorial(int option)
+    {
+        switch (tutorialCounter)
+        {
+            case 0:
+                // Si elige NO continuar el tutorial
+                if (option != 2)
+                    tutorialCounter = tutorialCards.Length + 1;
+                break;
+            case 1:
+                break;
+            case 2:
+                // Enseñamos que se puede modificar las stats
+                if (option == 1)
+                {
+                    GameManager.Instance.addorloseStats(0, tutorialCards[tutorialCounter - 1].stat1Left, tutorialCards[tutorialCounter - 1].stat2Left, tutorialCards[tutorialCounter - 1].stat3Left, tutorialCards[tutorialCounter - 1].stat4Left);
+                    GameManager.Instance.addorloseStats(1, tutorialCards[tutorialCounter - 1].stat1Right, tutorialCards[tutorialCounter - 1].stat2Right, tutorialCards[tutorialCounter - 1].stat3Right, tutorialCards[tutorialCounter - 1].stat4Right);
+                    GameManager.Instance.addorloseStats(2, tutorialCards[tutorialCounter - 1].stat1Down, tutorialCards[tutorialCounter - 1].stat2Down, tutorialCards[tutorialCounter - 1].stat3Down, tutorialCards[tutorialCounter - 1].stat4Down);
+                }
+                else if (option == 2)
+                {
+                    GameManager.Instance.addorloseStats(1, tutorialCards[tutorialCounter - 1].stat1Right, tutorialCards[tutorialCounter - 1].stat2Right, tutorialCards[tutorialCounter - 1].stat3Right, tutorialCards[tutorialCounter - 1].stat4Right);
+                    GameManager.Instance.addorloseStats(2, tutorialCards[tutorialCounter - 1].stat1Down, tutorialCards[tutorialCounter - 1].stat2Down, tutorialCards[tutorialCounter - 1].stat3Down, tutorialCards[tutorialCounter - 1].stat4Down);
+                }
+                else
+                {
+                    GameManager.Instance.addorloseStats(0, tutorialCards[tutorialCounter - 1].stat1Left, tutorialCards[tutorialCounter - 1].stat2Left, tutorialCards[tutorialCounter - 1].stat3Left, tutorialCards[tutorialCounter - 1].stat4Left);
+                    GameManager.Instance.addorloseStats(2, tutorialCards[tutorialCounter - 1].stat1Down, tutorialCards[tutorialCounter - 1].stat2Down, tutorialCards[tutorialCounter - 1].stat3Down, tutorialCards[tutorialCounter - 1].stat4Down);
+                }
+                break;
+            case 3:
+                // Reseteamos los stats
+                if (option == 1)
+                {
+                    GameManager.Instance.resetStats();
+                }
+                break;
+
+        }
+
+        // Pasamos a la siguiente carta del tutorial
+        tutorialCounter++;
+        SetTutorial();
+    }
+
     public int getLeftRepeated(int index)
     {
         return numRepeteatSelections[index].nRepeatSelectLeft;
@@ -200,9 +268,17 @@ public class SituationManager : MonoBehaviour
 
     public void manageSituations()
     {
-        // Seleccionamos una situacion. Si la situacion es la misma que la anterior, se vuelve a seleccionar otra
-        lastSituation = currentSituation;
+        // Si seguimos con los tutoriales, llamamos a setTutorial
+        if (tutorialCounter < tutorialCards.Length)
+        {
+            SetTutorial();
+        }
+        else
+        {
+            // Seleccionamos una situacion. Si la situacion es la misma que la anterior, se vuelve a seleccionar otra
+            lastSituation = currentSituation;
 
-        setSituation();
+            setSituation();
+        }
     }
 }
