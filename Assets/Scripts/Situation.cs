@@ -27,8 +27,10 @@ public class Situation
     public int stat2Down;
     public int stat3Down;
     public int stat4Down;
+    public int spawnRate;
     public string image;
     public string tag;
+    public int elecAcu;
     public int acumulativeStat1;
     public int acumulativeStat2;
     public int acumulativeStat3;

@@ -54,6 +54,7 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < stats.Length; i++)
         {
             stats[i] = valuesIni[i];
+            imagesStats[i].addOrDeduct(stats[i]);
         }
     }
 
