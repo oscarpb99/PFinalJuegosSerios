@@ -27,11 +27,13 @@ public class SituationManager : MonoBehaviour
 
     public NumRepeteatSelection[] numRepeteatSelections;
     int lastSituation;
+
     int currentSituation;
     int cartasAño;
     int cardCounter;
     int yearDifficulty;
     int specificCounter;
+    int contadorAños;
     bool isSpecific = false;
     public TextMeshProUGUI textSituation;
     public TextMeshProUGUI textElec1, textElec2, textElec3;
@@ -75,11 +77,13 @@ public class SituationManager : MonoBehaviour
     {
         int specialCardProbability;
         bool nextIsSpecial = false;
+        isSpecific = false;
+
 
         cardCounter++;
         specificCounter++;
 
-
+        // Restamos 1 a todas las situaciones que tienen que esperar al menos 1 turno
         for (int i = 0; i < sleepingSituations.Length; i++)
         {
             if (sleepingSituations[i] > 0)
@@ -88,6 +92,7 @@ public class SituationManager : MonoBehaviour
             }
         }
 
+        // Activamos las elecciones por defecto
         if (textElec1.gameObject.activeSelf == false)
         {
             backgroundElec1.SetActive(true);
@@ -104,10 +109,25 @@ public class SituationManager : MonoBehaviour
         {
             cardCounter = 0;
             cartasAño = Random.Range(15, 25);
+            contadorAños++;
+
+            // Si es el primer año
+            if (contadorAños == 1)
+            {
+                // Desbloqueamos la situqacion de que te dejan agotado los examenes
+                lockedSpecificSituations[6] = false;
+            }
+            else if (contadorAños == 4) // A partir del cuarto año, queda desbloqueado la situacion de tus compañeros
+            {
+                // Desbloqueamos la situacion de que tus compañeros se graduan
+                lockedSpecificSituations[7] = false;
+            }
+
             currentSituation = 0;
             textSituation.text = specificSituations[currentSituation].situation;
             int maxDifficulty = 70 + yearDifficulty;
             int midDifficulty = 40 + yearDifficulty;
+
             if(maxDifficulty > 100)
             {
                 maxDifficulty = 100;
@@ -116,6 +136,8 @@ public class SituationManager : MonoBehaviour
             {
                 midDifficulty = 80;
             }
+
+
             if (GameManager.Instance.getStat(2) >= maxDifficulty) 
             {
                 textElec1.text = specificSituations[currentSituation].elec1;
@@ -154,16 +176,20 @@ public class SituationManager : MonoBehaviour
             //Comprueba que una stat es baja para tener la posibilidad de que salga una carta especial
             if (GameManager.Instance.getStat(0) <= 20 || GameManager.Instance.getStat(1) <= 20 || GameManager.Instance.getStat(2) <= 20 || GameManager.Instance.getStat(3) <= 20)
             {
+                // Probabilidad de que salga una carta especial del 20%
                 specialCardProbability = Random.Range(0, 5);
                 if (specialCardProbability == 1)
                 {
                     nextIsSpecial = true;
                 }
             }
+
+            // Solo puede haber una carta especial si hay una stat baja
             if (!nextIsSpecial)
             {
                 if (specificCounter >= 6)
                 {
+                    // Seleccionamos una situacion específica
                     specificCounter = 0;
                     currentSituation = Random.Range(1, specificSituations.Length - 4);
                     while (lockedSpecificSituations[currentSituation])
@@ -174,6 +200,7 @@ public class SituationManager : MonoBehaviour
                 }
                 else
                 {
+                    // Seleccionamos una situacion general
                     currentSituation = Random.Range(0, situations.Length);
                     while (lockedSituations[currentSituation] || sleepingSituations[currentSituation] > 0)
                     {
@@ -193,6 +220,8 @@ public class SituationManager : MonoBehaviour
                 type = Type.Probabilidad;
                 isSpecific = true;
             }
+
+
             if (isSpecific)
             {
                 textSituation.text = specificSituations[currentSituation].situation;
@@ -203,7 +232,6 @@ public class SituationManager : MonoBehaviour
                 GameManager.Instance.setStatsText(0, specificSituations[currentSituation].stat1Right, specificSituations[currentSituation].stat2Right, specificSituations[currentSituation].stat3Right, specificSituations[currentSituation].stat4Right);
                 GameManager.Instance.setStatsText(2, specificSituations[currentSituation].stat1Down, specificSituations[currentSituation].stat2Down, specificSituations[currentSituation].stat3Down, specificSituations[currentSituation].stat4Down);
                 imagenSituation.sprite = Situations.Instance.GetSprite(specificSituations[currentSituation].image);
-                isSpecific = false;
             }
             else
             {
@@ -340,19 +368,20 @@ public class SituationManager : MonoBehaviour
         //Aqui están las situaciones generales que empiezan bloqueadas
         for(int i = 0; i < situations.Length; i++)
         {
+            
             switch (i)
             {
                 default:
                     lockedSituations[i] = false;
                     break;
                 case 5:
-                    lockedSituations[i] = true;
+                    lockedSituations[i] = true; // Futbol
                     break;
                 case 6:
-                    lockedSituations[i] = true;
+                    lockedSituations[i] = true; // Trabajo
                     break;
                 case 7:
-                    lockedSituations[i] = true;
+                    lockedSituations[i] = true; // Psicologo
                     break;
             }
         }
@@ -369,18 +398,78 @@ public class SituationManager : MonoBehaviour
                     lockedSpecificSituations[i] = false;
                     break;
                 case 2:
-                    lockedSpecificSituations[i] = true;
+                    lockedSpecificSituations[i] = true; //Tutoria profesor 
                     break;
                 case 6:
-                    lockedSpecificSituations[i] = true;
+                    lockedSpecificSituations[i] = true; // Temporada de examenes te deja agotado
                     break;
                 case 7:
-                    lockedSpecificSituations[i] = true;
+                    lockedSpecificSituations[i] = true; // Tus compañeros se graduan este año, mientras tu sigues en la carrera (Si situacion de examenes sale al menos 4 veces)
                     break;
                 case 8:
-                    lockedSpecificSituations[i] = true;
+                    lockedSpecificSituations[i] = true; // Ultimamente las cosas no han ido bien 
                     break;
             }
         }
+    }
+
+    // Desbloqueamos situaciones si se selecciona una opcion en una situacion especifica
+    public void unlockAndLockSituation(int option)
+    {
+        // Nos dan index, que es el id de la situacion que puede desbloquear otras situaciones y specific, que indica si es una situacion general o especifica
+
+        if (!isSpecific)
+        {
+            switch(currentSituation)
+            {
+                // Si existe alguna situacion general que desbloquee otras, iria aqui
+
+                default:
+                    break;
+            }
+        }
+        else 
+        {
+            // Si existe alguna situacion especifica que desbloquee otras, iria aqui
+            switch (currentSituation)
+            { 
+                default:
+                    break;
+                case 3: // SpecificSituations[3] de unirse al club de futbol que desbloquea:
+                    if(option == 0) // Si elige SI unirse al club de futbol
+                        lockedSituations[5] = false; // Entrenamiento de futbol
+                    break;
+
+                case 4: // SpecificSituations[4] de Conseguir Trabajo que desbloquea:
+                    if (option == 0) // Si elige "LO COGEMOS"
+                        lockedSituations[6] = false; // Jornada Laboral
+                    break;
+
+                case 8: // SpecificSituations[8] de Ultimamente las cosas no han ido bien que desbloquea:
+                    if (option == 1) // Si elige "Deberia ir al psicologo"
+                        lockedSituations[7] = false; // Visita al psicologo
+                    break;
+
+            }
+        }
+
+        // Si pasa un numero de situaciones (Por ejemplo, la mitad del año), chequeamos las stats para ver si desbloqueamos alguna situacion
+        // hasta que termine el año
+        if (cardCounter >= cartasAño/2)
+        {
+            // Si el bienestar esta por debajo de 30, desbloqueamos la situacion de "Ultimamente las cosas no han ido bien"
+            if (GameManager.Instance.getStat(1) <= 30) 
+                lockedSpecificSituations[8] = false;
+
+            // Si la responsabilidad academica esta por debajo de 30, desbloqueamos la situacion de "Tutoria profesor"
+            else if(GameManager.Instance.getStat(2) <= 30)
+                lockedSpecificSituations[2] = false;
+        }
+
+        // Chequeamos si las stats son normales, en cuyo caso volvemos a bloquear algunas situaciones
+        if(GameManager.Instance.getStat(1) > 30) // Bienestar
+            lockedSpecificSituations[8] = true;
+        else if(GameManager.Instance.getStat(2) > 30) // Responsabilidad academica
+            lockedSpecificSituations[2] = true;
     }
 }

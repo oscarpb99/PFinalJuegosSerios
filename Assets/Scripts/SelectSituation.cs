@@ -48,6 +48,10 @@ public class SelectSituation : MonoBehaviour
                     GameManager.Instance.situationManager.numRepeteatSelections[GameManager.Instance.situationManager.getCurrentSituation()].nRepeatSelectRight = 0;
                     GameManager.Instance.situationManager.numRepeteatSelections[GameManager.Instance.situationManager.getCurrentSituation()].nRepeatSelectDown = 0;
                     // Debug.Log(GameManager.Instance.situationManager.numRepeteatSelections[GameManager.Instance.situationManager.getCurrentSituation()].nRepeatSelectLeft);
+                    
+                    // Desbloqueamos situaciones si coincide
+                    GameManager.Instance.situationManager.unlockAndLockSituation(0);
+                    
                     Destroy(gameObject);
                     createNewImageInstance();
                 }
@@ -71,6 +75,10 @@ public class SelectSituation : MonoBehaviour
                     GameManager.Instance.situationManager.numRepeteatSelections[GameManager.Instance.situationManager.getCurrentSituation()].nRepeatSelectLeft = 0;
                     GameManager.Instance.situationManager.numRepeteatSelections[GameManager.Instance.situationManager.getCurrentSituation()].nRepeatSelectRight++;
                     GameManager.Instance.situationManager.numRepeteatSelections[GameManager.Instance.situationManager.getCurrentSituation()].nRepeatSelectDown = 0;
+
+                    // Desbloqueamos situaciones si coincide
+                    GameManager.Instance.situationManager.unlockAndLockSituation(1);
+
                     Destroy(gameObject);
                     createNewImageInstance();
                 }
@@ -95,6 +103,10 @@ public class SelectSituation : MonoBehaviour
                     GameManager.Instance.situationManager.numRepeteatSelections[GameManager.Instance.situationManager.getCurrentSituation()].nRepeatSelectLeft = 0;
                     GameManager.Instance.situationManager.numRepeteatSelections[GameManager.Instance.situationManager.getCurrentSituation()].nRepeatSelectRight = 0;
                     GameManager.Instance.situationManager.numRepeteatSelections[GameManager.Instance.situationManager.getCurrentSituation()].nRepeatSelectDown++;
+
+                    // Desbloqueamos situaciones si coincide
+                    GameManager.Instance.situationManager.unlockAndLockSituation(2);
+
                     Destroy(gameObject);
                     createNewImageInstance();
                 }
