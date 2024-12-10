@@ -444,7 +444,10 @@ public class SituationManager : MonoBehaviour
                     if (option == 0) // Si elige "LO COGEMOS"
                         lockedSituations[6] = false; // Jornada Laboral
                     break;
-
+                case 6: // SpecificSituations[6] de Temporada de examenes te deja agotado que desbloquea:
+                    if (option == 1) // Si elige "Lo hablo con un profesional"
+                        lockedSituations[7] = false; // Visita al psicologo
+                    break;
                 case 8: // SpecificSituations[8] de Ultimamente las cosas no han ido bien que desbloquea:
                     if (option == 1) // Si elige "Deberia ir al psicologo"
                         lockedSituations[7] = false; // Visita al psicologo
