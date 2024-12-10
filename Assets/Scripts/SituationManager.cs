@@ -41,7 +41,7 @@ public class SituationManager : MonoBehaviour
     [SerializeField] GameObject backgroundElec2;
     [SerializeField] GameObject backgroundElec3;
     public UnityEngine.UI.Image imagenSituation;
-    public enum Type { Acumulador, Desactivar, Probabilidad };
+    public enum Type { Acumulador};
     public Type type;
 
 
@@ -49,13 +49,14 @@ public class SituationManager : MonoBehaviour
     void Start()
     {
         // Para cuando asignamos una situacion, ya se han cargado todas en situations
-        numRepeteatSelections=new NumRepeteatSelection[situations.Length];
-        for (int i = 0; i < situations.Length; i++)
+        numRepeteatSelections=new NumRepeteatSelection[situations.Length + specificSituations.Length - 4];
+        for (int i = 0; i < situations.Length + specificSituations.Length - 4; i++)
         {
             numRepeteatSelections[i].nRepeatSelectLeft = 0;
             numRepeteatSelections[i].nRepeatSelectRight = 0;
             numRepeteatSelections[i].nRepeatSelectDown = 0;
         }
+
         lockedSituations = new bool[situations.Length];
         lockedSpecificSituations = new bool[specificSituations.Length];
         sleepingSituations = new int[situations.Length];
@@ -217,7 +218,7 @@ public class SituationManager : MonoBehaviour
                     index = Random.Range(0, 4);
                 }
                 currentSituation = specificSituations.Length - 4 + index;
-                type = Type.Probabilidad;
+                //type = Type.Probabilidad;
                 isSpecific = true;
             }
 
@@ -238,9 +239,10 @@ public class SituationManager : MonoBehaviour
                 textSituation.text = situations[currentSituation].situation;
                 textElec1.text = situations[currentSituation].elec1;
                 textElec2.text = situations[currentSituation].elec2;
-                if (situations[currentSituation].elec3 == "" || situations[currentSituation].elec3 == "NULL" || situations[currentSituation].tag == "Desactivar")
+                if (situations[currentSituation].elec3 == "" || situations[currentSituation].elec3 == "NULL" ||
+                    specificSituations[currentSituation].elec3 == "" || specificSituations[currentSituation].elec3 == "NULL")
                 {
-                    type = Type.Desactivar;
+                    //type = Type.Desactivar;
                     backgroundElec3.SetActive(false);
                     textElec3.gameObject.SetActive(false);
                 }
@@ -274,7 +276,21 @@ public class SituationManager : MonoBehaviour
             textSituation.text = tutorialCards[tutorialCounter].situation;
             textElec1.text = tutorialCards[tutorialCounter].elec1;
             textElec2.text = tutorialCards[tutorialCounter].elec2;
-            textElec3.text = tutorialCards[tutorialCounter].elec3;
+
+            // Si la tercera opcion pone NULL, desactivar
+            if (tutorialCards[tutorialCounter].elec3 == "" || tutorialCards[tutorialCounter].elec3 == "NULL")
+            {
+                //type = Type.Desactivar;
+                backgroundElec3.SetActive(false);
+                textElec3.gameObject.SetActive(false);
+            }
+            else
+            {
+                backgroundElec3.SetActive(true);
+                textElec3.gameObject.SetActive(true);
+                textElec3.text = tutorialCards[tutorialCounter].elec3;
+            }
+
             GameManager.Instance.setStatsText(1, tutorialCards[tutorialCounter].stat1Left, tutorialCards[tutorialCounter].stat2Left, tutorialCards[tutorialCounter].stat3Left, tutorialCards[tutorialCounter].stat4Left);
             GameManager.Instance.setStatsText(0, tutorialCards[tutorialCounter].stat1Right, tutorialCards[tutorialCounter].stat2Right, tutorialCards[tutorialCounter].stat3Right, tutorialCards[tutorialCounter].stat4Right);
             GameManager.Instance.setStatsText(2, tutorialCards[tutorialCounter].stat1Down, tutorialCards[tutorialCounter].stat2Down, tutorialCards[tutorialCounter].stat3Down, tutorialCards[tutorialCounter].stat4Down);

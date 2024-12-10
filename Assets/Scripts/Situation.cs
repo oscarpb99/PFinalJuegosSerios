@@ -31,10 +31,18 @@ public class Situation
     public string image;
     public string tag;
     public int elecAcu;
-    public int acumulativeStat1;
-    public int acumulativeStat2;
-    public int acumulativeStat3;
-    public int acumulativeStat4;
+    public int acumulativeStat1Left;
+    public int acumulativeStat2Left;
+    public int acumulativeStat3Left;
+    public int acumulativeStat4Left;
+    public int acumulativeStat1Right;
+    public int acumulativeStat2Right;
+    public int acumulativeStat3Right;
+    public int acumulativeStat4Right;
+    public int acumulativeStat1Down;
+    public int acumulativeStat2Down;
+    public int acumulativeStat3Down;
+    public int acumulativeStat4Down;
 }
 
 [System.Serializable]

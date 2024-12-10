@@ -60,30 +60,37 @@ public class GameManager : MonoBehaviour
 
 
     //id-> 0=izq, 1=der, 2=abajo
-    public void addorloseStats(int id,int s1,int s2, int s3, int s4)
+    public void addorloseStats(int option,int s1,int s2, int s3, int s4)
     {
+        // Si una situacion tiene un tag, aplicamos sus efectos especiales
         if (situationManager.getType() == SituationManager.Type.Acumulador)
         {
-            if (id == 0)
+            // Segun la eleccion que elija, modificamos los stats correspondientes
+            if (option == 0)
             {
-                stats[0] += s1 + (situationManager.numRepeteatSelections[situationManager.getCurrentSituation()].nRepeatSelectLeft * situationManager.situations[situationManager.getCurrentSituation()].acumulativeStat1);
-                stats[1] += s2 + (situationManager.numRepeteatSelections[situationManager.getCurrentSituation()].nRepeatSelectLeft * situationManager.situations[situationManager.getCurrentSituation()].acumulativeStat2);
-                stats[2] += s3 + (situationManager.numRepeteatSelections[situationManager.getCurrentSituation()].nRepeatSelectLeft * situationManager.situations[situationManager.getCurrentSituation()].acumulativeStat3);
-                stats[3] += s4 + (situationManager.numRepeteatSelections[situationManager.getCurrentSituation()].nRepeatSelectLeft * situationManager.situations[situationManager.getCurrentSituation()].acumulativeStat4);
+                // Sacamos la cantidad de veces que se ha seleccionado la option 0 (izquierda) de la situacion actual
+                //situationManager.numRepeteatSelections[situationManager.getCurrentSituation()].nRepeatSelectXXXXX
+
+                // Miramos el accumulative stat, para saber que tanto puede afectar segun la eleccion
+
+                stats[0] += s1 + (situationManager.numRepeteatSelections[situationManager.getCurrentSituation()].nRepeatSelectLeft * situationManager.situations[situationManager.getCurrentSituation()].acumulativeStat1Left);
+                stats[1] += s2 + (situationManager.numRepeteatSelections[situationManager.getCurrentSituation()].nRepeatSelectLeft * situationManager.situations[situationManager.getCurrentSituation()].acumulativeStat2Left);
+                stats[2] += s3 + (situationManager.numRepeteatSelections[situationManager.getCurrentSituation()].nRepeatSelectLeft * situationManager.situations[situationManager.getCurrentSituation()].acumulativeStat3Left);
+                stats[3] += s4 + (situationManager.numRepeteatSelections[situationManager.getCurrentSituation()].nRepeatSelectLeft * situationManager.situations[situationManager.getCurrentSituation()].acumulativeStat4Left);
             }
-            else if (id == 1)
+            else if (option == 1)
             {
-                stats[0] += s1 + (situationManager.numRepeteatSelections[situationManager.getCurrentSituation()].nRepeatSelectRight * situationManager.situations[situationManager.getCurrentSituation()].acumulativeStat1);
-                stats[1] += s2 + (situationManager.numRepeteatSelections[situationManager.getCurrentSituation()].nRepeatSelectRight * situationManager.situations[situationManager.getCurrentSituation()].acumulativeStat2);
-                stats[2] += s3 + (situationManager.numRepeteatSelections[situationManager.getCurrentSituation()].nRepeatSelectRight * situationManager.situations[situationManager.getCurrentSituation()].acumulativeStat3);
-                stats[3] += s4 + (situationManager.numRepeteatSelections[situationManager.getCurrentSituation()].nRepeatSelectRight * situationManager.situations[situationManager.getCurrentSituation()].acumulativeStat4);
+                stats[0] += s1 + (situationManager.numRepeteatSelections[situationManager.getCurrentSituation()].nRepeatSelectRight * situationManager.situations[situationManager.getCurrentSituation()].acumulativeStat1Right);
+                stats[1] += s2 + (situationManager.numRepeteatSelections[situationManager.getCurrentSituation()].nRepeatSelectRight * situationManager.situations[situationManager.getCurrentSituation()].acumulativeStat2Right);
+                stats[2] += s3 + (situationManager.numRepeteatSelections[situationManager.getCurrentSituation()].nRepeatSelectRight * situationManager.situations[situationManager.getCurrentSituation()].acumulativeStat3Right);
+                stats[3] += s4 + (situationManager.numRepeteatSelections[situationManager.getCurrentSituation()].nRepeatSelectRight * situationManager.situations[situationManager.getCurrentSituation()].acumulativeStat4Right);
             }
-            else if (id == 2)
+            else if (option == 2)
             {
-                stats[0] += s1 + (situationManager.numRepeteatSelections[situationManager.getCurrentSituation()].nRepeatSelectDown * situationManager.situations[situationManager.getCurrentSituation()].acumulativeStat1);
-                stats[1] += s2 + (situationManager.numRepeteatSelections[situationManager.getCurrentSituation()].nRepeatSelectDown * situationManager.situations[situationManager.getCurrentSituation()].acumulativeStat2);
-                stats[2] += s3 + (situationManager.numRepeteatSelections[situationManager.getCurrentSituation()].nRepeatSelectDown * situationManager.situations[situationManager.getCurrentSituation()].acumulativeStat3);
-                stats[3] += s4 + (situationManager.numRepeteatSelections[situationManager.getCurrentSituation()].nRepeatSelectDown * situationManager.situations[situationManager.getCurrentSituation()].acumulativeStat4);
+                stats[0] += s1 + (situationManager.numRepeteatSelections[situationManager.getCurrentSituation()].nRepeatSelectDown * situationManager.situations[situationManager.getCurrentSituation()].acumulativeStat1Down);
+                stats[1] += s2 + (situationManager.numRepeteatSelections[situationManager.getCurrentSituation()].nRepeatSelectDown * situationManager.situations[situationManager.getCurrentSituation()].acumulativeStat2Down);
+                stats[2] += s3 + (situationManager.numRepeteatSelections[situationManager.getCurrentSituation()].nRepeatSelectDown * situationManager.situations[situationManager.getCurrentSituation()].acumulativeStat3Down);
+                stats[3] += s4 + (situationManager.numRepeteatSelections[situationManager.getCurrentSituation()].nRepeatSelectDown * situationManager.situations[situationManager.getCurrentSituation()].acumulativeStat4Down);
             }
         }
         else
@@ -97,7 +104,7 @@ public class GameManager : MonoBehaviour
         //En la semana de exámenes se suman los créditos dependiendo de la situación
         if (isExamWeek)
         {
-            switch (id)
+            switch (option)
             {
                 case 0:
                     credits += 60;

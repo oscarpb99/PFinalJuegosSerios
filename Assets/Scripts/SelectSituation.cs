@@ -44,10 +44,11 @@ public class SelectSituation : MonoBehaviour
                 else
                 {
                     GameManager.Instance.addorloseStats(0, GameManager.Instance.getStatsText(1)[0], GameManager.Instance.getStatsText(1)[1], GameManager.Instance.getStatsText(1)[2], GameManager.Instance.getStatsText(1)[3]);
+                    
+                    // Acumulamos repeticion de la opcion elegida
                     GameManager.Instance.situationManager.numRepeteatSelections[GameManager.Instance.situationManager.getCurrentSituation()].nRepeatSelectLeft++;
                     GameManager.Instance.situationManager.numRepeteatSelections[GameManager.Instance.situationManager.getCurrentSituation()].nRepeatSelectRight = 0;
                     GameManager.Instance.situationManager.numRepeteatSelections[GameManager.Instance.situationManager.getCurrentSituation()].nRepeatSelectDown = 0;
-                    // Debug.Log(GameManager.Instance.situationManager.numRepeteatSelections[GameManager.Instance.situationManager.getCurrentSituation()].nRepeatSelectLeft);
                     
                     // Desbloqueamos situaciones si coincide
                     GameManager.Instance.situationManager.unlockAndLockSituation(0);
@@ -72,6 +73,8 @@ public class SelectSituation : MonoBehaviour
                 else
                 {
                     GameManager.Instance.addorloseStats(1, GameManager.Instance.getStatsText(0)[0], GameManager.Instance.getStatsText(0)[1], GameManager.Instance.getStatsText(0)[2], GameManager.Instance.getStatsText(0)[3]);
+
+                    // Acumulamos repeticion de la opcion elegida 
                     GameManager.Instance.situationManager.numRepeteatSelections[GameManager.Instance.situationManager.getCurrentSituation()].nRepeatSelectLeft = 0;
                     GameManager.Instance.situationManager.numRepeteatSelections[GameManager.Instance.situationManager.getCurrentSituation()].nRepeatSelectRight++;
                     GameManager.Instance.situationManager.numRepeteatSelections[GameManager.Instance.situationManager.getCurrentSituation()].nRepeatSelectDown = 0;
@@ -100,6 +103,8 @@ public class SelectSituation : MonoBehaviour
                 else
                 {
                     GameManager.Instance.addorloseStats(2, GameManager.Instance.getStatsText(2)[0], GameManager.Instance.getStatsText(2)[1], GameManager.Instance.getStatsText(2)[2], GameManager.Instance.getStatsText(2)[3]);
+
+                    // Acumulamos repeticion de la opcion elegida
                     GameManager.Instance.situationManager.numRepeteatSelections[GameManager.Instance.situationManager.getCurrentSituation()].nRepeatSelectLeft = 0;
                     GameManager.Instance.situationManager.numRepeteatSelections[GameManager.Instance.situationManager.getCurrentSituation()].nRepeatSelectRight = 0;
                     GameManager.Instance.situationManager.numRepeteatSelections[GameManager.Instance.situationManager.getCurrentSituation()].nRepeatSelectDown++;
