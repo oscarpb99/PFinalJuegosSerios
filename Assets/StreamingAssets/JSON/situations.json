@@ -13,201 +13,318 @@
 			"stat2Right": 10,
 			"stat3Right": 0,
 			"stat4Right": 0,
+			
 			"stat1Down": 0,
 			"stat2Down": 0,
 			"stat3Down": 0,
 			"stat4Down": 0,
+
 			"spawnRate": 2,
 			"image": "Persona1",
 			"tag": "Acumulador",
 			"elecAcu": 1,
-			"acumulativeStat1": 5,
-			"acumulativeStat2": -5,
-			"acumulativeStat3": 0,
-			"acumulativeStat4": -5
 
+			"acumulativeStat1Left": 5,
+			"acumulativeStat2Left": -5,
+			"acumulativeStat3Left": 0,
+			"acumulativeStat4Left": -5,
+
+			"acumulativeStat1Right": -5,
+			"acumulativeStat2Right": 0,
+			"acumulativeStat3Right": 0,
+			"acumulativeStat4Right": 5,
+
+			"acumulativeStat1Down": 0,
+			"acumulativeStat2Down": 0,
+			"acumulativeStat3Down": 0,
+			"acumulativeStat4Down": 0
 		},
 		{
 			"situation": "Tienes varios trabajos y estudios que tener listos para dentro de poco, son muchas cosas",
 			"elec1": "ME QUEDO TODA LA NOCHE ADELANTANDO",
 			"elec2": "NECESITO DESCANSAR, MAÑANA RENDIRE MEJOR",
 			"elec3": "NULL",
+
 			"stat1Left": 0,
 			"stat2Left": -20,
 			"stat3Left": 20,
 			"stat4Left": 0,
+
 			"stat1Right": 0,
 			"stat2Right": 10,
 			"stat3Right": 0,
 			"stat4Right": 0,
+
 			"stat1Down": 0,
 			"stat2Down": 0,
 			"stat3Down": 0,
 			"stat4Down": 0,
+
 			"spawnRate": 4,
 			"image": "Estudiar",
-			"tag": "Desactivar",
+			"tag": "Acumulador",
 			"elecAcu": 0,
-			"acumulativeStat1": 0,
-			"acumulativeStat2": -5,
-			"acumulativeStat3": -5,
-			"acumulativeStat4": 0
+
+			"acumulativeStat1Left": 0,
+			"acumulativeStat2Left": -5,
+			"acumulativeStat3Left": -5,
+			"acumulativeStat4Left": 0,
+
+			"acumulativeStat1Right": 0,
+			"acumulativeStat2Right": -5,
+			"acumulativeStat3Right": -10,
+			"acumulativeStat4Right": 0,
+
+			"acumulativeStat1Down": 0,
+			"acumulativeStat2Down": 0,
+			"acumulativeStat3Down": 0,
+			"acumulativeStat4Down": 0
 		},
 		{
 			"situation": "Has terminado el proyecto grupal de milagro, pero tus compañeros no han ayudado casi nada, que haces",
 			"elec1": "HABLARLO CON EL PROFESOR",
 			"elec2": "HABLARLO CON ELLOS",
 			"elec3": "NO HACER NADA",
+
 			"stat1Left": -20,
 			"stat2Left": 20,
 			"stat3Left": 0,
 			"stat4Left": 0,
+
 			"stat1Right": -10,
 			"stat2Right": -20,
 			"stat3Right": 0,
 			"stat4Right": 0,
+
 			"stat1Down": 0,
 			"stat2Down": 10,
 			"stat3Down": 0,
 			"stat4Down": 0,
+
 			"spawnRate": 6,
 			"image": "NotTeamwork",
 			"tag": "Desactivar",
 			"elecAcu": 0,
-			"acumulativeStat1": 0,
-			"acumulativeStat2": 0,
-			"acumulativeStat3": 0,
-			"acumulativeStat4": 0
+
+			"acumulativeStat1Left": 0,
+			"acumulativeStat2Left": 0,
+			"acumulativeStat3Left": 0,
+			"acumulativeStat4Left": 0,
+
+			"acumulativeStat1Right": 0,
+			"acumulativeStat2Right": 0,
+			"acumulativeStat3Right": 0,
+			"acumulativeStat4Right": 0,
+
+			"acumulativeStat1Down": 0,
+			"acumulativeStat2Down": 0,
+			"acumulativeStat3Down": 0,
+			"acumulativeStat4Down": 0
 		},
 		{
 			"situation": "Para la semana que viene tienes muchas tareas por hacer. Como vas a organizarte?",
 			"elec1": "EMPIEZO CON ELLO CUANTO ANTES",
 			"elec2": "MEJOR MAÑANA, TENGO TIEMPO",
 			"elec3": "ME PONDRÉ EL FINDE CON TODO",
+
 			"stat1Left": 0,
 			"stat2Left": -10,
 			"stat3Left": 10,
 			"stat4Left": 0,
+
 			"stat1Right": 0,
 			"stat2Right": 10,
 			"stat3Right": -10,
 			"stat4Right": 0,
+
 			"stat1Down": -10,
 			"stat2Down": 0,
 			"stat3Down": 0,
 			"stat4Down": 0,
+
 			"spawnRate": 4,
 			"image": "Estudiar",
 			"tag": "Acumulador",
 			"elecAcu": 0,
-			"acumulativeStat1": 0,
-			"acumulativeStat2": -10,
-			"acumulativeStat3": -10,
-			"acumulativeStat4": 0
+
+			"acumulativeStat1Left": 0,
+			"acumulativeStat2Left": -5,
+			"acumulativeStat3Left": 5,
+			"acumulativeStat4Left": 0,
+
+			"acumulativeStat1Right": 0,
+			"acumulativeStat2Right": -10,
+			"acumulativeStat3Right": -10,
+			"acumulativeStat4Right": 0,
+
+			"acumulativeStat1Down": 0,
+			"acumulativeStat2Down": 0,
+			"acumulativeStat3Down": 0,
+			"acumulativeStat4Down": 0
 		},
 		{
 			"situation": "Tus padres vienen a visitarte a Madrid. Tienes el piso desordenado, sucio e inmundo… Que haces?",
 			"elec1": "LIMPIAR",
 			"elec2": "NO LIMPIAR",
 			"elec3": "NULL",
+			
 			"stat1Left": 10,
 			"stat2Left": -10,
 			"stat3Left": 0,
 			"stat4Left": 0,
+
 			"stat1Right": -10,
 			"stat2Right": 0,
 			"stat3Right": 0,
 			"stat4Right": 0,
+
 			"stat1Down": 0,
 			"stat2Down": 0,
 			"stat3Down": 0,
 			"stat4Down": 0,
+
 			"spawnRate": 4,
 			"image": "Padres",
 			"tag": "Desactivar",
 			"elecAcu": 0,
-			"acumulativeStat1": 0,
-			"acumulativeStat2": 0,
-			"acumulativeStat3": 0,
-			"acumulativeStat4": 0
+
+			"acumulativeStat1Left": 0,
+			"acumulativeStat2Left": 0,
+			"acumulativeStat3Left": 0,
+			"acumulativeStat4Left": 0,
+
+			"acumulativeStat1Right": 0,
+			"acumulativeStat2Right": 0,
+			"acumulativeStat3Right": 0,
+			"acumulativeStat4Right": 0,
+
+			"acumulativeStat1Down": 0,
+			"acumulativeStat2Down": 0,
+			"acumulativeStat3Down": 0,
+			"acumulativeStat4Down": 0
 		},
 		{
 			"situation": "Entrenamiento de futbol",
 			"elec1": "QUE BIEN SIENTA",
 			"elec2": "VAMOS A DARLE A TOPE",
 			"elec3": "NULL",
+
 			"stat1Left": 0,
 			"stat2Left": 10,
 			"stat3Left": 0,
 			"stat4Left": 0,
+
 			"stat1Right": 0,
 			"stat2Right": 20,
 			"stat3Right": -10,
 			"stat4Right": 0,
+
 			"stat1Down": 0,
 			"stat2Down": 0,
 			"stat3Down": 0,
 			"stat4Down": 0,
+
 			"spawnRate": 4,
 			"image": "Futbol",
 			"tag": "Probabilidad",
 			"elecAcu": 0,
-			"acumulativeStat1": 0,
-			"acumulativeStat2": 0,
-			"acumulativeStat3": 0,
-			"acumulativeStat4": 0
+
+			"acumulativeStat1Left": 0,
+			"acumulativeStat2Left": 0,
+			"acumulativeStat3Left": 0,
+			"acumulativeStat4Left": 0,
+
+			"acumulativeStat1Right": 0,
+			"acumulativeStat2Right": 0,
+			"acumulativeStat3Right": 0,
+			"acumulativeStat4Right": 0,
+
+			"acumulativeStat1Down": 0,
+			"acumulativeStat2Down": 0,
+			"acumulativeStat3Down": 0,
+			"acumulativeStat4Down": 0
 		},
 		{
 			"situation": "Jornada laboral",
 			"elec1": "PUES BUENO, TOCA",
 			"elec2": "LO DEJO",
 			"elec3": "NULL",
+
 			"stat1Left": 0,
 			"stat2Left": -10,
 			"stat3Left": 0,
 			"stat4Left": 10,
+
 			"stat1Right": 0,
 			"stat2Right": 10,
 			"stat3Right": 0,
 			"stat4Right": 0,
+
 			"stat1Down": 0,
 			"stat2Down": 0,
 			"stat3Down": 0,
 			"stat4Down": 0,
+
 			"spawnRate": 4,
 			"image": "Trabajo",
 			"tag": "Probabilidad",
 			"elecAcu": 0,
-			"acumulativeStat1": 0,
-			"acumulativeStat2": 0,
-			"acumulativeStat3": 0,
-			"acumulativeStat4": 0
+
+			"acumulativeStat1Left": 0,
+			"acumulativeStat2Left": 0,
+			"acumulativeStat3Left": 0,
+			"acumulativeStat4Left": 0,
+
+			"acumulativeStat1Right": 0,
+			"acumulativeStat2Right": 0,
+			"acumulativeStat3Right": 0,
+			"acumulativeStat4Right": 0,
+
+			"acumulativeStat1Down": 0,
+			"acumulativeStat2Down": 0,
+			"acumulativeStat3Down": 0,
+			"acumulativeStat4Down": 0
 		},
 		{
 			"situation": "Visita al psicologo",
 			"elec1": "HA ESTADO BIEN Y ME HA AYUDADO",
 			"elec2": "SUS CONSEJOS SON BUENOS, LOS PONDRE EN PRACTICA",
 			"elec3": "NULL",
+
 			"stat1Left": 0,
 			"stat2Left": 10,
 			"stat3Left": 0,
 			"stat4Left": 0,
+
 			"stat1Right": 0,
 			"stat2Right": 0,
 			"stat3Right": 0,
 			"stat4Right": 0,
+
 			"stat1Down": 0,
 			"stat2Down": 0,
 			"stat3Down": 0,
 			"stat4Down": 0,
+
 			"spawnRate": 4,
 			"image": "Psicall",
 			"tag": "Probabilidad",
 			"elecAcu": 0,
-			"acumulativeStat1": 0,
-			"acumulativeStat2": 5,
-			"acumulativeStat3": 0,
-			"acumulativeStat4": 0
+
+			"acumulativeStat1Left": 0,
+			"acumulativeStat2Left": 5,
+			"acumulativeStat3Left": 0,
+			"acumulativeStat4Left": 0,
+
+			"acumulativeStat1Right": 0,
+			"acumulativeStat2Right": 0,
+			"acumulativeStat3Right": 0,
+			"acumulativeStat4Right": 0,
+
+			"acumulativeStat1Down": 0,
+			"acumulativeStat2Down": 0,
+			"acumulativeStat3Down": 0,
+			"acumulativeStat4Down": 0
 		}
 	]
 }
