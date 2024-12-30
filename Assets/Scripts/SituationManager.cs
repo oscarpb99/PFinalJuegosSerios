@@ -41,7 +41,7 @@ public class SituationManager : MonoBehaviour
     [SerializeField] GameObject backgroundElec2;
     [SerializeField] GameObject backgroundElec3;
     public UnityEngine.UI.Image imagenSituation;
-    public enum Type { Acumulador};
+    public enum Type { None,Acumulador};
     public Type type;
 
 
@@ -79,6 +79,7 @@ public class SituationManager : MonoBehaviour
         int specialCardProbability;
         bool nextIsSpecial = false;
         isSpecific = false;
+        
 
 
         cardCounter++;
@@ -169,11 +170,14 @@ public class SituationManager : MonoBehaviour
             GameManager.Instance.setStatsText(1, specificSituations[currentSituation].stat1Left, specificSituations[currentSituation].stat2Left, specificSituations[currentSituation].stat3Left, specificSituations[currentSituation].stat4Left);
             GameManager.Instance.setStatsText(0, specificSituations[currentSituation].stat1Right, specificSituations[currentSituation].stat2Right, specificSituations[currentSituation].stat3Right, specificSituations[currentSituation].stat4Right);
             GameManager.Instance.setStatsText(2, specificSituations[currentSituation].stat1Down, specificSituations[currentSituation].stat2Down, specificSituations[currentSituation].stat3Down, specificSituations[currentSituation].stat4Down);
+            
 
             imagenSituation.sprite = Situations.Instance.GetSprite(specificSituations[currentSituation].image);
         }
         else
         {
+            //Empiezan con un tipo cualquiera(None) y si luego es Acumulador se cambia
+            type = Type.None;
             //Comprueba que una stat es baja para tener la posibilidad de que salga una carta especial
             if (GameManager.Instance.getStat(0) <= 20 || GameManager.Instance.getStat(1) <= 20 || GameManager.Instance.getStat(2) <= 20 || GameManager.Instance.getStat(3) <= 20)
             {
