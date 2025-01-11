@@ -106,7 +106,10 @@ public class SituationManager : MonoBehaviour
         int specialCardProbability;
         bool nextIsSpecial = false;
         isSpecific = false;
-        
+
+        //Empiezan con un tipo cualquiera(None) y si luego es Acumulador se cambia
+        type = Type.None;
+
 
 
         cardCounter++;
@@ -203,8 +206,7 @@ public class SituationManager : MonoBehaviour
         }
         else
         {
-            //Empiezan con un tipo cualquiera(None) y si luego es Acumulador se cambia
-            type = Type.None;
+            
             //Comprueba que una stat es baja para tener la posibilidad de que salga una carta especial
             if (GameManager.Instance.getStat(0) <= 20 || GameManager.Instance.getStat(1) <= 20 || GameManager.Instance.getStat(2) <= 20 || GameManager.Instance.getStat(3) <= 20)
             {
@@ -238,6 +240,7 @@ public class SituationManager : MonoBehaviour
                     {
                         currentSituation = Random.Range(0, situations.Length);
                     }
+                    
                 }
             }
             //Por diseño, metemos las cartas especiales al final
@@ -259,7 +262,20 @@ public class SituationManager : MonoBehaviour
                 textSituation.text = specificSituations[currentSituation].situation;
                 textElec1.text = specificSituations[currentSituation].elec1;
                 textElec2.text = specificSituations[currentSituation].elec2;
-                textElec3.text = specificSituations[currentSituation].elec3;
+                if (specificSituations[currentSituation].elec3 == "" || specificSituations[currentSituation].elec3 == "NULL")
+                {
+                    //type = Type.Desactivar;
+                    backgroundElec3.SetActive(false);
+                    textElec3.gameObject.SetActive(false);
+                }
+                else
+                {
+                    backgroundElec3.SetActive(true);
+                    textElec3.gameObject.SetActive(true);
+                    textElec3.text = specificSituations[currentSituation].elec3;
+                    
+
+                }
                 GameManager.Instance.setStatsText(1, specificSituations[currentSituation].stat1Left, specificSituations[currentSituation].stat2Left, specificSituations[currentSituation].stat3Left, specificSituations[currentSituation].stat4Left);
                 GameManager.Instance.setStatsText(0, specificSituations[currentSituation].stat1Right, specificSituations[currentSituation].stat2Right, specificSituations[currentSituation].stat3Right, specificSituations[currentSituation].stat4Right);
                 GameManager.Instance.setStatsText(2, specificSituations[currentSituation].stat1Down, specificSituations[currentSituation].stat2Down, specificSituations[currentSituation].stat3Down, specificSituations[currentSituation].stat4Down);
@@ -270,8 +286,7 @@ public class SituationManager : MonoBehaviour
                 textSituation.text = situations[currentSituation].situation;
                 textElec1.text = situations[currentSituation].elec1;
                 textElec2.text = situations[currentSituation].elec2;
-                if (situations[currentSituation].elec3 == "" || situations[currentSituation].elec3 == "NULL" ||
-                    specificSituations[currentSituation].elec3 == "" || specificSituations[currentSituation].elec3 == "NULL")
+                if (situations[currentSituation].elec3 == "" || situations[currentSituation].elec3 == "NULL")
                 {
                     //type = Type.Desactivar;
                     backgroundElec3.SetActive(false);
@@ -282,18 +297,24 @@ public class SituationManager : MonoBehaviour
                     backgroundElec3.SetActive(true);
                     textElec3.gameObject.SetActive(true);
                     textElec3.text = situations[currentSituation].elec3;
-                    if (situations[currentSituation].tag == "Acumulador")
-                    {
-                        type = Type.Acumulador;
-                    }
+                    
 
                 }
+
+               
+
                 GameManager.Instance.setStatsText(1, situations[currentSituation].stat1Left, situations[currentSituation].stat2Left, situations[currentSituation].stat3Left, situations[currentSituation].stat4Left);
                 GameManager.Instance.setStatsText(0, situations[currentSituation].stat1Right, situations[currentSituation].stat2Right, situations[currentSituation].stat3Right, situations[currentSituation].stat4Right);
                 GameManager.Instance.setStatsText(2, situations[currentSituation].stat1Down, situations[currentSituation].stat2Down, situations[currentSituation].stat3Down, situations[currentSituation].stat4Down);
                 sleepingSituations[currentSituation] = situations[currentSituation].spawnRate;
 
                 imagenSituation.sprite = Situations.Instance.GetSprite(situations[currentSituation].image);
+            }
+
+            //Comprueba si el tipo es acumulador
+            if ((!isSpecific && situations[currentSituation].tag == "Acumulador") || (isSpecific && specificSituations[currentSituation].tag == "Acumulador"))
+            {
+                type = Type.Acumulador;
             }
         }
 
@@ -514,5 +535,10 @@ public class SituationManager : MonoBehaviour
             lockedSpecificSituations[8] = true;
         else if(GameManager.Instance.getStat(2) > 30) // Responsabilidad academica
             lockedSpecificSituations[2] = true;
+    }
+
+    public bool getIsSpecific()
+    {
+        return isSpecific;
     }
 }
