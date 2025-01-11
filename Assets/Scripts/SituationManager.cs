@@ -443,6 +443,10 @@ public class SituationManager : MonoBehaviour
             switch(currentSituation)
             {
                 // Si existe alguna situacion general que desbloquee otras, iria aqui
+                case 6: // Situacion de Jornada Laboral
+                    if (option == 1) //
+                        lockedSituations[6] = true; // Jornada Laboral (Se bloquea a si mismo si se elige "LO DEJO")
+                    break;
 
                 default:
                     break;
