@@ -3,11 +3,26 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public struct NumRepeteatSelection
+public struct StadisticsOfSelections
 {
-     public int nRepeatSelectLeft;
-     public int nRepeatSelectRight;
-     public int nRepeatSelectDown;
+    //Numero de veces que se elige cada opcion en cada situacion
+    public int nSelectedLeft;
+    public int nSelectedRight;
+    public int nSelectedDown;
+
+    //Stats usadas para las situaciones acumulativas( las que van sumando o restando 1)
+    public int acumulativeLeft;
+    public int acumulativeRight;
+    public int acumulativeDown;
+
+    //Para las rachas
+    public int streakLeftNow;
+    public int streakRightNow;
+    public int streakDownNow;
+
+    public int maxStreakLeft;
+    public int maxStreakRight;
+    public int maxStreakDown;
 
 }
 
@@ -25,7 +40,7 @@ public class SituationManager : MonoBehaviour
     private bool[] lockedSituations;
     private bool[] lockedSpecificSituations;
 
-    public NumRepeteatSelection[] numRepeteatSelections;
+    public StadisticsOfSelections[] numRepeteatSelections;
     int lastSituation;
 
     int currentSituation;
@@ -49,12 +64,24 @@ public class SituationManager : MonoBehaviour
     void Start()
     {
         // Para cuando asignamos una situacion, ya se han cargado todas en situations
-        numRepeteatSelections=new NumRepeteatSelection[situations.Length + specificSituations.Length - 4];
+        numRepeteatSelections=new StadisticsOfSelections[situations.Length + specificSituations.Length - 4];
         for (int i = 0; i < situations.Length + specificSituations.Length - 4; i++)
         {
-            numRepeteatSelections[i].nRepeatSelectLeft = 0;
-            numRepeteatSelections[i].nRepeatSelectRight = 0;
-            numRepeteatSelections[i].nRepeatSelectDown = 0;
+            numRepeteatSelections[i].nSelectedLeft = 0;
+            numRepeteatSelections[i].nSelectedRight = 0;
+            numRepeteatSelections[i].nSelectedDown = 0;
+
+            numRepeteatSelections[i].acumulativeLeft = 0;
+            numRepeteatSelections[i].acumulativeRight = 0;
+            numRepeteatSelections[i].acumulativeDown = 0;
+
+            numRepeteatSelections[i].streakLeftNow = 0;
+            numRepeteatSelections[i].streakRightNow = 0;
+            numRepeteatSelections[i].streakDownNow = 0;
+
+            numRepeteatSelections[i].maxStreakLeft = 0;
+            numRepeteatSelections[i].maxStreakRight = 0;
+            numRepeteatSelections[i].maxStreakDown = 0;
         }
 
         lockedSituations = new bool[situations.Length];
@@ -345,18 +372,7 @@ public class SituationManager : MonoBehaviour
         SetTutorial();
     }
 
-    public int getLeftRepeated(int index)
-    {
-        return numRepeteatSelections[index].nRepeatSelectLeft;
-    }
-    public int getRightRepeated(int index)
-    {
-        return numRepeteatSelections[index].nRepeatSelectRight;
-    }
-    public int getDownRepeated(int index)
-    {
-        return numRepeteatSelections[index].nRepeatSelectDown;
-    }
+    
     public int getCurrentSituation()
     {
         return currentSituation;

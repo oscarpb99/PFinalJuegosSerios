@@ -68,29 +68,29 @@ public class GameManager : MonoBehaviour
             // Segun la eleccion que elija, modificamos los stats correspondientes
             if (option == 0)
             {
-                // Sacamos la cantidad de veces que se ha seleccionado la option 0 (izquierda) de la situacion actual
-                //situationManager.numRepeteatSelections[situationManager.getCurrentSituation()].nRepeatSelectXXXXX
+                // Sacamos la cantidad de veces que se ha seleccionado la option 0 (izquierda), opcion 1 (derecha) y opcion 2 (abajo) de la situacion actual
+                //situationManager.numRepeteatSelections[situationManager.getCurrentSituation()].acumulativeXXXX
 
                 // Miramos el accumulative stat, para saber que tanto puede afectar segun la eleccion
 
-                stats[0] += s1 + (situationManager.numRepeteatSelections[situationManager.getCurrentSituation()].nRepeatSelectLeft * situationManager.situations[situationManager.getCurrentSituation()].acumulativeStat1Left);
-                stats[1] += s2 + (situationManager.numRepeteatSelections[situationManager.getCurrentSituation()].nRepeatSelectLeft * situationManager.situations[situationManager.getCurrentSituation()].acumulativeStat2Left);
-                stats[2] += s3 + (situationManager.numRepeteatSelections[situationManager.getCurrentSituation()].nRepeatSelectLeft * situationManager.situations[situationManager.getCurrentSituation()].acumulativeStat3Left);
-                stats[3] += s4 + (situationManager.numRepeteatSelections[situationManager.getCurrentSituation()].nRepeatSelectLeft * situationManager.situations[situationManager.getCurrentSituation()].acumulativeStat4Left);
+                stats[0] += s1 + (situationManager.numRepeteatSelections[situationManager.getCurrentSituation()].acumulativeLeft * situationManager.situations[situationManager.getCurrentSituation()].acumulativeStat1Left);
+                stats[1] += s2 + (situationManager.numRepeteatSelections[situationManager.getCurrentSituation()].acumulativeLeft * situationManager.situations[situationManager.getCurrentSituation()].acumulativeStat2Left);
+                stats[2] += s3 + (situationManager.numRepeteatSelections[situationManager.getCurrentSituation()].acumulativeLeft * situationManager.situations[situationManager.getCurrentSituation()].acumulativeStat3Left);
+                stats[3] += s4 + (situationManager.numRepeteatSelections[situationManager.getCurrentSituation()].acumulativeLeft * situationManager.situations[situationManager.getCurrentSituation()].acumulativeStat4Left);
             }
             else if (option == 1)
             {
-                stats[0] += s1 + (situationManager.numRepeteatSelections[situationManager.getCurrentSituation()].nRepeatSelectRight * situationManager.situations[situationManager.getCurrentSituation()].acumulativeStat1Right);
-                stats[1] += s2 + (situationManager.numRepeteatSelections[situationManager.getCurrentSituation()].nRepeatSelectRight * situationManager.situations[situationManager.getCurrentSituation()].acumulativeStat2Right);
-                stats[2] += s3 + (situationManager.numRepeteatSelections[situationManager.getCurrentSituation()].nRepeatSelectRight * situationManager.situations[situationManager.getCurrentSituation()].acumulativeStat3Right);
-                stats[3] += s4 + (situationManager.numRepeteatSelections[situationManager.getCurrentSituation()].nRepeatSelectRight * situationManager.situations[situationManager.getCurrentSituation()].acumulativeStat4Right);
+                stats[0] += s1 + (situationManager.numRepeteatSelections[situationManager.getCurrentSituation()].acumulativeRight * situationManager.situations[situationManager.getCurrentSituation()].acumulativeStat1Right);
+                stats[1] += s2 + (situationManager.numRepeteatSelections[situationManager.getCurrentSituation()].acumulativeRight * situationManager.situations[situationManager.getCurrentSituation()].acumulativeStat2Right);
+                stats[2] += s3 + (situationManager.numRepeteatSelections[situationManager.getCurrentSituation()].acumulativeRight * situationManager.situations[situationManager.getCurrentSituation()].acumulativeStat3Right);
+                stats[3] += s4 + (situationManager.numRepeteatSelections[situationManager.getCurrentSituation()].acumulativeRight * situationManager.situations[situationManager.getCurrentSituation()].acumulativeStat4Right);
             }
             else if (option == 2)
             {
-                stats[0] += s1 + (situationManager.numRepeteatSelections[situationManager.getCurrentSituation()].nRepeatSelectDown * situationManager.situations[situationManager.getCurrentSituation()].acumulativeStat1Down);
-                stats[1] += s2 + (situationManager.numRepeteatSelections[situationManager.getCurrentSituation()].nRepeatSelectDown * situationManager.situations[situationManager.getCurrentSituation()].acumulativeStat2Down);
-                stats[2] += s3 + (situationManager.numRepeteatSelections[situationManager.getCurrentSituation()].nRepeatSelectDown * situationManager.situations[situationManager.getCurrentSituation()].acumulativeStat3Down);
-                stats[3] += s4 + (situationManager.numRepeteatSelections[situationManager.getCurrentSituation()].nRepeatSelectDown * situationManager.situations[situationManager.getCurrentSituation()].acumulativeStat4Down);
+                stats[0] += s1 + (situationManager.numRepeteatSelections[situationManager.getCurrentSituation()].acumulativeDown * situationManager.situations[situationManager.getCurrentSituation()].acumulativeStat1Down);
+                stats[1] += s2 + (situationManager.numRepeteatSelections[situationManager.getCurrentSituation()].acumulativeDown * situationManager.situations[situationManager.getCurrentSituation()].acumulativeStat2Down);
+                stats[2] += s3 + (situationManager.numRepeteatSelections[situationManager.getCurrentSituation()].acumulativeDown * situationManager.situations[situationManager.getCurrentSituation()].acumulativeStat3Down);
+                stats[3] += s4 + (situationManager.numRepeteatSelections[situationManager.getCurrentSituation()].acumulativeDown * situationManager.situations[situationManager.getCurrentSituation()].acumulativeStat4Down);
             }
         }
         else
