@@ -31,64 +31,18 @@ public class NextSituation : MonoBehaviour
         createNewImageInstance();
     }
 
-    /*private void FixedUpdate()
-    {
-        // Independientemente de donde se suelte la imagen, si está encima de un texto, se procesa la situación
-        if ((text1Rect.gameObject.activeSelf && isOverlapping(imageRect, text1Rect)) 
-            || (text2Rect.gameObject.activeSelf && isOverlapping(imageRect, text2Rect) )
-            || (text3Rect.gameObject.activeSelf && isOverlapping(imageRect, text3Rect)))
-        {
-            if (isLetGo)
-            {
-                // Procesamos la siguiente situación
-                processSituationData.ProcessData();
-                createNewImageInstance();
-
-                // Reseteamos su posicion en vez de destruirlo
-                dragImage.resetPos();
-            }
-        }
-        else
-        {
-            if (isLetGo)
-            {
-                dragImage.resetPos();
-            }
-            isLetGo = false;
-        }
-
-
-    }*/
-
     private void FixedUpdate()
     {
-        if (isOverlapping(imageRect, text1Rect))
+        if ((text1Rect.gameObject.activeSelf && isOverlapping(imageRect, text1Rect))
+            || (text2Rect.gameObject.activeSelf && isOverlapping(imageRect, text2Rect))
+            || (text3Rect.gameObject.activeSelf && isOverlapping(imageRect, text3Rect)))
         {
-            if (isLetGo)
+            // Si no hemos llegado al final de las situaciones a analizar
+            if (isLetGo && GameManager.Instance.indexGameDataSaved < GameManager.Instance.lastGameDataSaved.Length)
             {
-                // Procesamos la siguiente situación
-                processSituationData.ProcessData();
-                createNewImageInstance();
-            }
-
-        }
-        else if (isOverlapping(imageRect, text2Rect))
-        {
-            if (isLetGo)
-            {
-                // Procesamos la siguiente situación
-                processSituationData.ProcessData();
-                createNewImageInstance();
-
-            }
-        }
-        else if (text3Rect.gameObject.activeSelf && isOverlapping(imageRect, text3Rect))
-        {
-            if (isLetGo)
-            {
-                // Procesamos la siguiente situación
-                processSituationData.ProcessData();
-                createNewImageInstance();
+                    // Procesamos la siguiente situación
+                    processSituationData.ProcessData();
+                    createNewImageInstance();
             }
         }
         else
@@ -124,7 +78,8 @@ public class NextSituation : MonoBehaviour
     private void createNewImageInstance()
     {
         // Cambiamos la imagen por la de la siguiente situacion a analizar
-        GetComponent<UnityEngine.UI.Image>().sprite = GameManager.Instance.lastGameDataSaved[GameManager.Instance.indexGameDataSaved].image;
+        if(GameManager.Instance.indexGameDataSaved < GameManager.Instance.lastGameDataSaved.Length)
+            GetComponent<UnityEngine.UI.Image>().sprite = GameManager.Instance.lastGameDataSaved[GameManager.Instance.indexGameDataSaved].image;
         
         
         transform.SetParent(canvas.transform, false);

@@ -10,6 +10,7 @@ public class DragImage : MonoBehaviour,IDragHandler, IEndDragHandler
     private Vector2 offset;
     private Vector2 posIni;
     private SelectSituation selectSituation;
+    private NextSituation nextSituation;
 
 
     private void Awake()
@@ -17,6 +18,12 @@ public class DragImage : MonoBehaviour,IDragHandler, IEndDragHandler
         rectTransform = GetComponent<RectTransform>();
         posIni = rectTransform.localPosition;
         selectSituation = GetComponent<SelectSituation>();
+
+        // Si no pilla selecSituation, asumimos que esta en la escena final
+        if(selectSituation == null)
+        {
+            nextSituation = GetComponent<NextSituation>();
+        }
     }
   
     public void OnDrag(PointerEventData eventData)
@@ -36,6 +43,11 @@ public class DragImage : MonoBehaviour,IDragHandler, IEndDragHandler
         //Llamamos a la función OnLetGo de SelectSituation
         if (selectSituation != null) {
             selectSituation.OnLetGo();
+        }
+        // Si selectSituation es null, asumimos que es la escena final
+        else if(nextSituation != null)
+        {
+            nextSituation.OnLetGo();
         }
         
     }

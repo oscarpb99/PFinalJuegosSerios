@@ -60,6 +60,7 @@ public class ProcessSituationData : MonoBehaviour
 
         // Si una situacion tiene un posible analisis y se ha activado, se activa esta condicion
         bool conditionActivated = false;
+        int nVeces = dataToAnalyze[i].nSelectedLeft + dataToAnalyze[i].nSelectedRight;
 
         // Process data
         switch (GameManager.Instance.indexGameDataSaved)
@@ -67,9 +68,10 @@ public class ProcessSituationData : MonoBehaviour
             case 0:
                 // Situacion Salir de Fiesta
                 // Si ha salido (1/3 * nVeces que ha salido la carta) veces de fiesta y su responsabilidad academica es menor que 25
+                // y ha habido al menos 3 fiestas
                 situationText.text = "Salir de Fiesta";
-                int nVeces = dataToAnalyze[i].nSelectedLeft + dataToAnalyze[i].nSelectedRight;
-                if (dataToAnalyze[i].nSelectedLeft > nVeces / 3 && GameManager.Instance.stats[2] < 25)
+                if (dataToAnalyze[i].nSelectedLeft > nVeces / 3 && GameManager.Instance.stats[2] <= 25 &&
+                    nVeces >= 3)
                 {
                     // Conclusion: El jugador no es responsable
                     elec1Text.gameObject.SetActive(true);
@@ -81,8 +83,9 @@ public class ProcessSituationData : MonoBehaviour
             case 1:
                 // Situacion Adelantas trabajo por la noche o descansas
                 situationText.text = "Adelantas trabajo por la noche o descansas";
-                // Si el jugador ha trasnochado al menos 4 veces mas que de lo que ha descansado
-                if (dataToAnalyze[i].nSelectedLeft + 4 > dataToAnalyze[i].nSelectedRight)
+                // Si el jugador ha trasnochado al menos 2 veces mas que de lo que ha descansado
+
+                if (dataToAnalyze[i].nSelectedLeft > dataToAnalyze[i].nSelectedRight + 2)
                 {
                     elec1Text.gameObject.SetActive(true);
                     elec1Text.text = "La de organizarte bien te la sabes?";
@@ -179,8 +182,7 @@ public class ProcessSituationData : MonoBehaviour
                 }
 
                 // Si la situacion ha salido al menos 4 veces y el jugador ha ido al psicologo menos de 2 veces y el stat de bienestar es menor que 25
-                if ((dataToAnalyze[i].nSelectedLeft + dataToAnalyze[i].nSelectedRight + dataToAnalyze[i].nSelectedDown) >= 4 
-                    && dataToAnalyze[i].nSelectedRight < 2 && GameManager.Instance.stats[1] < 25)
+                if (nVeces >= 4 && dataToAnalyze[i].nSelectedRight < 2 && GameManager.Instance.stats[1] <= 25)
                 {
                     elec2Text.gameObject.SetActive(true);
                     elec2Text.text = "No pasa nada por hablarlo con un profesional. Psicall es una buena opcion";

@@ -62,6 +62,10 @@ public class SituationManager : MonoBehaviour
     public enum Type { None,Acumulador};
     public Type type;
 
+    private void Awake()
+    {
+        GameManager.Instance.situationManager = this;
+    }
 
     // Start is called before the first frame update
     void Start()
