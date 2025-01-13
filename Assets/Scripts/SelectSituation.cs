@@ -46,27 +46,28 @@ public class SelectSituation : MonoBehaviour
                     GameManager.Instance.addorloseStats(0, GameManager.Instance.getStatsText(1)[0], GameManager.Instance.getStatsText(1)[1], GameManager.Instance.getStatsText(1)[2], GameManager.Instance.getStatsText(1)[3]);
 
                     //Sumamos uno a las veces que se coge la izquierda de una determinada situacion
-                    GameManager.Instance.situationManager.numRepeteatSelections[GameManager.Instance.situationManager.getCurrentSituation()].nSelectedLeft++;
+                    GameManager.Instance.situationManager.numRepeatedSelections[GameManager.Instance.situationManager.getCurrentSituation()].nSelectedLeft++;
 
-                    // Para las situaciones acumuladoras, restamos y sumamos 1 
-                    GameManager.Instance.situationManager.numRepeteatSelections[GameManager.Instance.situationManager.getCurrentSituation()].acumulativeLeft++;
+                    // Para las eleccion izquierda de la situacion acumuladora, restamos y sumamos 1 
+                    GameManager.Instance.situationManager.numRepeatedSelections[GameManager.Instance.situationManager.getCurrentSituation()].acumulativeLeft++;
 
-                    if(GameManager.Instance.situationManager.numRepeteatSelections[GameManager.Instance.situationManager.getCurrentSituation()].acumulativeRight>0)
-                        GameManager.Instance.situationManager.numRepeteatSelections[GameManager.Instance.situationManager.getCurrentSituation()].acumulativeRight--;
+                    // Para el resto de elecciones de las situaciones acumuladoras, restamos 1
+                    if(GameManager.Instance.situationManager.numRepeatedSelections[GameManager.Instance.situationManager.getCurrentSituation()].acumulativeRight>0)
+                        GameManager.Instance.situationManager.numRepeatedSelections[GameManager.Instance.situationManager.getCurrentSituation()].acumulativeRight--;
 
-                    if (GameManager.Instance.situationManager.numRepeteatSelections[GameManager.Instance.situationManager.getCurrentSituation()].acumulativeDown > 0)
-                        GameManager.Instance.situationManager.numRepeteatSelections[GameManager.Instance.situationManager.getCurrentSituation()].acumulativeDown--;
+                    if (GameManager.Instance.situationManager.numRepeatedSelections[GameManager.Instance.situationManager.getCurrentSituation()].acumulativeDown > 0)
+                        GameManager.Instance.situationManager.numRepeatedSelections[GameManager.Instance.situationManager.getCurrentSituation()].acumulativeDown--;
 
 
                     // Acumular para actualizar la racha actual
-                    GameManager.Instance.situationManager.numRepeteatSelections[GameManager.Instance.situationManager.getCurrentSituation()].streakLeftNow++;
-                    GameManager.Instance.situationManager.numRepeteatSelections[GameManager.Instance.situationManager.getCurrentSituation()].streakRightNow = 0;
-                    GameManager.Instance.situationManager.numRepeteatSelections[GameManager.Instance.situationManager.getCurrentSituation()].streakDownNow = 0;
+                    GameManager.Instance.situationManager.numRepeatedSelections[GameManager.Instance.situationManager.getCurrentSituation()].streakLeftNow++;
+                    GameManager.Instance.situationManager.numRepeatedSelections[GameManager.Instance.situationManager.getCurrentSituation()].streakRightNow = 0;
+                    GameManager.Instance.situationManager.numRepeatedSelections[GameManager.Instance.situationManager.getCurrentSituation()].streakDownNow = 0;
 
                     //Guardamos la mejor racha 
-                    if(GameManager.Instance.situationManager.numRepeteatSelections[GameManager.Instance.situationManager.getCurrentSituation()].streakLeftNow > GameManager.Instance.situationManager.numRepeteatSelections[GameManager.Instance.situationManager.getCurrentSituation()].maxStreakLeft)
+                    if(GameManager.Instance.situationManager.numRepeatedSelections[GameManager.Instance.situationManager.getCurrentSituation()].streakLeftNow > GameManager.Instance.situationManager.numRepeatedSelections[GameManager.Instance.situationManager.getCurrentSituation()].maxStreakLeft)
                     {
-                        GameManager.Instance.situationManager.numRepeteatSelections[GameManager.Instance.situationManager.getCurrentSituation()].maxStreakLeft = GameManager.Instance.situationManager.numRepeteatSelections[GameManager.Instance.situationManager.getCurrentSituation()].streakLeftNow;
+                        GameManager.Instance.situationManager.numRepeatedSelections[GameManager.Instance.situationManager.getCurrentSituation()].maxStreakLeft = GameManager.Instance.situationManager.numRepeatedSelections[GameManager.Instance.situationManager.getCurrentSituation()].streakLeftNow;
                     }
                     
                     // Desbloqueamos situaciones si coincide
@@ -94,27 +95,28 @@ public class SelectSituation : MonoBehaviour
                     GameManager.Instance.addorloseStats(1, GameManager.Instance.getStatsText(0)[0], GameManager.Instance.getStatsText(0)[1], GameManager.Instance.getStatsText(0)[2], GameManager.Instance.getStatsText(0)[3]);
 
                     //Sumamos uno a las veces que se coge la derecha de una determinada situacion
-                    GameManager.Instance.situationManager.numRepeteatSelections[GameManager.Instance.situationManager.getCurrentSituation()].nSelectedRight++;
+                    GameManager.Instance.situationManager.numRepeatedSelections[GameManager.Instance.situationManager.getCurrentSituation()].nSelectedRight++;
 
-                    // Para las situaciones acumuladoras, restamos y sumamos 1 
-                    if (GameManager.Instance.situationManager.numRepeteatSelections[GameManager.Instance.situationManager.getCurrentSituation()].acumulativeLeft > 0)
-                        GameManager.Instance.situationManager.numRepeteatSelections[GameManager.Instance.situationManager.getCurrentSituation()].acumulativeLeft--;
+                    // Para la eleccion izquierda de la situacion acumuladora, restamos 1 
+                    if (GameManager.Instance.situationManager.numRepeatedSelections[GameManager.Instance.situationManager.getCurrentSituation()].acumulativeLeft > 0)
+                        GameManager.Instance.situationManager.numRepeatedSelections[GameManager.Instance.situationManager.getCurrentSituation()].acumulativeLeft--;
 
-                    GameManager.Instance.situationManager.numRepeteatSelections[GameManager.Instance.situationManager.getCurrentSituation()].acumulativeRight++;
+                    // Sumamos 1 para la eleccion derecha de la situacion acumuladora
+                    GameManager.Instance.situationManager.numRepeatedSelections[GameManager.Instance.situationManager.getCurrentSituation()].acumulativeRight++;
 
-                    if (GameManager.Instance.situationManager.numRepeteatSelections[GameManager.Instance.situationManager.getCurrentSituation()].acumulativeDown > 0)
-                        GameManager.Instance.situationManager.numRepeteatSelections[GameManager.Instance.situationManager.getCurrentSituation()].acumulativeDown--;
-
+                    // Para la eleccion de abajo de la situacion acumuladora, restamos 1
+                    if (GameManager.Instance.situationManager.numRepeatedSelections[GameManager.Instance.situationManager.getCurrentSituation()].acumulativeDown > 0)
+                        GameManager.Instance.situationManager.numRepeatedSelections[GameManager.Instance.situationManager.getCurrentSituation()].acumulativeDown--;
 
                     // Acumular para actualizar la racha actual
-                    GameManager.Instance.situationManager.numRepeteatSelections[GameManager.Instance.situationManager.getCurrentSituation()].streakLeftNow = 0;
-                    GameManager.Instance.situationManager.numRepeteatSelections[GameManager.Instance.situationManager.getCurrentSituation()].streakRightNow++;
-                    GameManager.Instance.situationManager.numRepeteatSelections[GameManager.Instance.situationManager.getCurrentSituation()].streakDownNow = 0;
+                    GameManager.Instance.situationManager.numRepeatedSelections[GameManager.Instance.situationManager.getCurrentSituation()].streakLeftNow = 0;
+                    GameManager.Instance.situationManager.numRepeatedSelections[GameManager.Instance.situationManager.getCurrentSituation()].streakRightNow++;
+                    GameManager.Instance.situationManager.numRepeatedSelections[GameManager.Instance.situationManager.getCurrentSituation()].streakDownNow = 0;
 
                     //Guardamos la mejor racha 
-                    if (GameManager.Instance.situationManager.numRepeteatSelections[GameManager.Instance.situationManager.getCurrentSituation()].streakRightNow > GameManager.Instance.situationManager.numRepeteatSelections[GameManager.Instance.situationManager.getCurrentSituation()].maxStreakRight)
+                    if (GameManager.Instance.situationManager.numRepeatedSelections[GameManager.Instance.situationManager.getCurrentSituation()].streakRightNow > GameManager.Instance.situationManager.numRepeatedSelections[GameManager.Instance.situationManager.getCurrentSituation()].maxStreakRight)
                     {
-                        GameManager.Instance.situationManager.numRepeteatSelections[GameManager.Instance.situationManager.getCurrentSituation()].maxStreakRight = GameManager.Instance.situationManager.numRepeteatSelections[GameManager.Instance.situationManager.getCurrentSituation()].streakRightNow;
+                        GameManager.Instance.situationManager.numRepeatedSelections[GameManager.Instance.situationManager.getCurrentSituation()].maxStreakRight = GameManager.Instance.situationManager.numRepeatedSelections[GameManager.Instance.situationManager.getCurrentSituation()].streakRightNow;
                     }
 
                     // Desbloqueamos situaciones si coincide
@@ -143,26 +145,28 @@ public class SelectSituation : MonoBehaviour
                     GameManager.Instance.addorloseStats(2, GameManager.Instance.getStatsText(2)[0], GameManager.Instance.getStatsText(2)[1], GameManager.Instance.getStatsText(2)[2], GameManager.Instance.getStatsText(2)[3]);
 
                     //Sumamos uno a las veces que se coge la de abajo de una determinada situacion
-                    GameManager.Instance.situationManager.numRepeteatSelections[GameManager.Instance.situationManager.getCurrentSituation()].nSelectedDown++;
+                    GameManager.Instance.situationManager.numRepeatedSelections[GameManager.Instance.situationManager.getCurrentSituation()].nSelectedDown++;
 
-                    // Para las situaciones acumuladoras, restamos y sumamos 1 
-                    if (GameManager.Instance.situationManager.numRepeteatSelections[GameManager.Instance.situationManager.getCurrentSituation()].acumulativeLeft > 0)
-                        GameManager.Instance.situationManager.numRepeteatSelections[GameManager.Instance.situationManager.getCurrentSituation()].acumulativeLeft--;
+                    // Para la eleccion izquierda de la situacion acumulador, restamos 
+                    if (GameManager.Instance.situationManager.numRepeatedSelections[GameManager.Instance.situationManager.getCurrentSituation()].acumulativeLeft > 0)
+                        GameManager.Instance.situationManager.numRepeatedSelections[GameManager.Instance.situationManager.getCurrentSituation()].acumulativeLeft--;
 
-                    if (GameManager.Instance.situationManager.numRepeteatSelections[GameManager.Instance.situationManager.getCurrentSituation()].acumulativeRight > 0)
-                        GameManager.Instance.situationManager.numRepeteatSelections[GameManager.Instance.situationManager.getCurrentSituation()].acumulativeRight--;
+                    // Para la eleccion derecha de la situacion acumuladora, restamos
+                    if (GameManager.Instance.situationManager.numRepeatedSelections[GameManager.Instance.situationManager.getCurrentSituation()].acumulativeRight > 0)
+                        GameManager.Instance.situationManager.numRepeatedSelections[GameManager.Instance.situationManager.getCurrentSituation()].acumulativeRight--;
 
-                    GameManager.Instance.situationManager.numRepeteatSelections[GameManager.Instance.situationManager.getCurrentSituation()].acumulativeDown++;
+                    // Sumamos 1 para la eleccion de abajo de la situacion acumuladora
+                    GameManager.Instance.situationManager.numRepeatedSelections[GameManager.Instance.situationManager.getCurrentSituation()].acumulativeDown++;
 
                     // Acumular para actualizar la racha actual
-                    GameManager.Instance.situationManager.numRepeteatSelections[GameManager.Instance.situationManager.getCurrentSituation()].streakLeftNow = 0;
-                    GameManager.Instance.situationManager.numRepeteatSelections[GameManager.Instance.situationManager.getCurrentSituation()].streakRightNow = 0;
-                    GameManager.Instance.situationManager.numRepeteatSelections[GameManager.Instance.situationManager.getCurrentSituation()].streakDownNow++;
+                    GameManager.Instance.situationManager.numRepeatedSelections[GameManager.Instance.situationManager.getCurrentSituation()].streakLeftNow = 0;
+                    GameManager.Instance.situationManager.numRepeatedSelections[GameManager.Instance.situationManager.getCurrentSituation()].streakRightNow = 0;
+                    GameManager.Instance.situationManager.numRepeatedSelections[GameManager.Instance.situationManager.getCurrentSituation()].streakDownNow++;
 
                     //Guardamos la mejor racha 
-                    if (GameManager.Instance.situationManager.numRepeteatSelections[GameManager.Instance.situationManager.getCurrentSituation()].streakDownNow > GameManager.Instance.situationManager.numRepeteatSelections[GameManager.Instance.situationManager.getCurrentSituation()].maxStreakDown)
+                    if (GameManager.Instance.situationManager.numRepeatedSelections[GameManager.Instance.situationManager.getCurrentSituation()].streakDownNow > GameManager.Instance.situationManager.numRepeatedSelections[GameManager.Instance.situationManager.getCurrentSituation()].maxStreakDown)
                     {
-                        GameManager.Instance.situationManager.numRepeteatSelections[GameManager.Instance.situationManager.getCurrentSituation()].maxStreakDown = GameManager.Instance.situationManager.numRepeteatSelections[GameManager.Instance.situationManager.getCurrentSituation()].streakDownNow;
+                        GameManager.Instance.situationManager.numRepeatedSelections[GameManager.Instance.situationManager.getCurrentSituation()].maxStreakDown = GameManager.Instance.situationManager.numRepeatedSelections[GameManager.Instance.situationManager.getCurrentSituation()].streakDownNow;
                     }
 
                     // Desbloqueamos situaciones si coincide

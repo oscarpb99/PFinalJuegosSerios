@@ -20,9 +20,12 @@ public struct StadisticsOfSelections
     public int streakRightNow;
     public int streakDownNow;
 
+    // Maxima racha conseguida
     public int maxStreakLeft;
     public int maxStreakRight;
     public int maxStreakDown;
+
+    public Sprite image;
 
 }
 
@@ -40,7 +43,7 @@ public class SituationManager : MonoBehaviour
     private bool[] lockedSituations;
     private bool[] lockedSpecificSituations;
 
-    public StadisticsOfSelections[] numRepeteatSelections;
+    public StadisticsOfSelections[] numRepeatedSelections;
     int lastSituation;
 
     int currentSituation;
@@ -64,24 +67,24 @@ public class SituationManager : MonoBehaviour
     void Start()
     {
         // Para cuando asignamos una situacion, ya se han cargado todas en situations
-        numRepeteatSelections=new StadisticsOfSelections[situations.Length + specificSituations.Length - 4];
+        numRepeatedSelections=new StadisticsOfSelections[situations.Length + specificSituations.Length - 4];
         for (int i = 0; i < situations.Length + specificSituations.Length - 4; i++)
         {
-            numRepeteatSelections[i].nSelectedLeft = 0;
-            numRepeteatSelections[i].nSelectedRight = 0;
-            numRepeteatSelections[i].nSelectedDown = 0;
+            numRepeatedSelections[i].nSelectedLeft = 0;
+            numRepeatedSelections[i].nSelectedRight = 0;
+            numRepeatedSelections[i].nSelectedDown = 0;
 
-            numRepeteatSelections[i].acumulativeLeft = 0;
-            numRepeteatSelections[i].acumulativeRight = 0;
-            numRepeteatSelections[i].acumulativeDown = 0;
+            numRepeatedSelections[i].acumulativeLeft = 0;
+            numRepeatedSelections[i].acumulativeRight = 0;
+            numRepeatedSelections[i].acumulativeDown = 0;
 
-            numRepeteatSelections[i].streakLeftNow = 0;
-            numRepeteatSelections[i].streakRightNow = 0;
-            numRepeteatSelections[i].streakDownNow = 0;
+            numRepeatedSelections[i].streakLeftNow = 0;
+            numRepeatedSelections[i].streakRightNow = 0;
+            numRepeatedSelections[i].streakDownNow = 0;
 
-            numRepeteatSelections[i].maxStreakLeft = 0;
-            numRepeteatSelections[i].maxStreakRight = 0;
-            numRepeteatSelections[i].maxStreakDown = 0;
+            numRepeatedSelections[i].maxStreakLeft = 0;
+            numRepeatedSelections[i].maxStreakRight = 0;
+            numRepeatedSelections[i].maxStreakDown = 0;
         }
 
         lockedSituations = new bool[situations.Length];
@@ -98,6 +101,21 @@ public class SituationManager : MonoBehaviour
         yearDifficulty = 0;
         tutorialCounter = 0;
         specificCounter = 0;
+
+        // Guardamos el sprite de cada situacion
+        for (int i = 0; i < situations.Length + specificSituations.Length - 4; i++)
+        {
+            if(i < situations.Length)
+            {
+                numRepeatedSelections[i].image = Situations.Instance.GetSprite(situations[i].image);
+            }
+            else
+            {
+                numRepeatedSelections[i].image = Situations.Instance.GetSprite(specificSituations[i - situations.Length].image);
+            }
+            
+        }
+
         SetTutorial();
     }
 
@@ -498,20 +516,20 @@ public class SituationManager : MonoBehaviour
                     break;
                 case 3: // SpecificSituations[3] de unirse al club de futbol que desbloquea:
                     if(option == 0) // Si elige SI unirse al club de futbol
-                        lockedSituations[5] = false; // Entrenamiento de futbol
+                        lockedSpecificSituations[4] = false; // Entrenamiento de futbol
                     break;
 
                 case 4: // SpecificSituations[4] de Conseguir Trabajo que desbloquea:
                     if (option == 0) // Si elige "LO COGEMOS"
-                        lockedSituations[6] = false; // Jornada Laboral
+                        lockedSpecificSituations[5] = false; // Jornada Laboral
                     break;
                 case 6: // SpecificSituations[6] de Temporada de examenes te deja agotado que desbloquea:
                     if (option == 1) // Si elige "Lo hablo con un profesional"
-                        lockedSituations[7] = false; // Visita al psicologo
+                        lockedSpecificSituations[6] = false; // Visita al psicologo
                     break;
                 case 8: // SpecificSituations[8] de Ultimamente las cosas no han ido bien que desbloquea:
                     if (option == 1) // Si elige "Deberia ir al psicologo"
-                        lockedSituations[7] = false; // Visita al psicologo
+                        lockedSpecificSituations[6] = false; // Visita al psicologo
                     break;
 
             }

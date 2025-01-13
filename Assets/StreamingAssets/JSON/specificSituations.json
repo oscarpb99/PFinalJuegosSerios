@@ -63,14 +63,14 @@
 			"image": "Persona3",
 			"tag": "Acumulador",
 
-			"acumulativeStat1Left": 100,
+			"acumulativeStat1Left": 0,
 			"acumulativeStat2Left": 0,
-			"acumulativeStat3Left": -10,
+			"acumulativeStat3Left": 0,
 			"acumulativeStat4Left": 0,
 
-			"acumulativeStat1Right": -10,
+			"acumulativeStat1Right": 0,
 			"acumulativeStat2Right": 0,
-			"acumulativeStat3Right": 10,
+			"acumulativeStat3Right": 0,
 			"acumulativeStat4Right": 0,
 
 			"acumulativeStat1Down": 0,
@@ -323,12 +323,12 @@
 			"stat3Left": 0,
 			"stat4Left": 0,
 
-			"stat1Right": 0,
+			"stat1Right": 10,
 			"stat2Right": 0,
 			"stat3Right": 0,
 			"stat4Right": 0,
 
-			"stat1Down": 10,
+			"stat1Down": 0,
 			"stat2Down": 0,
 			"stat3Down": 0,
 			"stat4Down": 0,

@@ -8,8 +8,19 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
     public GameObject imagenPrefab;
     public SituationManager situationManager;
+
+    // Al final de cada partida, guardamos los datos de cada situacion
+    public StadisticsOfSelections[] lastGameDataSaved;
+    public int indexGameDataSaved = 0;
+    public void saveSituationData(StadisticsOfSelections[] data)
+    {
+        lastGameDataSaved = data;
+        indexGameDataSaved = 0;
+    }
+
+    
     public UIFill[] imagesStats;
-    private float[] stats= new float[4];
+    public float[] stats= new float[4];
     
     public float []valuesIni = new float [4];
 
@@ -74,51 +85,51 @@ public class GameManager : MonoBehaviour
                 // Miramos el accumulative stat, para saber que tanto puede afectar segun la eleccion
                 if (!situationManager.getIsSpecific())
                 {
-                    stats[0] += s1 + (situationManager.numRepeteatSelections[situationManager.getCurrentSituation()].acumulativeLeft * situationManager.situations[situationManager.getCurrentSituation()].acumulativeStat1Left);
-                    stats[1] += s2 + (situationManager.numRepeteatSelections[situationManager.getCurrentSituation()].acumulativeLeft * situationManager.situations[situationManager.getCurrentSituation()].acumulativeStat2Left);
-                    stats[2] += s3 + (situationManager.numRepeteatSelections[situationManager.getCurrentSituation()].acumulativeLeft * situationManager.situations[situationManager.getCurrentSituation()].acumulativeStat3Left);
-                    stats[3] += s4 + (situationManager.numRepeteatSelections[situationManager.getCurrentSituation()].acumulativeLeft * situationManager.situations[situationManager.getCurrentSituation()].acumulativeStat4Left);
+                    stats[0] += s1 + (situationManager.numRepeatedSelections[situationManager.getCurrentSituation()].acumulativeLeft * situationManager.situations[situationManager.getCurrentSituation()].acumulativeStat1Left);
+                    stats[1] += s2 + (situationManager.numRepeatedSelections[situationManager.getCurrentSituation()].acumulativeLeft * situationManager.situations[situationManager.getCurrentSituation()].acumulativeStat2Left);
+                    stats[2] += s3 + (situationManager.numRepeatedSelections[situationManager.getCurrentSituation()].acumulativeLeft * situationManager.situations[situationManager.getCurrentSituation()].acumulativeStat3Left);
+                    stats[3] += s4 + (situationManager.numRepeatedSelections[situationManager.getCurrentSituation()].acumulativeLeft * situationManager.situations[situationManager.getCurrentSituation()].acumulativeStat4Left);
                 }
                 else
                 {
-                    stats[0] += s1 + (situationManager.numRepeteatSelections[situationManager.getCurrentSituation()].acumulativeLeft * situationManager.specificSituations[situationManager.getCurrentSituation()].acumulativeStat1Left);
-                    stats[1] += s2 + (situationManager.numRepeteatSelections[situationManager.getCurrentSituation()].acumulativeLeft * situationManager.specificSituations[situationManager.getCurrentSituation()].acumulativeStat2Left);
-                    stats[2] += s3 + (situationManager.numRepeteatSelections[situationManager.getCurrentSituation()].acumulativeLeft * situationManager.specificSituations[situationManager.getCurrentSituation()].acumulativeStat3Left);
-                    stats[3] += s4 + (situationManager.numRepeteatSelections[situationManager.getCurrentSituation()].acumulativeLeft * situationManager.specificSituations[situationManager.getCurrentSituation()].acumulativeStat4Left);
+                    stats[0] += s1 + (situationManager.numRepeatedSelections[situationManager.getCurrentSituation()].acumulativeLeft * situationManager.specificSituations[situationManager.getCurrentSituation()].acumulativeStat1Left);
+                    stats[1] += s2 + (situationManager.numRepeatedSelections[situationManager.getCurrentSituation()].acumulativeLeft * situationManager.specificSituations[situationManager.getCurrentSituation()].acumulativeStat2Left);
+                    stats[2] += s3 + (situationManager.numRepeatedSelections[situationManager.getCurrentSituation()].acumulativeLeft * situationManager.specificSituations[situationManager.getCurrentSituation()].acumulativeStat3Left);
+                    stats[3] += s4 + (situationManager.numRepeatedSelections[situationManager.getCurrentSituation()].acumulativeLeft * situationManager.specificSituations[situationManager.getCurrentSituation()].acumulativeStat4Left);
                 }
             }
             else if (option == 1)
             {
                 if (!situationManager.getIsSpecific())
                 {
-                    stats[0] += s1 + (situationManager.numRepeteatSelections[situationManager.getCurrentSituation()].acumulativeRight * situationManager.situations[situationManager.getCurrentSituation()].acumulativeStat1Right);
-                    stats[1] += s2 + (situationManager.numRepeteatSelections[situationManager.getCurrentSituation()].acumulativeRight * situationManager.situations[situationManager.getCurrentSituation()].acumulativeStat2Right);
-                    stats[2] += s3 + (situationManager.numRepeteatSelections[situationManager.getCurrentSituation()].acumulativeRight * situationManager.situations[situationManager.getCurrentSituation()].acumulativeStat3Right);
-                    stats[3] += s4 + (situationManager.numRepeteatSelections[situationManager.getCurrentSituation()].acumulativeRight * situationManager.situations[situationManager.getCurrentSituation()].acumulativeStat4Right);
+                    stats[0] += s1 + (situationManager.numRepeatedSelections[situationManager.getCurrentSituation()].acumulativeRight * situationManager.situations[situationManager.getCurrentSituation()].acumulativeStat1Right);
+                    stats[1] += s2 + (situationManager.numRepeatedSelections[situationManager.getCurrentSituation()].acumulativeRight * situationManager.situations[situationManager.getCurrentSituation()].acumulativeStat2Right);
+                    stats[2] += s3 + (situationManager.numRepeatedSelections[situationManager.getCurrentSituation()].acumulativeRight * situationManager.situations[situationManager.getCurrentSituation()].acumulativeStat3Right);
+                    stats[3] += s4 + (situationManager.numRepeatedSelections[situationManager.getCurrentSituation()].acumulativeRight * situationManager.situations[situationManager.getCurrentSituation()].acumulativeStat4Right);
                 }
                 else
                 {
-                    stats[0] += s1 + (situationManager.numRepeteatSelections[situationManager.getCurrentSituation()].acumulativeRight * situationManager.specificSituations[situationManager.getCurrentSituation()].acumulativeStat1Right);
-                    stats[1] += s2 + (situationManager.numRepeteatSelections[situationManager.getCurrentSituation()].acumulativeRight * situationManager.specificSituations[situationManager.getCurrentSituation()].acumulativeStat2Right);
-                    stats[2] += s3 + (situationManager.numRepeteatSelections[situationManager.getCurrentSituation()].acumulativeRight * situationManager.specificSituations[situationManager.getCurrentSituation()].acumulativeStat3Right);
-                    stats[3] += s4 + (situationManager.numRepeteatSelections[situationManager.getCurrentSituation()].acumulativeRight * situationManager.specificSituations[situationManager.getCurrentSituation()].acumulativeStat4Right);
+                    stats[0] += s1 + (situationManager.numRepeatedSelections[situationManager.getCurrentSituation()].acumulativeRight * situationManager.specificSituations[situationManager.getCurrentSituation()].acumulativeStat1Right);
+                    stats[1] += s2 + (situationManager.numRepeatedSelections[situationManager.getCurrentSituation()].acumulativeRight * situationManager.specificSituations[situationManager.getCurrentSituation()].acumulativeStat2Right);
+                    stats[2] += s3 + (situationManager.numRepeatedSelections[situationManager.getCurrentSituation()].acumulativeRight * situationManager.specificSituations[situationManager.getCurrentSituation()].acumulativeStat3Right);
+                    stats[3] += s4 + (situationManager.numRepeatedSelections[situationManager.getCurrentSituation()].acumulativeRight * situationManager.specificSituations[situationManager.getCurrentSituation()].acumulativeStat4Right);
                 }
             }
             else if (option == 2)
             {
                 if (!situationManager.getIsSpecific())
                 {
-                    stats[0] += s1 + (situationManager.numRepeteatSelections[situationManager.getCurrentSituation()].acumulativeDown * situationManager.situations[situationManager.getCurrentSituation()].acumulativeStat1Down);
-                    stats[1] += s2 + (situationManager.numRepeteatSelections[situationManager.getCurrentSituation()].acumulativeDown * situationManager.situations[situationManager.getCurrentSituation()].acumulativeStat2Down);
-                    stats[2] += s3 + (situationManager.numRepeteatSelections[situationManager.getCurrentSituation()].acumulativeDown * situationManager.situations[situationManager.getCurrentSituation()].acumulativeStat3Down);
-                    stats[3] += s4 + (situationManager.numRepeteatSelections[situationManager.getCurrentSituation()].acumulativeDown * situationManager.situations[situationManager.getCurrentSituation()].acumulativeStat4Down);
+                    stats[0] += s1 + (situationManager.numRepeatedSelections[situationManager.getCurrentSituation()].acumulativeDown * situationManager.situations[situationManager.getCurrentSituation()].acumulativeStat1Down);
+                    stats[1] += s2 + (situationManager.numRepeatedSelections[situationManager.getCurrentSituation()].acumulativeDown * situationManager.situations[situationManager.getCurrentSituation()].acumulativeStat2Down);
+                    stats[2] += s3 + (situationManager.numRepeatedSelections[situationManager.getCurrentSituation()].acumulativeDown * situationManager.situations[situationManager.getCurrentSituation()].acumulativeStat3Down);
+                    stats[3] += s4 + (situationManager.numRepeatedSelections[situationManager.getCurrentSituation()].acumulativeDown * situationManager.situations[situationManager.getCurrentSituation()].acumulativeStat4Down);
                 }
                 else
                 {
-                    stats[0] += s1 + (situationManager.numRepeteatSelections[situationManager.getCurrentSituation()].acumulativeDown * situationManager.specificSituations[situationManager.getCurrentSituation()].acumulativeStat1Down);
-                    stats[1] += s2 + (situationManager.numRepeteatSelections[situationManager.getCurrentSituation()].acumulativeDown * situationManager.specificSituations[situationManager.getCurrentSituation()].acumulativeStat2Down);
-                    stats[2] += s3 + (situationManager.numRepeteatSelections[situationManager.getCurrentSituation()].acumulativeDown * situationManager.specificSituations[situationManager.getCurrentSituation()].acumulativeStat3Down);
-                    stats[3] += s4 + (situationManager.numRepeteatSelections[situationManager.getCurrentSituation()].acumulativeDown * situationManager.specificSituations[situationManager.getCurrentSituation()].acumulativeStat4Down);
+                    stats[0] += s1 + (situationManager.numRepeatedSelections[situationManager.getCurrentSituation()].acumulativeDown * situationManager.specificSituations[situationManager.getCurrentSituation()].acumulativeStat1Down);
+                    stats[1] += s2 + (situationManager.numRepeatedSelections[situationManager.getCurrentSituation()].acumulativeDown * situationManager.specificSituations[situationManager.getCurrentSituation()].acumulativeStat2Down);
+                    stats[2] += s3 + (situationManager.numRepeatedSelections[situationManager.getCurrentSituation()].acumulativeDown * situationManager.specificSituations[situationManager.getCurrentSituation()].acumulativeStat3Down);
+                    stats[3] += s4 + (situationManager.numRepeatedSelections[situationManager.getCurrentSituation()].acumulativeDown * situationManager.specificSituations[situationManager.getCurrentSituation()].acumulativeStat4Down);
                 }
             }
         }
@@ -154,6 +165,7 @@ public class GameManager : MonoBehaviour
             {
                 stats[i] = 0;
                 winCondition = false;
+                saveSituationData(situationManager.numRepeatedSelections);
                 SceneManager.LoadScene("EndScene");
             }
             else if (stats[i] > 100)
@@ -170,6 +182,7 @@ public class GameManager : MonoBehaviour
         if(credits >= totalCredits)
         {
             winCondition = true;
+            saveSituationData(situationManager.numRepeatedSelections);
             SceneManager.LoadScene("EndScene");
         }
     }
