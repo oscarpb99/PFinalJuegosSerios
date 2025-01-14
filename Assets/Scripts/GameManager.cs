@@ -165,7 +165,9 @@ public class GameManager : MonoBehaviour
             {
                 stats[i] = 0;
                 winCondition = false;
+                imagenPrefab.GetComponent<SelectSituation>().addStadistics(option);
                 saveSituationData(situationManager.numRepeatedSelections);
+                situationManager.exportStatisticsToJson("Prueba.json");
                 SceneManager.LoadScene("EndScene");
             }
             else if (stats[i] > 100)
@@ -182,7 +184,9 @@ public class GameManager : MonoBehaviour
         if(credits >= totalCredits)
         {
             winCondition = true;
+            imagenPrefab.GetComponent<SelectSituation>().addStadistics(option);
             saveSituationData(situationManager.numRepeatedSelections);
+            situationManager.exportStatisticsToJson("Prueba.json");
             SceneManager.LoadScene("EndScene");
         }
     }

@@ -1,8 +1,13 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using System.Text;
 using TMPro;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
+[Serializable]
 public struct StadisticsOfSelections
 {
     //Numero de veces que se elige cada opcion en cada situacion
@@ -176,7 +181,7 @@ public class SituationManager : MonoBehaviour
                 // Desbloqueamos la situacion de que tus compañeros se graduan
                 lockedSpecificSituations[7] = false;
             }
-
+            isSpecific = true;
             currentSituation = 0;
             textSituation.text = specificSituations[currentSituation].situation;
             int maxDifficulty = 70 + yearDifficulty;
@@ -562,5 +567,75 @@ public class SituationManager : MonoBehaviour
     public bool getIsSpecific()
     {
         return isSpecific;
+    }
+
+    public void exportStatisticsToJson(string name)
+    {
+        StringBuilder jsonBuilder = new StringBuilder();
+        // Define la ruta del archivo JSON dentro de la carpeta "Assets/ExportedStats"
+        string folderPath = Path.Combine(Directory.GetCurrentDirectory(), "ExportedStats");
+        jsonBuilder.Append("[");
+        // Serializa los objetos de 'situations' y 'numRepeatedSelections' a JSON
+        for (int i = 0; i < situations.Length; i++)
+        {
+            StadisticsToExport stadisticsOfOneSituation = new StadisticsToExport
+            {
+                situation = situations[i].situation,
+                elec1 = situations[i].elec1,
+                nSelectedLeft = numRepeatedSelections[i].nSelectedLeft,
+                maxStreakLeft = numRepeatedSelections[i].maxStreakLeft,
+                elec2 = situations[i].elec2,
+                nSelectedRight = numRepeatedSelections[i].nSelectedRight,
+                maxStreakRight = numRepeatedSelections[i].maxStreakRight,
+                elec3 = situations[i].elec3,
+                nSelectedDown = numRepeatedSelections[i].nSelectedDown,
+                maxStreakDown = numRepeatedSelections[i].maxStreakDown
+
+            };
+            // Serializar el objeto anónimo
+            jsonBuilder.Append(JsonUtility.ToJson(stadisticsOfOneSituation,true));
+            jsonBuilder.Append(",\n");
+            
+        }
+
+        // Serializa los objetos de 'specificSituations' y las repeticiones correspondientes
+        for (int i = 0; i < specificSituations.Length-4; i++)
+        {
+            StadisticsToExport stadisticsOfOneSituation = new StadisticsToExport
+            {
+                situation = specificSituations[i].situation,
+                elec1 = specificSituations[i].elec1,
+                nSelectedLeft = numRepeatedSelections[situations.Length+i].nSelectedLeft,
+                maxStreakLeft = numRepeatedSelections[situations.Length+i].maxStreakLeft,
+                elec2 = specificSituations[i].elec2,
+                nSelectedRight = numRepeatedSelections[situations.Length + i].nSelectedRight,
+                maxStreakRight = numRepeatedSelections[situations.Length + i].maxStreakRight,
+                elec3 = specificSituations[i].elec3,
+                nSelectedDown = numRepeatedSelections[situations.Length + i].nSelectedDown,
+                maxStreakDown = numRepeatedSelections[situations.Length + i].maxStreakDown
+
+            };
+            // Serializar el objeto anónimo
+            jsonBuilder.Append(JsonUtility.ToJson(stadisticsOfOneSituation, true));
+
+            // Si no es el último elemento, agrega una coma
+            if (i < specificSituations.Length - 5)
+            {
+                jsonBuilder.Append(",\n");
+            }
+        }
+
+        jsonBuilder.Append("\n]");
+
+        // Convertir el StringBuilder a un string
+        string json = jsonBuilder.ToString();
+
+        // Define la ruta del archivo JSON
+        string path = Path.Combine(folderPath, name);
+
+        // Guarda el archivo JSON
+        File.WriteAllText(path, json);
+
+        Debug.Log("Estadísticas exportadas a: " + path);
     }
 }

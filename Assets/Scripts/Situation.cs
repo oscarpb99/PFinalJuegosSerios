@@ -10,10 +10,13 @@ public class Situation
     // Stat2 es Bienestar
     // Stat3 es Responsabilidad Academica
     // Stat4 es Dinero
-
+    [SerializeField]
 	public string situation;
+    [SerializeField]
 	public string elec1;
+    [SerializeField]
     public string elec2;
+    [SerializeField]
     public string elec3;
 	public int stat1Left;
     public int stat2Left;
