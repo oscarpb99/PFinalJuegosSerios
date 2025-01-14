@@ -60,7 +60,7 @@ public class ProcessSituationData : MonoBehaviour
 
         // Si una situacion tiene un posible analisis y se ha activado, se activa esta condicion
         bool conditionActivated = false;
-        int nVeces = dataToAnalyze[i].nSelectedLeft + dataToAnalyze[i].nSelectedRight;
+        int nVeces = dataToAnalyze[i].nSelectedLeft + dataToAnalyze[i].nSelectedRight + dataToAnalyze[i].nSelectedDown;
 
         // Process data
         switch (GameManager.Instance.indexGameDataSaved)
@@ -69,7 +69,7 @@ public class ProcessSituationData : MonoBehaviour
                 // Situacion Salir de Fiesta
                 // Si ha salido (1/3 * nVeces que ha salido la carta) veces de fiesta y su responsabilidad academica es menor que 25
                 // y ha habido al menos 3 fiestas
-                situationText.text = "Salir de Fiesta";
+                situationText.text = "Te han comentado para salir de fiesta, probablemente hasta bastante tarde. Te apuntas al plan?";
                 if (dataToAnalyze[i].nSelectedLeft > nVeces / 3 && GameManager.Instance.stats[2] <= 25 &&
                     nVeces >= 3)
                 {
@@ -82,7 +82,7 @@ public class ProcessSituationData : MonoBehaviour
 
             case 1:
                 // Situacion Adelantas trabajo por la noche o descansas
-                situationText.text = "Adelantas trabajo por la noche o descansas";
+                situationText.text = "Tienes varios trabajos y estudios que tener listos para dentro de poco, son muchas cosas";
                 // Si el jugador ha trasnochado al menos 2 veces mas que de lo que ha descansado
 
                 if (dataToAnalyze[i].nSelectedLeft > dataToAnalyze[i].nSelectedRight + 2)
@@ -102,7 +102,7 @@ public class ProcessSituationData : MonoBehaviour
                 break;
             case 3:
                 // Situacion 4
-                situationText.text = "Muchas cosas que hacer, lo dejo para mañana o empiezo ahora con ello";
+                situationText.text = "Para la semana que viene tienes muchas tareas por hacer. Como vas a organizarte?";
 
                 // Si el jugador ha pospuesto 4 veces seguidas sus tareas
                 if (dataToAnalyze[i].maxStreakRight >= 4)
@@ -135,13 +135,14 @@ public class ProcessSituationData : MonoBehaviour
 
             case 8:
                 // SpecificSituacion 0
+                // Situacion de los examenes
                 // Inicio de las situaciones especiales [CUIDADO, si se añade mas situaciones normales, el inicio de las situaciones especiales cambiará]
                 break;
 
             case 10:
                 // SpecificSituacion 2
                 // El profe me cae mal, voy o no a tutoria
-                situationText.text = "No te va muy bien en los estudios, deberias pedir tutoria al profesor que te cae mal.";
+                situationText.text = "No te va muy bien en los estudios, deberias pedir tutoria al profesor que te cae mal. ¿Que haces?";
 
                 // Si el jugador ha evitado la tutoria 5 veces mas de lo que ha ido
                 if (dataToAnalyze[i].nSelectedLeft - dataToAnalyze[i].nSelectedRight <= -5)
@@ -171,7 +172,7 @@ public class ProcessSituationData : MonoBehaviour
             case 14:
                 // SpecificSituation 6
                 // Ultima Temporada de examenes te deja cansao, vas al psicoloco o con quien lo hablas
-                situationText.text = "La última temporada de exámenes te ha dejado bastante agotado y estas algo deprimido.";
+                situationText.text = "La última temporada de exámenes te ha dejado bastante agotado y estas algo deprimido, Que haces?";
 
                 // Si el jugador piensa que ha sido una mala racha 3 veces
                 if (dataToAnalyze[i].nSelectedDown >= 3) 

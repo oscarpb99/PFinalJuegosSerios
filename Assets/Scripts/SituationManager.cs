@@ -5,6 +5,7 @@ using System.IO;
 using System.Text;
 using TMPro;
 using UnityEngine;
+using UnityEngine.TestTools;
 using Random = UnityEngine.Random;
 
 [Serializable]
@@ -94,6 +95,11 @@ public class SituationManager : MonoBehaviour
             numRepeatedSelections[i].maxStreakLeft = 0;
             numRepeatedSelections[i].maxStreakRight = 0;
             numRepeatedSelections[i].maxStreakDown = 0;
+        }
+
+        for (int i = 0; i < GameManager.Instance.stats.Length; i++)
+        {
+            GameManager.Instance.stats[i] = 50;
         }
 
         lockedSituations = new bool[situations.Length];
