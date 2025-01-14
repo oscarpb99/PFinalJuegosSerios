@@ -574,6 +574,10 @@ public class SituationManager : MonoBehaviour
         StringBuilder jsonBuilder = new StringBuilder();
         // Define la ruta del archivo JSON dentro de la carpeta "Assets/ExportedStats"
         string folderPath = Path.Combine(Directory.GetCurrentDirectory(), "ExportedStats");
+        if (!Directory.Exists(folderPath))
+        {
+            Directory.CreateDirectory(folderPath);
+        }
         jsonBuilder.Append("[");
         // Serializa los objetos de 'situations' y 'numRepeatedSelections' a JSON
         for (int i = 0; i < situations.Length; i++)
