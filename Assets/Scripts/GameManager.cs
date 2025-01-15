@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
 
     public int totalCredits = 240;
     int credits = 0;
+    int year = 1;
 
     private bool winCondition;
     private bool isExamWeek;
@@ -158,6 +159,7 @@ public class GameManager : MonoBehaviour
                     credits += 24;
                     break;
             }
+            year += 1;
             isExamWeek = false;
         }
 
@@ -240,6 +242,11 @@ public class GameManager : MonoBehaviour
     public int getCredits()
     {
         return credits;
+    }
+
+    public int getYear()
+    {
+        return year;
     }
 
     public void examWeek()

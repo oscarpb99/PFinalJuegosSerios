@@ -35,11 +35,11 @@ public class ProcessSituationData : MonoBehaviour
         if (GameManager.Instance.getWinCondition())
             conditionWinText.text = "¡¡Has conseguido acabar la carrera!!";
         else if (GameManager.Instance.getStat(0) <= 0)
-            conditionWinText.text = "Estas demasiado solo y te está afectando por lo que decides abandonar la carrera";
+            conditionWinText.text = "Estas demasiado solo y te está afectando, por lo que decides abandonar la carrera";
         else if (GameManager.Instance.getStat(1) <= 0)
             conditionWinText.text = "El estrés y el cansancio generado por la carrera hacen que no puedas más y decides abandonarla";
         else if (GameManager.Instance.getStat(2) <= 0)
-            conditionWinText.text = "No tienes ganas de estudiar y decides abandonar la carrera";
+            conditionWinText.text = "La ingenta cantidad de estudio te abruma y decides abandonar la carrera";
         else if (GameManager.Instance.getStat(3) <= 0)
             conditionWinText.text = "Te has quedado sin dinero y no puedes continuar la carrera";
     }
@@ -67,15 +67,15 @@ public class ProcessSituationData : MonoBehaviour
         {
             case 0:
                 // Situacion Salir de Fiesta
-                // Si ha salido (1/3 * nVeces que ha salido la carta) veces de fiesta y su responsabilidad academica es menor que 25
+                // Si ha salido (2/3 * nVeces que ha salido la carta) veces de fiesta y su responsabilidad academica es menor que 25
                 // y ha habido al menos 3 fiestas
                 situationText.text = "Te han comentado para salir de fiesta, probablemente hasta bastante tarde. Te apuntas al plan?";
-                if (dataToAnalyze[i].nSelectedLeft > nVeces / 3 && GameManager.Instance.stats[2] <= 25 &&
+                if (dataToAnalyze[i].nSelectedLeft >= nVeces * 2/3 && GameManager.Instance.stats[2] <= 25 &&
                     nVeces >= 3)
                 {
                     // Conclusion: El jugador no es responsable
                     elec1Text.gameObject.SetActive(true);
-                    elec1Text.text = "Bro, relajate que la idea es terminar la carrera, no hacer speedrun de coma etilico";
+                    elec1Text.text = "Antepones mucho el ocio a tus estudios. Tienes que saber equilibrar tu tiempo libre con tus responsabilidades académicas. Disfruta de tus años universitarios, pero aprende a desarrollar una disciplina";
                     conditionActivated = true;
                 }
                 break;
@@ -88,7 +88,7 @@ public class ProcessSituationData : MonoBehaviour
                 if (dataToAnalyze[i].nSelectedLeft > dataToAnalyze[i].nSelectedRight + 2)
                 {
                     elec1Text.gameObject.SetActive(true);
-                    elec1Text.text = "La de organizarte bien te la sabes?";
+                    elec1Text.text = "Tu bienestar y descanso se ve perjudicado por tener que quedarte hasta tarde trabajando. Una mejor organización y gestión de horarios reduce el número de veces que te quedas hasta tarde";
                     conditionActivated = true;
                 }
 
@@ -96,7 +96,7 @@ public class ProcessSituationData : MonoBehaviour
                 if (dataToAnalyze[i].maxStreakLeft >= 3)
                 {
                     elec2Text.gameObject.SetActive(true);
-                    elec2Text.text = "Tienes unas ojeras del tamaño de la cueva de Batman. Necesitas descansar";
+                    elec2Text.text = "Estar varios días seguidos durmiendo poco es muy perjudicial, aunque sea por quedarte trabajando. Es mejor priorizar tu salud a tus deberes";
                     conditionActivated = true;
                 }
                 break;
@@ -108,7 +108,7 @@ public class ProcessSituationData : MonoBehaviour
                 if (dataToAnalyze[i].maxStreakRight >= 4)
                 {
                     elec1Text.gameObject.SetActive(true);
-                    elec1Text.text = "No dejes para mañana lo que puedes hacer hoy";
+                    elec1Text.text = "Postponer mucho tus deberes solo hace que se acumulen al final. Llévalos día a día y te será mucho más fácil a la larga";
                     conditionActivated = true;
                 }
 
@@ -116,7 +116,7 @@ public class ProcessSituationData : MonoBehaviour
                 if (dataToAnalyze[i].maxStreakDown >= 4)
                 {
                     elec2Text.gameObject.SetActive(true);
-                    elec2Text.text = "Tus amigos suelen estar libre en mitad de semana, adelanta lo que puedas en el resto de la semana";
+                    elec2Text.text = "Dejar las cosas para el fin de semana puede entrar en conflicto con tu ocio. Si tienes tiempo entre semana, adelanta todo lo que puedas";
                     conditionActivated = true;
                 }
 
@@ -124,7 +124,7 @@ public class ProcessSituationData : MonoBehaviour
                 if (dataToAnalyze[i].maxStreakLeft >= 4)
                 { 
                     elec3Text.gameObject.SetActive(true);
-                    elec3Text.text = "A menos que tu tarea sea urgente, no pasa nada por descansar un poco";
+                    elec3Text.text = "Recuerda que no hace falta estar todos los días machacándose a trabajar. Toda persona se merece un descanso, incluido tú";
                     conditionActivated = true;
                 }
 
@@ -148,14 +148,14 @@ public class ProcessSituationData : MonoBehaviour
                 if (dataToAnalyze[i].nSelectedLeft - dataToAnalyze[i].nSelectedRight <= -5)
                 {
                     elec1Text.gameObject.SetActive(true);
-                    elec1Text.text = "Asi como dato: El profesor es el que sabe como se debe realizar la asignatura";
+                    elec1Text.text = "El profesor es la persona que mejor va a saber lo que entra en su examen o prioriza en su asignatura. Usar su conocimiento a tu favor es lo más recomendable";
                     conditionActivated = true;
                 }
                 // Si el jugador ha ido 5 veces mas a tutoria que las que ha evitado
                 else if (dataToAnalyze[i].nSelectedLeft - dataToAnalyze[i].nSelectedRight >= 5)
                 {
                     elec1Text.gameObject.SetActive(true);
-                    elec1Text.text = "Además de la tutoria del profesor, puedes preguntar a amigos, ir a la biblioteca o mirar apuntes pasados";
+                    elec1Text.text = "Si las tutorías con este profesor te afectan más a la salud mentald e lo que te ayudan con los estudios, recuerda que hay otros recursos como libros, vídeos o incluso compañeros a los que preguntar";
                     conditionActivated = true;
                 }
 
@@ -164,7 +164,7 @@ public class ProcessSituationData : MonoBehaviour
                 { 
                     elec2Text.gameObject.SetActive(true);
                     // Github copilot ha sugerido esta respuesta y yo no lo voy a cambiar
-                    elec2Text.text = "No te va a morder, y si lo hace, denuncialo";
+                    elec2Text.text = "En asignaturas complicadas, dejar las tutorías para el final solo hará que el camino se te haga más difícil. Si ves que se te atasca, intenta desatascarte cuando antes";
                     conditionActivated = true;
                 }
                 break;
@@ -178,7 +178,7 @@ public class ProcessSituationData : MonoBehaviour
                 if (dataToAnalyze[i].nSelectedDown >= 3) 
                 {
                     elec1Text.gameObject.SetActive(true);
-                    elec1Text.text = "No te lo guardes todo, intenta hablarlo con alguien que sino luego explotas";
+                    elec1Text.text = "Guardarse los sentimientos negativos no es la solución, no pasa nada por sentirse mal. Tienes gente a la que puedes recurrir y que te puede ayudar. No estás sol@";
                     conditionActivated = true;
                 }
 
@@ -186,7 +186,7 @@ public class ProcessSituationData : MonoBehaviour
                 if (nVeces >= 4 && dataToAnalyze[i].nSelectedRight < 2 && GameManager.Instance.stats[1] <= 25)
                 {
                     elec2Text.gameObject.SetActive(true);
-                    elec2Text.text = "No pasa nada por hablarlo con un profesional. Psicall es una buena opcion";
+                    elec2Text.text = "Hay profesionales que pueden ayudar especialmente bien con temas de salud mental y bienestar. No tengas miedo en acudir a ellos. Psicall, por ejemplo, es un servicio gratuito";
                     conditionActivated = true;
                 }
                 break;

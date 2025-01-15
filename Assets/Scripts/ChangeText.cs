@@ -20,9 +20,13 @@ public class ChangeText : MonoBehaviour
         {
             text.text = GameManager.Instance.getStat(index).ToString();
         }
-        else
+        else if(index == 6)
         {
             text.text = GameManager.Instance.getCredits().ToString();
+        }
+        else
+        {
+            text.text = GameManager.Instance.getYear().ToString();
         }
     }
 
@@ -33,9 +37,13 @@ public class ChangeText : MonoBehaviour
         {
             text.text = GameManager.Instance.getStat(index).ToString();
         }
-        else
+        else if(index == 6)
         {
             text.text = GameManager.Instance.getCredits().ToString();
+        }
+        else
+        {
+            text.text = GameManager.Instance.getYear().ToString();
         }
     }
 }

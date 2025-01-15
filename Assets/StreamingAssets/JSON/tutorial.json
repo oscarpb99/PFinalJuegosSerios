@@ -17,7 +17,7 @@
 			"stat2Down": 0,
 			"stat3Down": 0,
 			"stat4Down": 0,
-			"image": "Persona1"
+			"image": "Ente"
 		},
 		{
 			"situation": "En este juego eres un estudiante recien llegado a la universidad. Tu objetivo es graduarte",
@@ -36,7 +36,7 @@
 			"stat2Down": 0,
 			"stat3Down": 0,
 			"stat4Down": 0,
-			"image": "Persona1"
+			"image": "Ente"
 		},
 		{
 			"situation": "Para ello tienes que balancear los distintos aspectos de tu vida, sin que ninguno caiga a cero",
@@ -55,7 +55,7 @@
 			"stat2Down": 0,
 			"stat3Down": 0,
 			"stat4Down": 0,
-			"image": "Persona1"
+			"image": "Ente"
 		},
 		{
 			"situation": "Las decisiones que tomes afectaran a dichas estadisticas, indicadas arriba con diferentes simbolos",
@@ -74,7 +74,7 @@
 			"stat2Down": 0,
 			"stat3Down": 0,
 			"stat4Down": 0,
-			"image": "Persona1"
+			"image": "Ente"
 		},
 		{
 			"situation": "El primero es tu vida social, el segundo tu bienestar, el tercero tu responsabilidad academica y el cuarto tu dinero",
@@ -93,7 +93,7 @@
 			"stat2Down": 0,
 			"stat3Down": 0,
 			"stat4Down": 60,
-			"image": "Persona1"
+			"image": "Ente"
 		},
 		{
 			"situation": "Cada cierto numero de situaciones tendras la semana de examenes, las cuales te otorgan creditos en base a tu stat de Res. Academicas",
@@ -112,7 +112,7 @@
 			"stat2Down": 0,
 			"stat3Down": 0,
 			"stat4Down": 0,
-			"image": "Persona1"
+			"image": "Ente"
 		},
 		{
 			"situation": "Terminas la carrera llegando a los 240 creditos. A la derecha tienes el contador de los que llevas aprobados",
@@ -131,7 +131,7 @@
 			"stat2Down": 0,
 			"stat3Down": 0,
 			"stat4Down": 0,
-			"image": "Persona1"
+			"image": "Ente"
 		}
 	]
 }

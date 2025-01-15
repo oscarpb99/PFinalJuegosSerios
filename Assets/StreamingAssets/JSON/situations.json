@@ -20,7 +20,7 @@
 			"stat4Down": 0,
 
 			"spawnRate": 2,
-			"image": "Persona1",
+			"image": "Friends",
 			"tag": "Acumulador",
 			"elecAcu": 1,
 
@@ -307,7 +307,7 @@
 			"stat4Down": 0,
 
 			"spawnRate": 4,
-			"image": "Psicall",
+			"image": "Therapy",
 			"tag": "Probabilidad",
 			"elecAcu": 0,
 
