@@ -347,7 +347,7 @@
 			"acumulativeStat4Right": 0,
 
 			"acumulativeStat1Down": 0,
-			"acumulativeStat2Down": 0,
+			"acumulativeStat2Down": -5,
 			"acumulativeStat3Down": 0,
 			"acumulativeStat4Down": 0
 		},
@@ -407,7 +407,7 @@
 			"stat4Right": 0,
 
 			"stat1Down": 0,
-			"stat2Down": 0,
+			"stat2Down": 60,
 			"stat3Down": 0,
 			"stat4Down": 0,
 			"image": "Therapy",

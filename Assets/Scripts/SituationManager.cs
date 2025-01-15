@@ -515,6 +515,9 @@ public class SituationManager : MonoBehaviour
                 case 2:
                     lockedSpecificSituations[i] = true; //Tutoria profesor 
                     break;
+                case 5:
+                    lockedSpecificSituations[i] = true; // Dormiste poco
+                    break;
                 case 6:
                     lockedSpecificSituations[i] = true; // Temporada de examenes te deja agotado
                     break;
@@ -587,8 +590,13 @@ public class SituationManager : MonoBehaviour
         if (cardCounter >= cartasAño/2)
         {
             // Si el bienestar esta por debajo de 30, desbloqueamos la situacion de "Ultimamente las cosas no han ido bien"
-            if (GameManager.Instance.getStat(1) <= 30) 
+            // Tambien desbloqueamos la situacion de "Dormiste poco"
+            if (GameManager.Instance.getStat(1) <= 30)
+            {
                 lockedSpecificSituations[8] = false;
+                lockedSpecificSituations[5] = false;
+            }
+            
 
             // Si la responsabilidad academica esta por debajo de 30, desbloqueamos la situacion de "Tutoria profesor"
             else if(GameManager.Instance.getStat(2) <= 30)
@@ -596,8 +604,12 @@ public class SituationManager : MonoBehaviour
         }
 
         // Chequeamos si las stats son normales, en cuyo caso volvemos a bloquear algunas situaciones
-        if(GameManager.Instance.getStat(1) > 30) // Bienestar
+        if (GameManager.Instance.getStat(1) > 30) // Bienestar
+        {
             lockedSpecificSituations[8] = true;
+            lockedSpecificSituations[5] = true;
+        }
+        
         else if(GameManager.Instance.getStat(2) > 30) // Responsabilidad academica
             lockedSpecificSituations[2] = true;
     }
