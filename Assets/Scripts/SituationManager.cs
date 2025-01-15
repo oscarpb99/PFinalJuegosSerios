@@ -112,6 +112,8 @@ public class SituationManager : MonoBehaviour
             sleepingSituations[i] = 0;
         }
         cartasAño = Random.Range(15, 25);
+        //cartasAño = Random.Range(5, 10);
+
         cardCounter = 0;
         yearDifficulty = 0;
         tutorialCounter = 0;
@@ -174,6 +176,8 @@ public class SituationManager : MonoBehaviour
         {
             cardCounter = 0;
             cartasAño = Random.Range(15, 25);
+            //cartasAño = Random.Range(5, 10);
+
             contadorAños++;
 
             // Si es el primer año
@@ -205,7 +209,12 @@ public class SituationManager : MonoBehaviour
 
             if (GameManager.Instance.getStat(2) >= maxDifficulty) 
             {
+                // Texto BIEN TODO PASADO activado
+                backgroundElec1.SetActive(true);
+                textElec1.gameObject.SetActive(true);
                 textElec1.text = specificSituations[currentSituation].elec1;
+
+                // Desactivamos los otros 2 textos
                 backgroundElec2.SetActive(false);
                 textElec2.gameObject.SetActive(false);
                 backgroundElec3.SetActive(false);
@@ -213,23 +222,39 @@ public class SituationManager : MonoBehaviour
             }
             else if(GameManager.Instance.getStat(2) >= midDifficulty)
             {
+                // Texto BIEN TODO PASADO desactivado
                 backgroundElec1.SetActive(false);
                 textElec1.gameObject.SetActive(false);
+
+                // Texto BUENO, ME HAN QUEDADO ALGUNAS activado
+                backgroundElec2.SetActive(true);
+                textElec2.gameObject.SetActive(true);
                 textElec2.text = specificSituations[currentSituation].elec2;
+
+                // Desactivamos el otro texto
                 backgroundElec3.SetActive(false);
                 textElec3.gameObject.SetActive(false);
                 yearDifficulty += 10;
             }
             else
             {
+                // Desactivamos los 2 primeros textos
                 backgroundElec1.SetActive(false);
                 textElec1.gameObject.SetActive(false);
+
                 backgroundElec2.SetActive(false);
                 textElec2.gameObject.SetActive(false);
+
+                // Texto JODER, ¿TANTAS? activado
+                backgroundElec3.SetActive(true);
+                textElec3.gameObject.SetActive(true);
                 textElec3.text = specificSituations[currentSituation].elec3;
+                
                 yearDifficulty += 20;
             }
             GameManager.Instance.examWeek();
+
+
             GameManager.Instance.setStatsText(1, specificSituations[currentSituation].stat1Left, specificSituations[currentSituation].stat2Left, specificSituations[currentSituation].stat3Left, specificSituations[currentSituation].stat4Left);
             GameManager.Instance.setStatsText(0, specificSituations[currentSituation].stat1Right, specificSituations[currentSituation].stat2Right, specificSituations[currentSituation].stat3Right, specificSituations[currentSituation].stat4Right);
             GameManager.Instance.setStatsText(2, specificSituations[currentSituation].stat1Down, specificSituations[currentSituation].stat2Down, specificSituations[currentSituation].stat3Down, specificSituations[currentSituation].stat4Down);
@@ -699,11 +724,20 @@ public class SituationManager : MonoBehaviour
         string json = jsonBuilder.ToString();
 
         // Define la ruta del archivo JSON
-        string path = Path.Combine(folderPath, name);
+        if (name != "" && name != null)
+        {
+            string path = Path.Combine(folderPath, name);
 
-        // Guarda el archivo JSON
-        File.WriteAllText(path, json);
+            // Guarda el archivo JSON
+            File.WriteAllText(path, json);
 
-        Debug.Log("Estadísticas exportadas a: " + path);
+            Debug.Log("Estadísticas exportadas a: " + path);
+        }
+        else
+        {
+            Debug.LogError("El nombre del archivo no puede estar vacío.");
+        }
+        
+
     }
 }
