@@ -555,13 +555,16 @@ public class SituationManager : MonoBehaviour
                 default:
                     break;
                 case 3: // SpecificSituations[3] de unirse al club de futbol que desbloquea:
-                    if(option == 0) // Si elige SI unirse al club de futbol
-                        lockedSpecificSituations[4] = false; // Entrenamiento de futbol
+                    if (option == 0) // Si elige SI unirse al club de futbol
+                    {
+                        lockedSituations[5] = false; // Entrenamiento de futbol
+                        lockedSpecificSituations[3] = true; // Ya esta en el club de futbol
+                    }
                     break;
 
                 case 4: // SpecificSituations[4] de Conseguir Trabajo que desbloquea:
                     if (option == 0) // Si elige "LO COGEMOS"
-                        lockedSpecificSituations[5] = false; // Jornada Laboral
+                        lockedSituations[6] = false; // Jornada Laboral
                     break;
                 case 6: // SpecificSituations[6] de Temporada de examenes te deja agotado que desbloquea:
                     if (option == 1) // Si elige "Lo hablo con un profesional"
@@ -569,7 +572,11 @@ public class SituationManager : MonoBehaviour
                     break;
                 case 8: // SpecificSituations[8] de Ultimamente las cosas no han ido bien que desbloquea:
                     if (option == 1) // Si elige "Deberia ir al psicologo"
-                        lockedSpecificSituations[6] = false; // Visita al psicologo
+                    {
+                        lockedSpecificSituations[6] = false; // Visita al psicologo tras temporada de examenes
+                        lockedSituations[7] = false; // Visita a Psicall normal
+                    }
+                    
                     break;
 
             }
