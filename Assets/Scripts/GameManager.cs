@@ -31,8 +31,8 @@ public class GameManager : MonoBehaviour
     private int[]valuesTextDown = new int[4];
 
     public int totalCredits = 240;
-    int credits = 0;
-    int year = 1;
+    public int credits = 0;
+    public int year = 1;
 
     private bool winCondition;
     private bool isExamWeek;
