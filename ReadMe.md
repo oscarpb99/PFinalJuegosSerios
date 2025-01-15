@@ -12,7 +12,7 @@ superar algunas situaciones que se pueden haber dado en algunos
 estudiantes y que estos tengan una pequeña ayuda para enfrentarlas.
 
 Como es un juego pensado para que lo utilicen los psicólogos, hemos hecho una forma 
-de tener los datos en formato json con el nombre de la persona (nombre pedido al principio del juego.
+de tener los datos en formato ".json" con el nombre de la persona (nombre pedido al principio del juego).
 En el json aparece la información de todas las situaciones y las estadísticas de cada situación 
 para ayudar a analizar, siendo lo que contiene: situación, número de apariciones de esa situación,
 elección 1 (texto de la elección de la izquierda),elección 2(texto de la elección de la derecha) y elección 3(texto de la elección de abajo 
