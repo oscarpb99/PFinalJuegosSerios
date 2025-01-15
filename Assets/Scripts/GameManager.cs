@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     // Al final de cada partida, guardamos los datos de cada situacion
     public StadisticsOfSelections[] lastGameDataSaved;
     public int indexGameDataSaved = 0;
+
+    
     public void saveSituationData(StadisticsOfSelections[] data)
     {
         lastGameDataSaved = data;
@@ -167,7 +169,7 @@ public class GameManager : MonoBehaviour
                 winCondition = false;
                 imagenPrefab.GetComponent<SelectSituation>().addStadistics(option);
                 saveSituationData(situationManager.numRepeatedSelections);
-                situationManager.exportStatisticsToJson("Prueba.json");
+                situationManager.exportStatisticsToJson(NameData.PlayerName);
                 SceneManager.LoadScene("EndScene");
             }
             else if (stats[i] > 100)
@@ -186,7 +188,7 @@ public class GameManager : MonoBehaviour
             winCondition = true;
             imagenPrefab.GetComponent<SelectSituation>().addStadistics(option);
             saveSituationData(situationManager.numRepeatedSelections);
-            situationManager.exportStatisticsToJson("Prueba.json");
+            situationManager.exportStatisticsToJson(NameData.PlayerName);
             SceneManager.LoadScene("EndScene");
         }
     }

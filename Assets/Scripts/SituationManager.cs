@@ -584,24 +584,53 @@ public class SituationManager : MonoBehaviour
         {
             Directory.CreateDirectory(folderPath);
         }
-        jsonBuilder.Append("[");
+        jsonBuilder.Append("[\n");
         // Serializa los objetos de 'situations' y 'numRepeatedSelections' a JSON
         for (int i = 0; i < situations.Length; i++)
         {
-            StadisticsToExport stadisticsOfOneSituation = new StadisticsToExport
+            StadisticsToExport stadisticsOfOneSituation;
+            if (numRepeatedSelections[i].nSelectedLeft + numRepeatedSelections[i].nSelectedRight + numRepeatedSelections[i].nSelectedDown > 0)
             {
-                situation = situations[i].situation,
-                elec1 = situations[i].elec1,
-                nSelectedLeft = numRepeatedSelections[i].nSelectedLeft,
-                maxStreakLeft = numRepeatedSelections[i].maxStreakLeft,
-                elec2 = situations[i].elec2,
-                nSelectedRight = numRepeatedSelections[i].nSelectedRight,
-                maxStreakRight = numRepeatedSelections[i].maxStreakRight,
-                elec3 = situations[i].elec3,
-                nSelectedDown = numRepeatedSelections[i].nSelectedDown,
-                maxStreakDown = numRepeatedSelections[i].maxStreakDown
+                stadisticsOfOneSituation = new StadisticsToExport
+                {
+                    situation = situations[i].situation,
+                    nAppearances = numRepeatedSelections[i].nSelectedLeft + numRepeatedSelections[i].nSelectedRight + numRepeatedSelections[i].nSelectedDown,
+                    elec1 = situations[i].elec1,
+                    nSelectedLeft = numRepeatedSelections[i].nSelectedLeft,
+                    maxStreakLeft = numRepeatedSelections[i].maxStreakLeft,
+                    chosenPercentajeElec1 = ((float)numRepeatedSelections[i].nSelectedLeft / (numRepeatedSelections[i].nSelectedLeft + numRepeatedSelections[i].nSelectedRight + numRepeatedSelections[i].nSelectedDown)) * 100,
+                    elec2 = situations[i].elec2,
+                    nSelectedRight = numRepeatedSelections[i].nSelectedRight,
+                    maxStreakRight = numRepeatedSelections[i].maxStreakRight,
+                    chosenPercentajeElec2 = ((float)numRepeatedSelections[i].nSelectedRight / (numRepeatedSelections[i].nSelectedLeft + numRepeatedSelections[i].nSelectedRight + numRepeatedSelections[i].nSelectedDown)) * 100,
+                    elec3 = situations[i].elec3,
+                    nSelectedDown = numRepeatedSelections[i].nSelectedDown,
+                    maxStreakDown = numRepeatedSelections[i].maxStreakDown,
+                    chosenPercentajeElec3 = ((float)numRepeatedSelections[i].nSelectedDown / (numRepeatedSelections[i].nSelectedLeft + numRepeatedSelections[i].nSelectedRight + numRepeatedSelections[i].nSelectedDown)) * 100
 
-            };
+                };
+            }
+            else
+            {
+                stadisticsOfOneSituation = new StadisticsToExport
+                {
+                    situation = situations[i].situation,
+                    nAppearances = 0,
+                    elec1 = situations[i].elec1,
+                    nSelectedLeft = numRepeatedSelections[i].nSelectedLeft,
+                    maxStreakLeft = numRepeatedSelections[i].maxStreakLeft,
+                    chosenPercentajeElec1 = 0.0f,
+                    elec2 = situations[i].elec2,
+                    nSelectedRight = numRepeatedSelections[i].nSelectedRight,
+                    maxStreakRight = numRepeatedSelections[i].maxStreakRight,
+                    chosenPercentajeElec2 = 0.0f,
+                    elec3 = situations[i].elec3,
+                    nSelectedDown = numRepeatedSelections[i].nSelectedDown,
+                    maxStreakDown = numRepeatedSelections[i].maxStreakDown,
+                    chosenPercentajeElec3 = 0.0f
+
+                };
+            }
             // Serializar el objeto anónimo
             jsonBuilder.Append(JsonUtility.ToJson(stadisticsOfOneSituation,true));
             jsonBuilder.Append(",\n");
@@ -611,20 +640,49 @@ public class SituationManager : MonoBehaviour
         // Serializa los objetos de 'specificSituations' y las repeticiones correspondientes
         for (int i = 0; i < specificSituations.Length-4; i++)
         {
-            StadisticsToExport stadisticsOfOneSituation = new StadisticsToExport
+            StadisticsToExport stadisticsOfOneSituation;
+            if (numRepeatedSelections[situations.Length + i].nSelectedLeft + numRepeatedSelections[situations.Length + i].nSelectedRight + numRepeatedSelections[situations.Length + i].nSelectedDown > 0)
             {
-                situation = specificSituations[i].situation,
-                elec1 = specificSituations[i].elec1,
-                nSelectedLeft = numRepeatedSelections[situations.Length+i].nSelectedLeft,
-                maxStreakLeft = numRepeatedSelections[situations.Length+i].maxStreakLeft,
-                elec2 = specificSituations[i].elec2,
-                nSelectedRight = numRepeatedSelections[situations.Length + i].nSelectedRight,
-                maxStreakRight = numRepeatedSelections[situations.Length + i].maxStreakRight,
-                elec3 = specificSituations[i].elec3,
-                nSelectedDown = numRepeatedSelections[situations.Length + i].nSelectedDown,
-                maxStreakDown = numRepeatedSelections[situations.Length + i].maxStreakDown
+                stadisticsOfOneSituation = new StadisticsToExport
+                {
+                    situation = specificSituations[i].situation,
+                    nAppearances = numRepeatedSelections[situations.Length + i].nSelectedLeft + numRepeatedSelections[situations.Length + i].nSelectedRight + numRepeatedSelections[situations.Length + i].nSelectedDown,
+                    elec1 = specificSituations[i].elec1,
+                    nSelectedLeft = numRepeatedSelections[situations.Length + i].nSelectedLeft,
+                    maxStreakLeft = numRepeatedSelections[situations.Length + i].maxStreakLeft,
+                    chosenPercentajeElec1 =((float) numRepeatedSelections[situations.Length + i].nSelectedLeft / (numRepeatedSelections[situations.Length + i].nSelectedLeft + numRepeatedSelections[situations.Length + i].nSelectedRight + numRepeatedSelections[situations.Length + i].nSelectedDown)) * 100,
+                    elec2 = specificSituations[i].elec2,
+                    nSelectedRight = numRepeatedSelections[situations.Length + i].nSelectedRight,
+                    maxStreakRight = numRepeatedSelections[situations.Length + i].maxStreakRight,
+                    chosenPercentajeElec2 =((float) numRepeatedSelections[situations.Length + i].nSelectedRight / (numRepeatedSelections[situations.Length + i].nSelectedLeft + numRepeatedSelections[situations.Length + i].nSelectedRight + numRepeatedSelections[situations.Length + i].nSelectedDown)) * 100,
+                    elec3 = specificSituations[i].elec3,
+                    nSelectedDown = numRepeatedSelections[situations.Length + i].nSelectedDown,
+                    maxStreakDown = numRepeatedSelections[situations.Length + i].maxStreakDown,
+                    chosenPercentajeElec3 = ((float)numRepeatedSelections[situations.Length + i].nSelectedDown / (numRepeatedSelections[situations.Length + i].nSelectedLeft + numRepeatedSelections[situations.Length + i].nSelectedRight + numRepeatedSelections[situations.Length + i].nSelectedDown)) * 100
 
-            };
+                };
+            }
+            else
+            {
+                stadisticsOfOneSituation = new StadisticsToExport
+                {
+                    situation = specificSituations[i].situation,
+                    nAppearances = 0,
+                    elec1 = specificSituations[i].elec1,
+                    nSelectedLeft = numRepeatedSelections[situations.Length + i].nSelectedLeft,
+                    maxStreakLeft = numRepeatedSelections[situations.Length + i].maxStreakLeft,
+                    chosenPercentajeElec1 = 0.0f,
+                    elec2 = specificSituations[i].elec2,
+                    nSelectedRight = numRepeatedSelections[situations.Length + i].nSelectedRight,
+                    maxStreakRight = numRepeatedSelections[situations.Length + i].maxStreakRight,
+                    chosenPercentajeElec2 = 0.0f,
+                    elec3 = specificSituations[i].elec3,
+                    nSelectedDown = numRepeatedSelections[situations.Length + i].nSelectedDown,
+                    maxStreakDown = numRepeatedSelections[situations.Length + i].maxStreakDown,
+                    chosenPercentajeElec3 = 0.0f
+
+                };
+            }
             // Serializar el objeto anónimo
             jsonBuilder.Append(JsonUtility.ToJson(stadisticsOfOneSituation, true));
 
