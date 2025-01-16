@@ -11,13 +11,13 @@
 			"stat3Left": 0,
 			"stat4Left": 0,
 
-			"stat1Right": -10,
-			"stat2Right": 0,
+			"stat1Right": 0,
+			"stat2Right": -15,
 			"stat3Right": 0,
 			"stat4Right": 0,
 
 			"stat1Down": 0,
-			"stat2Down": -20,
+			"stat2Down": -30,
 			"stat3Down": 0,
 			"stat4Down": 0,
  

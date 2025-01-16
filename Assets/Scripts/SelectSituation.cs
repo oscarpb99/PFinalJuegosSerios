@@ -30,7 +30,7 @@ public class SelectSituation : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (isOverlapping(imageRect, text1Rect))
+        if (isOverlapping(imageRect, text1Rect) && text1Rect.gameObject.activeSelf)
         {
             GameManager.Instance.showModifiedStats(GameManager.Instance.getStatsText(1)[0], GameManager.Instance.getStatsText(1)[1], GameManager.Instance.getStatsText(1)[2], GameManager.Instance.getStatsText(1)[3]);
             if (isLetGo)
@@ -56,7 +56,7 @@ public class SelectSituation : MonoBehaviour
             }
 
         }
-        else if (isOverlapping(imageRect, text2Rect))
+        else if (isOverlapping(imageRect, text2Rect) && text2Rect.gameObject.activeSelf)
         {
             GameManager.Instance.showModifiedStats(GameManager.Instance.getStatsText(0)[0], GameManager.Instance.getStatsText(0)[1], GameManager.Instance.getStatsText(0)[2], GameManager.Instance.getStatsText(0)[3]);
             if (isLetGo)

@@ -567,7 +567,10 @@ public class SituationManager : MonoBehaviour
 
                 case 4: // SpecificSituations[4] de Conseguir Trabajo que desbloquea:
                     if (option == 0) // Si elige "LO COGEMOS"
+                    {
                         lockedSituations[6] = false; // Jornada Laboral
+                        lockedSpecificSituations[4] = true;
+                    }
                     break;
                 case 6: // SpecificSituations[6] de Temporada de examenes te deja agotado que desbloquea:
                     if (option == 1) // Si elige "Lo hablo con un profesional"

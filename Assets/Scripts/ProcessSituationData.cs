@@ -199,7 +199,7 @@ public class ProcessSituationData : MonoBehaviour
             GameManager.Instance.indexGameDataSaved++;
         }
 
-        if(GameManager.Instance.indexGameDataSaved >= dataToAnalyzeBool.Length)
+        if(GameManager.Instance.indexGameDataSaved > dataToAnalyzeBool.Length)
         {
             situationText.text = "Quieres jugar otra partida? Haz click en el boton de jugar otra vez, abajo a la izquierda";
             buttonReplay.SetActive(true);
