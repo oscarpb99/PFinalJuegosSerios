@@ -348,7 +348,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\nQueremos agradecer a Psycall por su participaci\xF3n"
+  m_text: "Agradecimiento especial a Psicall por su aportaci\xF3n de conocimiento
+    profesional sobre psicolog\xEDa, su feedback respecto al juego y su ayuda en
+    general a\_este\_proyecto.\n\nSi necesitais contactar con ellos aqu\xED esta
+    su tel\xE9fono y correo:\n913 945 200 / psicall@ucm.es"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d46fb5a65def7b24ba946542e5eda243, type: 2}
   m_sharedMaterial: {fileID: -8078454462428380408, guid: d46fb5a65def7b24ba946542e5eda243, type: 2}
@@ -382,8 +385,8 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -557,7 +560,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Universities ???
+  m_text: La Universidad
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d46fb5a65def7b24ba946542e5eda243, type: 2}
   m_sharedMaterial: {fileID: -8078454462428380408, guid: d46fb5a65def7b24ba946542e5eda243, type: 2}
