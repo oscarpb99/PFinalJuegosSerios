@@ -60,7 +60,12 @@ public class ProcessSituationData : MonoBehaviour
 
         // Si una situacion tiene un posible analisis y se ha activado, se activa esta condicion
         bool conditionActivated = false;
-        int nVeces = dataToAnalyze[i].nSelectedLeft + dataToAnalyze[i].nSelectedRight + dataToAnalyze[i].nSelectedDown;
+        bool ultimo = false;
+        int nVeces = 0;
+
+        // Mientras tengamos situaciones que analizar
+        if(GameManager.Instance.indexGameDataSaved < dataToAnalyzeBool.Length)
+            nVeces = dataToAnalyze[i].nSelectedLeft + dataToAnalyze[i].nSelectedRight + dataToAnalyze[i].nSelectedDown;
 
         // Process data
         switch (GameManager.Instance.indexGameDataSaved)
@@ -173,6 +178,7 @@ public class ProcessSituationData : MonoBehaviour
                 // SpecificSituation 6
                 // Ultima Temporada de examenes te deja cansao, vas al psicoloco o con quien lo hablas
                 situationText.text = "La última temporada de exámenes te ha dejado bastante agotado y estas algo deprimido, Que haces?";
+                ultimo = true;
 
                 // Si el jugador piensa que ha sido una mala racha 3 veces
                 if (dataToAnalyze[i].nSelectedDown >= 3) 
@@ -199,7 +205,7 @@ public class ProcessSituationData : MonoBehaviour
             GameManager.Instance.indexGameDataSaved++;
         }
 
-        if(GameManager.Instance.indexGameDataSaved > dataToAnalyzeBool.Length)
+        if(!ultimo && GameManager.Instance.indexGameDataSaved >= dataToAnalyzeBool.Length)
         {
             situationText.text = "Quieres jugar otra partida? Haz click en el boton de jugar otra vez, abajo a la izquierda";
             buttonReplay.SetActive(true);

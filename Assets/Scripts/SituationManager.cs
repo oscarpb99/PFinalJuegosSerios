@@ -765,7 +765,6 @@ public class SituationManager : MonoBehaviour
 
     private void OnDestroy()
     {
-        GameManager.Instance.totalCredits = 0;
         GameManager.Instance.credits = 0;
         GameManager.Instance.year = 1;
     }

@@ -38,7 +38,7 @@ public class NextSituation : MonoBehaviour
             || (text3Rect.gameObject.activeSelf && isOverlapping(imageRect, text3Rect)))
         {
             // Si no hemos llegado al final de las situaciones a analizar
-            if (isLetGo && GameManager.Instance.indexGameDataSaved < GameManager.Instance.lastGameDataSaved.Length)
+            if (isLetGo)
             {
                     // Procesamos la siguiente situación
                     processSituationData.ProcessData();
